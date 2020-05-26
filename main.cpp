@@ -1,61 +1,10 @@
-/*--+----1----+----2----+----3----+----4----+----5--//-+----6----+----7----+----8----+----9----+---*/
-/* hinagata.cpp     																					   */
-
 //########## ヘッダーファイル読み込み ##########
-#include "DxLib.h"
-
-//########## マクロ定義 ##########
-#define GAME_WIDTH	800		//画面の横の大きさ
-#define GAME_HEIGHT	600		//画面の縦の大きさ
-#define GAME_COLOR	32		//画面のカラービット
-
-#define GAME_WINDOW_NAME	"GAME TITLE"		//ウィンドウのタイトル
-#define GAME_WINDOW_MODECHANGE	TRUE			//TRUE：ウィンドウモード / FALSE：フルスクリーン
-
-#define SET_WINDOW_ST_MODE_DEFAULT			0	//デフォルト
-#define SET_WINDOW_ST_MODE_TITLE_NONE		1	//タイトルバーなし
-#define SET_WINDOW_ST_MODE_TITLE_FLAME_NONE	2	//タイトルバーとフレームなし
-#define SET_WINDOW_ST_MODE_FLAME_NONE		3	//フレームなし
-
-#define GAME_FPS_SPEED					   60
-
-//########## 列挙型 ##########
-enum GAME_SCENE {
-	GAME_SCENE_TITLE,	//タイトル画面
-	GAME_SCENE_PLAY,	//プレイ画面
-	GAME_SCENE_END		//エンド画面
-};
-
-//########## グローバル変数 ##########
-
-//ウィンドウ関係
-WNDPROC WndProc;						//ウィンドウプロシージャのアドレス
-BOOL IsWM_CREATE = FALSE;				//WM_CREATEが正常に動作したか判断する
-
-//FPS関連
-int StartTimeFps;						//測定開始時刻
-int CountFps;							//カウンタ
-float CalcFps;							//計算結果
-int SampleNumFps = GAME_FPS_SPEED;		//平均を取るサンプル数
+#include "header.h"
+#include "global.h"
+#include "proto.h"
 
 //キーボード関連
 char AllKeyState[256];			//すべてのキーの状態が入る
-
-//シーン関連
-int GameSceneNow = (int)GAME_SCENE_TITLE;	//最初のゲーム画面をタイトルに設定
-
-//########## プロトタイプ宣言 ##########
-LRESULT CALLBACK MY_WNDPROC(HWND, UINT, WPARAM, LPARAM);	//自作ウィンドウプロシージャ
-
-VOID MY_FPS_UPDATE(VOID);			//FPS値を計測、更新する関数
-VOID MY_FPS_DRAW(VOID);				//FPS値を描画する関数
-VOID MY_FPS_WAIT(VOID);				//FPS値を計測し、待つ関数
-
-VOID MY_ALL_KEYDOWN_UPDATE(VOID);	//キーの入力状態を更新する関数
-
-VOID MY_GAME_TITLE(VOID);			//タイトル画面の関数
-VOID MY_GAME_PLAY(VOID);			//プレイ画面の関数
-VOID MY_GAME_END(VOID);				//エンド画面の関数
 
 //########## プログラムで最初に実行される関数 ##########
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -122,46 +71,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DxLib_End();		//ＤＸライブラリ使用の終了処理
 
 	return 0;
-}
-
-//########## FPS値を計測、更新する関数 ##########
-VOID MY_FPS_UPDATE(VOID)
-{
-	if (CountFps == 0) //1フレーム目なら時刻を記憶
-	{
-		StartTimeFps = GetNowCount();
-	}
-
-	if (CountFps == SampleNumFps) //60フレーム目なら平均を計算
-	{
-		int now = GetNowCount();
-		CalcFps = 1000.f / ((now - StartTimeFps) / (float)SampleNumFps);
-		CountFps = 0;
-		StartTimeFps = now;
-	}
-	CountFps++;
-	return;
-}
-
-//########## FPS値を描画する関数 ##########
-VOID MY_FPS_DRAW(VOID)
-{
-	//文字列を描画
-	DrawFormatString(0, GAME_HEIGHT - 20, GetColor(255, 255, 255), "FPS:%.1f", CalcFps);
-	return;
-}
-
-//########## FPS値を計測し、待つ関数 ##########
-VOID MY_FPS_WAIT(VOID)
-{
-	int resultTime = GetNowCount() - StartTimeFps;					//かかった時間
-	int waitTime = CountFps * 1000 / GAME_FPS_SPEED - resultTime;	//待つべき時間
-
-	if (waitTime > 0)		//指定のFPS値よりも早い場合
-	{
-		Sleep(waitTime);	//待つ
-	}
-	return;
 }
 
 //########## キーの入力状態を更新する関数 ##########
