@@ -1,4 +1,5 @@
 #pragma once
+#include <DxLib.h>
 #include "header.h"
 
 //########## 列挙型 ##########
@@ -12,8 +13,10 @@ enum GAME_SCENE {
 
 //ウィンドウ関係
 extern WNDPROC WndProc;						//ウィンドウプロシージャのアドレス
-extern BOOL IsWM_CREATE = FALSE;				//WM_CREATEが正常に動作したか判断する
+
+//キーボード関連
+extern char AllKeyState[256];			//すべてのキーの状態が入る
 
 //シーン関連
-int GameSceneNow = (int)GAME_SCENE_TITLE;	//最初のゲーム画面をタイトルに設定
+extern int GameSceneNow;	//最初のゲーム画面をタイトルに設定
 

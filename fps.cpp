@@ -1,11 +1,6 @@
+#include <DxLib.h>
 #include "header.h"
-#include "proto.h"
-
-//FPS関連
-int StartTimeFps;						//測定開始時刻
-int CountFps;							//カウンタ
-float CalcFps;							//計算結果
-int SampleNumFps = GAME_FPS_SPEED;		//平均を取るサンプル数
+#include "fps.h"
 
 //########## FPS値を計測、更新する関数 ##########
 VOID MY_FPS_UPDATE(VOID)

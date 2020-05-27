@@ -1,5 +1,5 @@
 #pragma once
-#include "DxLib.h"
+#include <DxLib.h>
 
 //########## ƒ}ƒNƒ’è‹` ##########
 #define GAME_WIDTH	800		//‰æ–Ê‚Ì‰¡‚Ì‘å‚«‚³

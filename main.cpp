@@ -1,10 +1,19 @@
 //########## ヘッダーファイル読み込み ##########
+#include <DxLib.h>
 #include "header.h"
 #include "global.h"
-#include "proto.h"
+#include "main.h"
+#include "fps.h"
+#include "title.h"
+#include "key.h"
+#include "play.h"
+#include "end.h"
 
-//キーボード関連
-char AllKeyState[256];			//すべてのキーの状態が入る
+int GameSceneNow = (int)GAME_SCENE_TITLE;
+
+char AllKeyState[256];	//すべてのキーの状態が入る
+
+static BOOL IsWM_CREATE = FALSE;				//WM_CREATEが正常に動作したか判断する
 
 //########## プログラムで最初に実行される関数 ##########
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -71,66 +80,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DxLib_End();		//ＤＸライブラリ使用の終了処理
 
 	return 0;
-}
-
-//########## キーの入力状態を更新する関数 ##########
-VOID MY_ALL_KEYDOWN_UPDATE(VOID)
-{
-	char TempKey[256];			//一時的に、現在のキーの入力状態を格納する
-
-	GetHitKeyStateAll(TempKey); // 全てのキーの入力状態を得る
-
-	for (int i = 0; i < 256; i++)
-	{
-		if (TempKey[i] != 0)	//押されているキーのキーコードを押しているとき
-		{
-			AllKeyState[i]++;	//押されている
-		}
-		else
-		{
-			AllKeyState[i] = 0;	//押されていない
-		}
-	}
-	return;
-}
-
-//########## タイトル画面の関数 ##########
-VOID MY_GAME_TITLE(VOID)
-{
-	if (AllKeyState[KEY_INPUT_RETURN] != 0)	//エンターキーが押されていた時
-	{
-		GameSceneNow = (int)GAME_SCENE_PLAY;	//シーンをプレイ画面にする
-	}
-
-	DrawString(0, 0, "タイトル画面(エンターキーを押してください)", GetColor(255, 255, 255));
-
-	return;
-}
-
-//########## プレイ画面の関数 ##########
-VOID MY_GAME_PLAY(VOID)
-{
-	if (AllKeyState[KEY_INPUT_SPACE] != 0)	//スペースキーが押されていた時
-	{
-		GameSceneNow = (int)GAME_SCENE_END;	//シーンをエンド画面にする
-	}
-
-	DrawString(0, 0, "プレイ画面(スペースキーを押してください)", GetColor(255, 255, 255));
-
-	return;
-}
-
-//########## エンド画面の関数 ##########
-VOID MY_GAME_END(VOID)
-{
-	if (AllKeyState[KEY_INPUT_BACK] != 0)	//バックスペースーキーが押されていた時
-	{
-		GameSceneNow = (int)GAME_SCENE_TITLE;	//シーンをタイトル画面にする
-	}
-
-	DrawString(0, 0, "エンド画面(バックスペースキーを押してください)", GetColor(255, 255, 255));
-
-	return;
 }
 
 //########## ウィンドウプロシージャ関数 ##########
