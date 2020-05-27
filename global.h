@@ -11,9 +11,6 @@ enum GAME_SCENE {
 
 //########## グローバル変数 ##########
 
-//ウィンドウ関係
-extern WNDPROC WndProc;						//ウィンドウプロシージャのアドレス
-
 //キーボード関連
 extern char AllKeyState[256];			//すべてのキーの状態が入る
 

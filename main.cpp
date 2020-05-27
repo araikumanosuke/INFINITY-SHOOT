@@ -15,6 +15,9 @@ char AllKeyState[256];	//すべてのキーの状態が入る
 
 static BOOL IsWM_CREATE = FALSE;				//WM_CREATEが正常に動作したか判断する
 
+//ウィンドウ関係
+static WNDPROC WndProc;						//ウィンドウプロシージャのアドレス
+
 //########## プログラムで最初に実行される関数 ##########
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
