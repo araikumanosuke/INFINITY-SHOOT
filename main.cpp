@@ -7,16 +7,26 @@
 #include "title.h"
 #include "key.h"
 #include "play.h"
-#include "end.h"
+#include "end_over.h"
+#include "ranking.h"
+#include "stagechoice.h"
+#include "end_clear.h"
 
+//グローバル変数の実体たち
 int GameSceneNow = (int)GAME_SCENE_TITLE;
 
 char AllKeyState[256];	//すべてのキーの状態が入る
 
-static BOOL IsWM_CREATE = FALSE;				//WM_CREATEが正常に動作したか判断する
+int BGHandle;
+int RHandle;
+int THandle;
+
+int choice_FHandle;
 
 //ウィンドウ関係
 static WNDPROC WndProc;						//ウィンドウプロシージャのアドレス
+
+static BOOL IsWM_CREATE = FALSE;				//WM_CREATEが正常に動作したか判断する
 
 //########## プログラムで最初に実行される関数 ##########
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -34,6 +44,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	if (DxLib_Init() == -1) { return -1; }						//ＤＸライブラリ初期化処理
 
 	SetDrawScreen(DX_SCREEN_BACK);								//Draw系関数は裏画面に描画
+
+	BGHandle = LoadGraph(GAME_IMAGE_BACK);
+	RHandle = LoadGraph(GAME_IMAGE_ROGO);
+	THandle = LoadGraph(GAME_IMAGE_TRIANGLE);
+
+	choice_FHandle = CreateFontToHandle("HGS 教科書体", 48, 9, DX_FONTTYPE_ANTIALIASING);
 
 	//無限ループ
 	while (TRUE)
@@ -53,17 +69,35 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			break;	//タイトル画面の処理ここまで
 
+		case (int)GAME_SCENE_RANKING:	//ランキング画面の処理ここから
+
+			MY_GAME_RANKING();	//ランキング画面の処理
+
+			break;	//ランキング画面の処理ここまで
+
+		case (int)GAME_SCENE_STAGECHOICE:	//ステージ選択画面の処理ここから
+
+			MY_GAME_STAGECHOICE();	//ステージ選択画面の処理
+
+			break;	//ステージ選択画面の処理ここまで
+
 		case (int)GAME_SCENE_PLAY:	//プレイ画面の処理ここから
 
 			MY_GAME_PLAY();		//プレイ画面の処理
 
 			break;	//プレイ画面の処理ここまで
 
-		case (int)GAME_SCENE_END:	//エンド画面の処理ここから
+		case (int)GAME_SCENE_END_CLEAR:	//エンド画面(ゲームクリア)の処理ここから
 
-			MY_GAME_END();		//エンド画面の処理
+			MY_GAME_END_CLEAR();	//エンド画面(ゲームクリア)の処理
 
-			break;	//エンド画面の処理ここまで
+			break;	//エンド画面(ゲームクリア)の処理ここまで
+
+		case (int)GAME_SCENE_END_OVER:	//エンド画面(ゲームオーバー)の処理ここから
+
+			MY_GAME_END_OVER();		//エンド画面(ゲームオーバー)の処理
+
+			break;	//エンド画面(ゲームオーバー)の処理ここまで
 
 		default:
 
@@ -79,6 +113,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		MY_FPS_WAIT();		//FPSの処理[待つ]
 	}
+
+	DeleteGraph(BGHandle);
+
+	DeleteFontToHandle(choice_FHandle);
 
 	DxLib_End();		//ＤＸライブラリ使用の終了処理
 
