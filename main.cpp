@@ -20,8 +20,18 @@ char AllKeyState[256];	//すべてのキーの状態が入る
 int BGHandle;
 int RHandle;
 int THandle;
+int PHandle;
+int E_YHandle;
+int E_YHardHandle;
+int E_GHandle;
+int E_GHardHandle;
+int E_RHandle;
+int E_RHardHandle;
+int E_BHandle;
+int E_BHardHandle;
 
 int choice_FHandle;
+int play_FHandle;
 
 //ウィンドウ関係
 static WNDPROC WndProc;						//ウィンドウプロシージャのアドレス
@@ -48,8 +58,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	BGHandle = LoadGraph(GAME_IMAGE_BACK);
 	RHandle = LoadGraph(GAME_IMAGE_ROGO);
 	THandle = LoadGraph(GAME_IMAGE_TRIANGLE);
+	PHandle = LoadGraph(GAME_IMAGE_PLAYER);
+	E_YHandle = LoadGraph(GAME_IMAGE_ENEMY_YELLOW);
+	E_YHardHandle = LoadGraph(GAME_IMAGE_ENEMY_YELLOW_HARD);
+	E_GHandle = LoadGraph(GAME_IMAGE_ENEMY_GREEN);
+	E_GHardHandle = LoadGraph(GAME_IMAGE_ENEMY_GREEN_HARD);
+	E_RHandle = LoadGraph(GAME_IMAGE_ENEMY_RED);
+	E_RHardHandle = LoadGraph(GAME_IMAGE_ENEMY_RED_HARD);
+	E_BHandle = LoadGraph(GAME_IMAGE_ENEMY_BLUE);
+	E_BHardHandle = LoadGraph(GAME_IMAGE_ENEMY_BLUE_HARD);
 
-	choice_FHandle = CreateFontToHandle("HGS 教科書体", 48, 9, DX_FONTTYPE_ANTIALIASING);
+	choice_FHandle = CreateFontToHandle("HGS 教科書体", 48, 0, DX_FONTTYPE_ANTIALIASING);
+	play_FHandle = CreateFontToHandle("HGS 教科書体", 24, 0, DX_FONTTYPE_ANTIALIASING);
 
 	//無限ループ
 	while (TRUE)
@@ -115,8 +135,20 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 
 	DeleteGraph(BGHandle);
+	DeleteGraph(RHandle);
+	DeleteGraph(THandle);
+	DeleteGraph(PHandle);
+	DeleteGraph(E_YHandle);
+	DeleteGraph(E_YHardHandle);
+	DeleteGraph(E_GHandle);
+	DeleteGraph(E_GHardHandle);
+	DeleteGraph(E_RHandle);
+	DeleteGraph(E_RHardHandle);
+	DeleteGraph(E_BHandle);
+	DeleteGraph(E_BHardHandle);
 
 	DeleteFontToHandle(choice_FHandle);
+	DeleteFontToHandle(play_FHandle);
 
 	DxLib_End();		//ＤＸライブラリ使用の終了処理
 
