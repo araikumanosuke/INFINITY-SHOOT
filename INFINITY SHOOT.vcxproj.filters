@@ -48,6 +48,9 @@
     <ClInclude Include="end_clear.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -75,6 +78,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="end_clear.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

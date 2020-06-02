@@ -2,50 +2,50 @@
 #include "stagechoice.h"
 #include "global.h"
 
-int t_position_stage = 0;
-int t_position_difficult = 0;
+int s_position_stage = 0;
+int s_position_difficult = 0;
 
-bool t_flug = TRUE;	//ステージ選択か難易度選択か
+bool s_flug = TRUE;	//ステージ選択か難易度選択か
 
 VOID MY_GAME_STAGECHOICE(VOID)
 {
 	if (AllKeyState[KEY_INPUT_RETURN] == 1)	//エンターキーが押されていた時
 	{
-		if (t_flug == TRUE)
+		if (s_flug == TRUE)
 		{
-			t_flug = FALSE;
+			s_flug = FALSE;
 		}
-		else if (t_flug == FALSE)
+		else if (s_flug == FALSE)
 		{
-			if (t_position_stage == 0)	//STAGE 1
+			if (s_position_stage == 0)	//STAGE 1
 			{
-				if (t_position_difficult == 0)	//NORMAL
+				if (s_position_difficult == 0)	//NORMAL
 				{
 					GameSceneNow = (int)GAME_SCENE_PLAY;	//シーンをプレイ画面にする
 				}
-				else if (t_position_difficult == 100)	//HARD
+				else if (s_position_difficult == 100)	//HARD
 				{
 					GameSceneNow = (int)GAME_SCENE_PLAY;	//シーンをプレイ画面にする
 				}
 			}
-			else if (t_position_stage == 100)	//STAGE 2
+			else if (s_position_stage == 100)	//STAGE 2
 			{
-				if (t_position_difficult == 0)	//NORMAL
+				if (s_position_difficult == 0)	//NORMAL
 				{
 					GameSceneNow = (int)GAME_SCENE_PLAY;	//シーンをプレイ画面にする
 				}
-				else if (t_position_difficult == 100)	//HARD
+				else if (s_position_difficult == 100)	//HARD
 				{
 					GameSceneNow = (int)GAME_SCENE_PLAY;	//シーンをプレイ画面にする
 				}
 			}
-			else if (t_position_stage == 200)	//STAGE 3
+			else if (s_position_stage == 200)	//STAGE 3
 			{
-				if (t_position_difficult == 0)	//NORMAL
+				if (s_position_difficult == 0)	//NORMAL
 				{
 					GameSceneNow = (int)GAME_SCENE_PLAY;	//シーンをプレイ画面にする
 				}
-				else if (t_position_difficult == 100)	//HARD
+				else if (s_position_difficult == 100)	//HARD
 				{
 					GameSceneNow = (int)GAME_SCENE_PLAY;	//シーンをプレイ画面にする
 				}
@@ -55,91 +55,91 @@ VOID MY_GAME_STAGECHOICE(VOID)
 
 	if (AllKeyState[KEY_INPUT_BACK] == 1)
 	{
-		if (t_flug == TRUE)
+		if (s_flug == TRUE)
 		{
 			GameSceneNow = (int)GAME_SCENE_TITLE;	//シーンをタイトル画面にする
-			t_position_title = 0;
-			t_position_stage = 0;
-			t_position_difficult = 0;
+			s_position_title = 0;
+			s_position_stage = 0;
+			s_position_difficult = 0;
 		}
-		else if (t_flug == FALSE)
+		else if (s_flug == FALSE)
 		{
-			t_flug = TRUE;
-			t_position_difficult = 0;
+			s_flug = TRUE;
+			s_position_difficult = 0;
 		}
 	}
 
 	if (AllKeyState[KEY_INPUT_UP] == 1)
 	{
-		if (t_flug == TRUE)	//ステージ選択
+		if (s_flug == TRUE)	//ステージ選択
 		{
-			if (t_position_stage == 0)
+			if (s_position_stage == 0)
 			{
-				t_position_stage += 200;
+				s_position_stage += 200;
 			}
 			else
 			{
-				t_position_stage -= 100;
+				s_position_stage -= 100;
 			}
 		}
-		else if (t_flug == FALSE)	//難易度選択
+		else if (s_flug == FALSE)	//難易度選択
 		{
-			if (t_position_difficult == 0)
+			if (s_position_difficult == 0)
 			{
-				t_position_difficult += 100;
+				s_position_difficult += 100;
 			}
-			else if (t_position_difficult == 100)
+			else if (s_position_difficult == 100)
 			{
-				t_position_difficult -= 100;
+				s_position_difficult -= 100;
 			}
 		}
 	}
 	else if (AllKeyState[KEY_INPUT_DOWN] == 1)
 	{
-		if (t_flug == TRUE)	//ステージ選択
+		if (s_flug == TRUE)	//ステージ選択
 		{
-			if (t_position_stage == 200)
+			if (s_position_stage == 200)
 			{
-				t_position_stage -= 200;
+				s_position_stage -= 200;
 			}
 			else
 			{
-				t_position_stage += 100;
+				s_position_stage += 100;
 			}
 		}
-		else if (t_flug == FALSE)	//難易度選択
+		else if (s_flug == FALSE)	//難易度選択
 		{
-			if (t_position_difficult == 0)
+			if (s_position_difficult == 0)
 			{
-				t_position_difficult += 100;
+				s_position_difficult += 100;
 			}
-			else if (t_position_difficult == 100)
+			else if (s_position_difficult == 100)
 			{
-				t_position_difficult -= 100;
+				s_position_difficult -= 100;
 			}
 		}
 	}
 	
-	DrawGraph(0, 0, BGHandle, TRUE);
-	DrawGraph(80, 40, RHandle, TRUE);
+	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
+	DrawGraph(ROGO.x, ROGO.y, ROGO.handle, TRUE);
 
-	DrawGraph(170, 307 + t_position_stage, THandle, TRUE);
+	DrawGraph(170, 307 + s_position_stage, SANKAKU.handle, TRUE);
 	
-	if (t_flug == FALSE)
+	if (s_flug == FALSE)
 	{
-		DrawGraph(570, 357 + t_position_difficult, THandle, TRUE);
+		DrawGraph(570, 357 + s_position_difficult, SANKAKU.handle, TRUE);
 
-		if (t_position_stage == 0)
+		if (s_position_stage == 0)
 		{
 			DrawLineAA(390.0f, 322.0f, 475.0f, 322.0f, GetColor(255, 255, 255));
 			DrawLineAA(475.0f, 322.0f, 475.0f, 422.0f, GetColor(255, 255, 255));
 			DrawLineAA(475.0f, 422.0f, 560.0f, 422.0f, GetColor(255, 255, 255));
 		}
-		else if (t_position_stage == 100)
+		else if (s_position_stage == 100)
 		{
 			DrawLineAA(390.0f, 422.0f, 560.0f, 422.0f, GetColor(255, 255, 255));
 		}
-		else if (t_position_stage == 200)
+		else if (s_position_stage == 200)
 		{
 			DrawLineAA(390.0f, 522.0f, 475.0f, 522.0f, GetColor(255, 255, 255));
 			DrawLineAA(475.0f, 522.0f, 475.0f, 422.0f, GetColor(255, 255, 255));

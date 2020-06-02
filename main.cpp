@@ -11,24 +11,27 @@
 #include "ranking.h"
 #include "stagechoice.h"
 #include "end_clear.h"
+#include "image.h"
 
 //グローバル変数の実体たち
 int GameSceneNow = (int)GAME_SCENE_TITLE;
 
 char AllKeyState[256];	//すべてのキーの状態が入る
 
-int BGHandle;
-int RHandle;
-int THandle;
-int PHandle;
-int E_YHandle;
-int E_YHardHandle;
-int E_GHandle;
-int E_GHardHandle;
-int E_RHandle;
-int E_RHardHandle;
-int E_BHandle;
-int E_BHardHandle;
+IMAGE BG;		//背景
+IMAGE ROGO;		//ロゴ
+IMAGE SANKAKU;		//三角形
+IMAGE TAMA;		//弾
+IMAGE PLAYER;		//プレイヤー(機体)
+//敵
+IMAGE E_YELLOW;
+IMAGE E_YELLOW_HARD;
+IMAGE E_GREEN;
+IMAGE E_GREEN_HARD;
+IMAGE E_RED;
+IMAGE E_RED_HARD;
+IMAGE E_BLUE;
+IMAGE E_BLUE_HARD;
 
 int choice_FHandle;
 int play_FHandle;
@@ -44,32 +47,32 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	ChangeWindowMode(GAME_WINDOW_MODECHANGE);					//ウィンドウモードに設定
 	SetGraphMode(GAME_WIDTH, GAME_HEIGHT, GAME_COLOR);			//指定の数値で画面を表示する
 
-	SetWindowStyleMode(SET_WINDOW_ST_MODE_TITLE_NONE);			//タイトルバーなし
+	SetWindowStyleMode(SET_WINDOW_ST_MODE_DEFAULT);			//タイトルバー
 
 	SetMainWindowText(TEXT(GAME_WINDOW_NAME));					//タイトルの文字
 
-	//フック→WM_CLOSEなどのメッセージを引っ掛けて取得する
-	SetHookWinProc(MY_WNDPROC);	//ウィンドウプロシージャの設定
+	SetAlwaysRunFlag(TRUE);                                //非アクティブでも実行する
 
 	if (DxLib_Init() == -1) { return -1; }						//ＤＸライブラリ初期化処理
 
 	SetDrawScreen(DX_SCREEN_BACK);								//Draw系関数は裏画面に描画
 
-	BGHandle = LoadGraph(GAME_IMAGE_BACK);
-	RHandle = LoadGraph(GAME_IMAGE_ROGO);
-	THandle = LoadGraph(GAME_IMAGE_TRIANGLE);
-	PHandle = LoadGraph(GAME_IMAGE_PLAYER);
-	E_YHandle = LoadGraph(GAME_IMAGE_ENEMY_YELLOW);
-	E_YHardHandle = LoadGraph(GAME_IMAGE_ENEMY_YELLOW_HARD);
-	E_GHandle = LoadGraph(GAME_IMAGE_ENEMY_GREEN);
-	E_GHardHandle = LoadGraph(GAME_IMAGE_ENEMY_GREEN_HARD);
-	E_RHandle = LoadGraph(GAME_IMAGE_ENEMY_RED);
-	E_RHardHandle = LoadGraph(GAME_IMAGE_ENEMY_RED_HARD);
-	E_BHandle = LoadGraph(GAME_IMAGE_ENEMY_BLUE);
-	E_BHardHandle = LoadGraph(GAME_IMAGE_ENEMY_BLUE_HARD);
+	image_load(&BG, 0, 0, GAME_IMAGE_BACK);
+	image_load(&PLAYER, 425, 500, GAME_IMAGE_PLAYER);
+	image_load(&ROGO, 80, 40, GAME_IMAGE_ROGO);
+	image_load(&SANKAKU, 0, 0, GAME_IMAGE_SANKAKU);
+	image_load(&TAMA, 0, 0, GAME_IMAGE_TAMA);
+	image_load(&E_YELLOW, 425, 300, GAME_IMAGE_ENEMY_YELLOW);
+	image_load(&E_YELLOW_HARD, 0, 0, GAME_IMAGE_ENEMY_YELLOW_HARD);
+	image_load(&E_GREEN, 0, 0, GAME_IMAGE_ENEMY_GREEN);
+	image_load(&E_GREEN_HARD, 0, 0, GAME_IMAGE_ENEMY_GREEN_HARD);
+	image_load(&E_RED, 0, 0, GAME_IMAGE_ENEMY_RED);
+	image_load(&E_RED_HARD, 0, 0, GAME_IMAGE_ENEMY_RED);
+	image_load(&E_BLUE, 0, 0, GAME_IMAGE_ENEMY_BLUE);
+	image_load(&E_BLUE_HARD, 0, 0, GAME_IMAGE_ENEMY_BLUE_HARD);
 
-	choice_FHandle = CreateFontToHandle("HGS 教科書体", 48, 0, DX_FONTTYPE_ANTIALIASING);
-	play_FHandle = CreateFontToHandle("HGS 教科書体", 24, 0, DX_FONTTYPE_ANTIALIASING);
+	choice_FHandle = CreateFontToHandle("HG教科書体", 48, 5, DX_FONTTYPE_ANTIALIASING);
+	play_FHandle = CreateFontToHandle("HG教科書体", 24, 9, DX_FONTTYPE_ANTIALIASING);
 
 	//無限ループ
 	while (TRUE)
@@ -134,18 +137,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		MY_FPS_WAIT();		//FPSの処理[待つ]
 	}
 
-	DeleteGraph(BGHandle);
-	DeleteGraph(RHandle);
-	DeleteGraph(THandle);
-	DeleteGraph(PHandle);
-	DeleteGraph(E_YHandle);
-	DeleteGraph(E_YHardHandle);
-	DeleteGraph(E_GHandle);
-	DeleteGraph(E_GHardHandle);
-	DeleteGraph(E_RHandle);
-	DeleteGraph(E_RHardHandle);
-	DeleteGraph(E_BHandle);
-	DeleteGraph(E_BHardHandle);
+	DeleteGraph(BG.handle);
+	DeleteGraph(ROGO.handle);
+	DeleteGraph(SANKAKU.handle);
+	DeleteGraph(TAMA.handle);
+	DeleteGraph(PLAYER.handle);
+	DeleteGraph(E_YELLOW.handle);
+	DeleteGraph(E_YELLOW_HARD.handle);
+	DeleteGraph(E_GREEN.handle);
+	DeleteGraph(E_GREEN_HARD.handle);
+	DeleteGraph(E_RED.handle);
+	DeleteGraph(E_RED_HARD.handle);
+	DeleteGraph(E_BLUE.handle);
+	DeleteGraph(E_BLUE_HARD.handle);
 
 	DeleteFontToHandle(choice_FHandle);
 	DeleteFontToHandle(play_FHandle);

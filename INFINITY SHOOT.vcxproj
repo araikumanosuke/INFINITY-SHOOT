@@ -154,6 +154,7 @@
     <ClCompile Include="end_clear.cpp" />
     <ClCompile Include="end_over.cpp" />
     <ClCompile Include="fps.cpp" />
+    <ClCompile Include="image.cpp" />
     <ClCompile Include="key.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="play.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="fps.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="header.h" />
+    <ClInclude Include="image.h" />
     <ClInclude Include="key.h" />
     <ClInclude Include="play.h" />
     <ClInclude Include="main.h" />
