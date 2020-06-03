@@ -1,6 +1,6 @@
 #include <DxLib.h>
-#include "end_clear.h"
-#include "global.h"
+#include "end_clear.hpp"
+#include "global.hpp"
 
 //########## ƒGƒ“ƒh‰æ–Ê‚ÌŠÖ” ##########
 VOID MY_GAME_END_CLEAR(VOID)

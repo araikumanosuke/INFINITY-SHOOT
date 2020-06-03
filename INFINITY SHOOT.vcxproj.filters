@@ -15,40 +15,43 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header.h">
+    <ClInclude Include="end_clear.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="global.h">
+    <ClInclude Include="end_over.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="title.h">
+    <ClInclude Include="fps.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="key.h">
+    <ClInclude Include="global.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="fps.h">
+    <ClInclude Include="header.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="play.h">
+    <ClInclude Include="image.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
+    <ClInclude Include="key.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="end_over.h">
+    <ClInclude Include="main.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ranking.h">
+    <ClInclude Include="play.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="stagechoice.h">
+    <ClInclude Include="ranking.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="end_clear.h">
+    <ClInclude Include="stagechoice.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="image.h">
+    <ClInclude Include="tama.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="title.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -81,6 +84,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="image.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="tama.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

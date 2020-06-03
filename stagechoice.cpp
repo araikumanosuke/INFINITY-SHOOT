@@ -1,6 +1,6 @@
 #include <DxLib.h>
-#include "stagechoice.h"
-#include "global.h"
+#include "stagechoice.hpp"
+#include "global.hpp"
 
 int s_position_stage = 0;
 int s_position_difficult = 0;

@@ -1,6 +1,6 @@
 #include <DxLib.h>
-#include "header.h"
-#include "fps.h"
+#include "header.hpp"
+#include "fps.hpp"
 
 //########## FPS値を計測、更新する関数 ##########
 VOID MY_FPS_UPDATE(VOID)

@@ -1,17 +1,17 @@
 //########## ヘッダーファイル読み込み ##########
 #include <DxLib.h>
-#include "header.h"
-#include "global.h"
-#include "main.h"
-#include "fps.h"
-#include "title.h"
-#include "key.h"
-#include "play.h"
-#include "end_over.h"
-#include "ranking.h"
-#include "stagechoice.h"
-#include "end_clear.h"
-#include "image.h"
+#include "header.hpp"
+#include "global.hpp"
+#include "main.hpp"
+#include "fps.hpp"
+#include "title.hpp"
+#include "key.hpp"
+#include "play.hpp"
+#include "end_over.hpp"
+#include "ranking.hpp"
+#include "stagechoice.hpp"
+#include "end_clear.hpp"
+#include "image.hpp"
 
 //グローバル変数の実体たち
 int GameSceneNow = (int)GAME_SCENE_TITLE;

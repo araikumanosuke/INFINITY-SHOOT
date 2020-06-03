@@ -1,6 +1,6 @@
 #pragma once
 #include <DxLib.h>
-#include "header.h"
+#include "header.hpp"
 
 //########## —ñ‹“Œ^ ##########
 enum GAME_SCENE {

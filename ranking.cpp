@@ -1,6 +1,6 @@
 #include <DxLib.h>
-#include "ranking.h"
-#include "global.h"
+#include "ranking.hpp"
+#include "global.hpp"
 
 VOID MY_GAME_RANKING(VOID)
 {

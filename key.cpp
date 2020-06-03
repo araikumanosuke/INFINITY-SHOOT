@@ -1,6 +1,6 @@
 #include <DxLib.h>
-#include "global.h"
-#include "key.h"
+#include "global.hpp"
+#include "key.hpp"
 
 //########## キーの入力状態を更新する関数 ##########
 VOID MY_ALL_KEYDOWN_UPDATE(VOID)

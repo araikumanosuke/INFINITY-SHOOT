@@ -1,10 +1,13 @@
 #include <DxLib.h>
-#include "header.h"
-#include "global.h"
-#include "play.h"
+#include "header.hpp"
+#include "global.hpp"
+#include "play.hpp"
+#include "tama.hpp"
 
 int T_flag;
 
+Tama a;
+ 
 //########## ÉvÉåÉCâÊñ ÇÃä÷êî ##########
 VOID MY_GAME_PLAY(VOID)
 {
@@ -36,21 +39,21 @@ VOID MY_GAME_PLAY(VOID)
 	}
 
 	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
-	DrawGraph(E_YELLOW.x, E_YELLOW.y, E_YELLOW.handle, TRUE);
+
+	for (int e = 0; e < 300; e += 30)
+	{
+		DrawGraph(E_YELLOW.x + e, E_YELLOW.y, E_YELLOW.handle, TRUE);
+	}
+	
 	DrawGraph(PLAYER.x, PLAYER.y, PLAYER.handle, TRUE);
 
-	if (AllKeyState[KEY_INPUT_SPACE] != 0)
+	if (AllKeyState[KEY_INPUT_SPACE] == 1)
 	{
-		T_flag = TRUE;
-		TAMA.x = PLAYER.x + 5;
-		TAMA.y = PLAYER.y;
+		a.IsView = TRUE;
+		a.position();
 	}
 
-	if (T_flag == TRUE)
-	{
-		DrawGraph(TAMA.x, TAMA.y, TAMA.handle, TRUE);
-		TAMA.y--;
-	}
+	a.view();
 
 	if (s_position_stage == 0)
 	{

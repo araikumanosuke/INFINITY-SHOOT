@@ -1,6 +1,6 @@
 #include <DxLib.h>
-#include "title.h"
-#include "global.h"
+#include "title.hpp"
+#include "global.hpp"
 
 int s_position_title = 0;
 

@@ -1,6 +1,6 @@
 #pragma once
 #include <DxLib.h>
-#include "header.h"
+#include "header.hpp"
 
 //FPSŠÖ˜A
 static int StartTimeFps;						//‘ª’èŠJn
