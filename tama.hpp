@@ -1,7 +1,5 @@
 #pragma once
-
 #include <DxLib.h>
-#include "global.hpp"
 
 class Tama {
 public:
@@ -12,5 +10,6 @@ public:
 	Tama();
 	void view();
 	void position();
+	void flag_false();
 	~Tama() {}
 };

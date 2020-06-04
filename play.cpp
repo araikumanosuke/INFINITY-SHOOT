@@ -3,11 +3,12 @@
 #include "global.hpp"
 #include "play.hpp"
 #include "tama.hpp"
+#include "enemy.hpp"
 
-int T_flag;
+Enemy enemys[10][5];
 
-Tama a;
- 
+Tama Tamas[5];
+
 //########## ÉvÉåÉCâÊñ ÇÃä÷êî ##########
 VOID MY_GAME_PLAY(VOID)
 {
@@ -40,20 +41,63 @@ VOID MY_GAME_PLAY(VOID)
 
 	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
 
-	for (int e = 0; e < 300; e += 30)
+	for (int a = 0; a < 10; a++)
 	{
-		DrawGraph(E_YELLOW.x + e, E_YELLOW.y, E_YELLOW.handle, TRUE);
+		for (int b = 0; b < 5; b++)
+		{
+			enemys[a][b].position_E(a, b);
+			enemys[a][b].view_E();
+		}
 	}
 	
 	DrawGraph(PLAYER.x, PLAYER.y, PLAYER.handle, TRUE);
 
 	if (AllKeyState[KEY_INPUT_SPACE] == 1)
 	{
-		a.IsView = TRUE;
-		a.position();
+		if (Tamas[0].IsView == FALSE)
+		{
+			Tamas[0].IsView = TRUE;
+			Tamas[0].position();
+		}
+		else if (Tamas[0].IsView == TRUE && Tamas[1].IsView == FALSE)
+		{
+			Tamas[1].IsView = TRUE;
+			Tamas[1].position();
+		}
+		else if (Tamas[1].IsView == TRUE && Tamas[2].IsView == FALSE)
+		{
+			Tamas[2].IsView = TRUE;
+			Tamas[2].position();
+		}
+		else if (Tamas[2].IsView == TRUE && Tamas[3].IsView== FALSE)
+		{
+			Tamas[3].IsView = TRUE;
+			Tamas[3].position();
+		}
+		else if (Tamas[3].IsView == TRUE && Tamas[4].IsView == FALSE)
+		{
+			Tamas[4].IsView = TRUE;
+			Tamas[4].position();
+		}
 	}
 
-	a.view();
+	for (int i = 0; i < 5; i++)
+	{
+		Tamas[i].view();
+		Tamas[i].flag_false();
+	}
+
+	/*Tamas[0].view();
+	Tamas[1].view();
+	Tamas[2].view();
+	Tamas[3].view();
+	Tamas[4].view();*/
+
+	/*Tamas[0].flag_false();
+	Tamas[1].flag_false();
+	Tamas[2].flag_false();
+	Tamas[3].flag_false();
+	Tamas[4].flag_false();*/
 
 	if (s_position_stage == 0)
 	{

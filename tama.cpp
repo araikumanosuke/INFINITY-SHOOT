@@ -4,8 +4,8 @@
 
 Tama::Tama()
 {
-	x = PLAYER.x + 5;
-	y = PLAYER.y;
+	x = 0;
+	y = 0;
 	IsView = FALSE;
 }
 
@@ -22,4 +22,12 @@ void Tama::position()
 {
 	x = PLAYER.x + 5;
 	y = PLAYER.y;
+}
+
+void Tama::flag_false()
+{
+	if (y < -20)
+	{
+		IsView = FALSE;
+	}
 }

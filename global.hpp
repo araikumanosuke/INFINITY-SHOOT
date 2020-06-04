@@ -1,6 +1,7 @@
 #pragma once
 #include <DxLib.h>
 #include "header.hpp"
+#include "enemy.hpp"
 
 //########## —ñ‹“Œ^ ##########
 enum GAME_SCENE {
@@ -50,3 +51,5 @@ extern int s_position_stage;
 extern int s_position_difficult;
 
 extern bool s_flug;
+
+//extern Enemy Enemys[50];
