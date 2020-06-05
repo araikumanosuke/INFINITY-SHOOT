@@ -11,8 +11,8 @@ Enemy::Enemy()
 
 void Enemy::position_E(int a, int b)
 {
-	x_E = 300 + a * 30;
-	y_E = 200 + b * 30;
+	y_E = 100 + a * 30;
+	x_E = 100 + b * 30;
 }
 
 void Enemy::view_E()

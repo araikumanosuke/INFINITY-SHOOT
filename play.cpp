@@ -5,7 +5,49 @@
 #include "tama.hpp"
 #include "enemy.hpp"
 
-Enemy enemys[10][5];
+bool enemy_flag_stage1[9][21] = {
+	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
+	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
+	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
+	{true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true},
+	{true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true},
+	{true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true},
+	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
+	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
+	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
+};
+
+bool enemy_flag_stage2[13][13] = {
+	{false,false,false,false,false,false,true,false,false,false,false,false,false},
+	{false,false,false,false,false,true,true,true,false,false,false,false,false},
+	{false,false,false,false,true,true,true,true,true,false,false,false,false},
+	{true,true,true,true,true,true,true,true,true,true,true,true,true},
+	{false,true,true,true,true,true,true,true,true,true,true,true,false},
+	{false,false,true,true,true,true,true,true,true,true,true,false,false},
+	{false,false,false,true,true,true,true,true,true,true,false,false,false},
+	{false,false,true,true,true,true,true,true,true,true,true,false,false},
+	{false,true,true,true,true,true,true,true,true,true,true,true,false},
+	{true,true,true,true,true,true,true,true,true,true,true,true,true},
+	{false,false,false,false,true,true,true,true,true,false,false,false,false},
+	{false,false,false,false,false,true,true,true,false,false,false,false,false},
+	{false,false,false,false,false,false,true,false,false,false,false,false,false},
+};
+
+bool enemy_flag_stage3[7][23] = {
+	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true},
+	{false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false},
+	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true},
+	{false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false},
+	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true},
+	{false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false},
+	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true}
+};
+
+Enemy enemys_stage1[10][9];
+
+Enemy enemys_stage2[13][13];
+
+Enemy enemys_stage3[7][23];
 
 Tama Tamas[5];
 
@@ -22,6 +64,7 @@ VOID MY_GAME_PLAY(VOID)
 		GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
 	}
 
+	//機体移動
 	if (AllKeyState[KEY_INPUT_UP] != 0)
 	{
 		PLAYER.y -= 4;
@@ -39,19 +82,52 @@ VOID MY_GAME_PLAY(VOID)
 		PLAYER.x += 4;
 	}
 
+	//背景表示
 	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
 
-	for (int a = 0; a < 10; a++)
+	//敵表示(ステージ１)
+	/*for (int a = 0; a < 9; a++)
 	{
-		for (int b = 0; b < 5; b++)
+		for (int b = 0; b < 21; b++)
 		{
-			enemys[a][b].position_E(a, b);
-			enemys[a][b].view_E();
+			if (enemy_flag_stage1[a][b] == true)
+			{
+				enemys_stage1[a][b].position_E(a, b);
+				enemys_stage1[a][b].view_E();
+			}
+		}
+	}*/
+
+	//敵表示(ステージ２)
+	/*for (int a = 0; a < 13; a++)
+	{
+		for (int b = 0; b < 13; b++)
+		{
+			if (enemy_flag_stage2[a][b] == true)
+			{
+				enemys_stage2[a][b].position_E(a, b);
+				enemys_stage2[a][b].view_E();
+			}
+		}
+	}*/
+
+	//敵表示(ステージ３)
+	for (int a = 0; a < 7; a++)
+	{
+		for (int b = 0; b < 23; b++)
+		{
+			if (enemy_flag_stage3[a][b] == true)
+			{
+				enemys_stage3[a][b].position_E(a, b);
+				enemys_stage3[a][b].view_E();
+			}
 		}
 	}
 	
+	//機体表示
 	DrawGraph(PLAYER.x, PLAYER.y, PLAYER.handle, TRUE);
 
+	//弾セット
 	if (AllKeyState[KEY_INPUT_SPACE] == 1)
 	{
 		if (Tamas[0].IsView == FALSE)
@@ -81,23 +157,12 @@ VOID MY_GAME_PLAY(VOID)
 		}
 	}
 
+	//弾表示
 	for (int i = 0; i < 5; i++)
 	{
 		Tamas[i].view();
 		Tamas[i].flag_false();
 	}
-
-	/*Tamas[0].view();
-	Tamas[1].view();
-	Tamas[2].view();
-	Tamas[3].view();
-	Tamas[4].view();*/
-
-	/*Tamas[0].flag_false();
-	Tamas[1].flag_false();
-	Tamas[2].flag_false();
-	Tamas[3].flag_false();
-	Tamas[4].flag_false();*/
 
 	if (s_position_stage == 0)
 	{
