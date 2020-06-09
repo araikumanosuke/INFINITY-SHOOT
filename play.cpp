@@ -43,7 +43,7 @@ bool enemy_flag_stage3[7][23] = {
 	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true}
 };
 
-Enemy enemys_stage1[10][9];
+Enemy enemys_stage1[9][21];
 
 Enemy enemys_stage2[13][13];
 
@@ -86,40 +86,94 @@ VOID MY_GAME_PLAY(VOID)
 	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
 
 	//ìGï\é¶(ÉXÉeÅ[ÉWÇP)
-	/*for (int a = 0; a < 9; a++)
+	if (s_position_stage == 0)
 	{
-		for (int b = 0; b < 21; b++)
+		for (int a = 0; a < 9; a++)
 		{
-			if (enemy_flag_stage1[a][b] == true)
+			for (int b = 0; b < 21; b++)
 			{
-				enemys_stage1[a][b].position_E(a, b);
-				enemys_stage1[a][b].view_E();
+				if (enemy_flag_stage1[a][b] == true)
+				{
+					for (int i = 0; i < 5; i++)
+					{						
+						if (Tamas[i].x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&		//íeÇÃç∂ < ìGÇÃâE
+							Tamas[i].y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&		//íeÇÃè„ < ìGÇÃâ∫
+							Tamas[i].x + Tamas[i].width > enemys_stage1[a][b].x_E &&	//íeÇÃâE > ìGÇÃç∂
+							Tamas[i].y + Tamas[i].height > enemys_stage1[a][b].y_E)	//íeÇÃâ∫ > ìGÇÃè„
+						{
+							enemy_flag_stage1[a][b] = false;
+							enemys_stage1[a][b].IsView_E = FALSE;
+							Tamas[i].IsView = FALSE;
+						}	
+						else
+						{
+							enemys_stage1[a][b].position_E(a, b);
+							enemys_stage1[a][b].view_E();
+						}
+					}
+				}
 			}
 		}
-	}*/
+	}
 
 	//ìGï\é¶(ÉXÉeÅ[ÉWÇQ)
-	/*for (int a = 0; a < 13; a++)
+	if (s_position_stage == 100)
 	{
-		for (int b = 0; b < 13; b++)
+		for (int a = 0; a < 13; a++)
 		{
-			if (enemy_flag_stage2[a][b] == true)
+			for (int b = 0; b < 13; b++)
 			{
-				enemys_stage2[a][b].position_E(a, b);
-				enemys_stage2[a][b].view_E();
+				if (enemy_flag_stage2[a][b] == true)
+				{
+					for (int i = 0; i < 5; i++)
+					{
+						if (Tamas[i].x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&		//íeÇÃç∂ < ìGÇÃâE
+							Tamas[i].y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&		//íeÇÃè„ < ìGÇÃâ∫
+							Tamas[i].x + Tamas[i].width > enemys_stage2[a][b].x_E &&	//íeÇÃâE > ìGÇÃç∂
+							Tamas[i].y + Tamas[i].height > enemys_stage2[a][b].y_E)	//íeÇÃâ∫ > ìGÇÃè„
+						{
+							enemy_flag_stage2[a][b] = false;
+							enemys_stage2[a][b].IsView_E = FALSE;
+							Tamas[i].IsView = FALSE;
+						}
+						else
+						{
+							enemys_stage2[a][b].position_E(a, b);
+							enemys_stage2[a][b].view_E();
+						}
+					}
+				}
 			}
 		}
-	}*/
+	}
 
 	//ìGï\é¶(ÉXÉeÅ[ÉWÇR)
-	for (int a = 0; a < 7; a++)
+	if (s_position_stage == 200)
 	{
-		for (int b = 0; b < 23; b++)
+		for (int a = 0; a < 7; a++)
 		{
-			if (enemy_flag_stage3[a][b] == true)
+			for (int b = 0; b < 23; b++)
 			{
-				enemys_stage3[a][b].position_E(a, b);
-				enemys_stage3[a][b].view_E();
+				if (enemy_flag_stage3[a][b] == true)
+				{
+					for (int i = 0; i < 5; i++)
+					{
+						if (Tamas[i].x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&		//íeÇÃç∂ < ìGÇÃâE
+							Tamas[i].y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&		//íeÇÃè„ < ìGÇÃâ∫
+							Tamas[i].x + Tamas[i].width > enemys_stage3[a][b].x_E &&	//íeÇÃâE > ìGÇÃç∂
+							Tamas[i].y + Tamas[i].height > enemys_stage3[a][b].y_E)	//íeÇÃâ∫ > ìGÇÃè„
+						{
+							enemy_flag_stage3[a][b] = false;
+							enemys_stage3[a][b].IsView_E = FALSE;
+							Tamas[i].IsView = FALSE;
+						}
+						else
+						{
+							enemys_stage3[a][b].position_E(a, b);
+							enemys_stage3[a][b].view_E();
+						}
+					}
+				}
 			}
 		}
 	}
@@ -203,14 +257,14 @@ VOID MY_GAME_PLAY(VOID)
 		if (s_position_difficult == 0)
 		{
 			DrawStringToHandle(10, 10, "STAGE 3-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY: 100", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(780, 10, "ENEMY:100", GetColor(255, 255, 255), play_FHandle);
 			DrawStringToHandle(10, 570, "TIME LIMIT 0:50.00", GetColor(255, 255, 255), play_FHandle);
 			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
 		}
 		else if (s_position_difficult == 100)
 		{
 			DrawStringToHandle(10, 10, "STAGE 3-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY: 100", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(780, 10, "ENEMY:100", GetColor(255, 255, 255), play_FHandle);
 			DrawStringToHandle(10, 570, "TIME LIMIT 1:00.00", GetColor(255, 255, 255), play_FHandle);
 			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
 		}

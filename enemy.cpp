@@ -4,8 +4,10 @@
 
 Enemy::Enemy()
 {
-	x_E = 0;
-	y_E = 0;
+	x_E = 570;
+	y_E = 570;
+	width_E = 30;
+	height_E = 30;
 	IsView_E = TRUE;
 }
 
@@ -21,4 +23,9 @@ void Enemy::view_E()
 	{
 		DrawGraph(x_E, y_E, E_YELLOW.handle, TRUE);
 	}
+}
+
+void Enemy::change_true()
+{
+
 }

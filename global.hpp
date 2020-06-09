@@ -18,6 +18,8 @@ struct IMAGE {
 	char filepath[128];
 	int x;
 	int y;
+	int width;
+	int height;
 };
 
 //########## ƒOƒ[ƒoƒ‹•Ï” ##########
@@ -52,4 +54,6 @@ extern int s_position_difficult;
 
 extern bool s_flug;
 
-//extern Enemy Enemys[50];
+extern bool enemy_flag_stage1[9][21];
+extern bool enemy_flag_stage2[13][13];
+extern bool enemy_flag_stage3[7][23];

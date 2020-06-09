@@ -5,6 +5,8 @@ class Tama {
 public:
 	int x;
 	int y;
+	int width;
+	int height;
 	bool IsView;
 
 	Tama();
