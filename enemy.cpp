@@ -24,8 +24,3 @@ void Enemy::view_E()
 		DrawGraph(x_E, y_E, E_YELLOW.handle, TRUE);
 	}
 }
-
-void Enemy::change_true()
-{
-
-}

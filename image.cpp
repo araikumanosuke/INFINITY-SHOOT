@@ -1,7 +1,7 @@
 #include <DxLib.h>
 #include "global.hpp"
 
-void image_load(IMAGE *i,int x,int y,const char *path)
+void image_load(IMAGE *i,int x,int y, const char *path)
 {
 	wsprintf(i->filepath, path);
 	i->handle = LoadGraph(i->filepath);

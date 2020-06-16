@@ -14,7 +14,7 @@ bool enemy_flag_stage1[9][21] = {
 	{true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true},
 	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
 	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
-	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
+	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false}
 };
 
 bool enemy_flag_stage2[13][13] = {
@@ -30,7 +30,7 @@ bool enemy_flag_stage2[13][13] = {
 	{true,true,true,true,true,true,true,true,true,true,true,true,true},
 	{false,false,false,false,true,true,true,true,true,false,false,false,false},
 	{false,false,false,false,false,true,true,true,false,false,false,false,false},
-	{false,false,false,false,false,false,true,false,false,false,false,false,false},
+	{false,false,false,false,false,false,true,false,false,false,false,false,false}
 };
 
 bool enemy_flag_stage3[7][23] = {
@@ -51,17 +51,96 @@ Enemy enemys_stage3[7][23];
 
 Tama Tamas[5];
 
+int enemy_count_stage1 = 90;
+
+int enemy_count_stage2 = 91;
+
+int enemy_count_stage3 = 81;
+
+double Timer = 0.0;
+
+bool Time_Flag = false;
+
+double Current_Timer_Sec = 0.0;
+
+int Current_Timer_Min = 0;
+
+double Timer_Tmp = 0.0;
+
 //########## プレイ画面の関数 ##########
 VOID MY_GAME_PLAY(VOID)
 {
-	if (AllKeyState[KEY_INPUT_A] != 0)	//Aキーが押されていた時
+	PLAYER.width = 30;
+	PLAYER.height = 40;
+
+	//背景表示
+	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
+
+	if (s_position_stage == 0)
 	{
-		GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+		if (s_position_difficult == 0)
+		{
+			DrawStringToHandle(10, 10, "STAGE 1-NORMAL", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage1);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:10.00", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+		}
+		else if (s_position_difficult == 100)
+		{
+			DrawStringToHandle(10, 10, "STAGE 1-HARD", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(780, 10, play_FHandle, GetColor(255, 255, 255), "ENEMY:%2d", enemy_count_stage1);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:20.00", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
+		}
+	}
+	else if (s_position_stage == 100)
+	{
+		if (s_position_difficult == 0)
+		{
+			DrawStringToHandle(10, 10, "STAGE 2-NORMAL", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(780, 10, "ENEMY: 80", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
+		}
+		else if (s_position_difficult == 100)
+		{
+			DrawStringToHandle(10, 10, "STAGE 2-HARD", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(780, 10, "ENEMY: 80", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:40.00", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
+		}
+	}
+	else if (s_position_stage == 200)
+	{
+		if (s_position_difficult == 0)
+		{
+			DrawStringToHandle(10, 10, "STAGE 3-NORMAL", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(780, 10, "ENEMY:100", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:50.00", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
+		}
+		else if (s_position_difficult == 100)
+		{
+			DrawStringToHandle(10, 10, "STAGE 3-HARD", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(780, 10, "ENEMY:100", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(10, 570, "TIME LIMIT 1:00.00", GetColor(255, 255, 255), play_FHandle);
+			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
+		}
 	}
 
-	if (AllKeyState[KEY_INPUT_S] != 0)	//Sキーが押されていた時
+	Timer = GetNowCount();
+
+	if (Time_Flag == false)
 	{
-		GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+		Timer_Tmp = Timer;
+		Time_Flag = true;
+	}
+
+	Current_Timer_Sec = (Timer - Timer_Tmp) / 1000;
+	if (Current_Timer_Sec >= 60.0)
+	{
+		Current_Timer_Min++;
+		Timer_Tmp = Timer;
 	}
 
 	//機体移動
@@ -82,9 +161,6 @@ VOID MY_GAME_PLAY(VOID)
 		PLAYER.x += 4;
 	}
 
-	//背景表示
-	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
-
 	//敵表示(ステージ１)
 	if (s_position_stage == 0)
 	{
@@ -94,6 +170,7 @@ VOID MY_GAME_PLAY(VOID)
 			{
 				if (enemy_flag_stage1[a][b] == true)
 				{
+					//弾と敵との当たり判定
 					for (int i = 0; i < 5; i++)
 					{						
 						if (Tamas[i].x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&		//弾の左 < 敵の右
@@ -101,15 +178,38 @@ VOID MY_GAME_PLAY(VOID)
 							Tamas[i].x + Tamas[i].width > enemys_stage1[a][b].x_E &&	//弾の右 > 敵の左
 							Tamas[i].y + Tamas[i].height > enemys_stage1[a][b].y_E)	//弾の下 > 敵の上
 						{
-							enemy_flag_stage1[a][b] = false;
-							enemys_stage1[a][b].IsView_E = FALSE;
+							for (int j = -1; j < 2; j++)
+							{
+								for (int k = -1; k < 2; k++)
+								{
+									//敵がいる、かつ配列内を参照していれば
+									if (a + j < 9 && a + j > -1 && b + k < 21 && b + k > -1 && enemy_flag_stage1[a + j][b + k] == true)
+									{
+										enemy_flag_stage1[a + j][b + k] = false;
+										enemys_stage1[a + j][b + k].IsView_E = FALSE;
+										enemy_count_stage1--;
+									}
+								}
+							}
 							Tamas[i].IsView = FALSE;
+							Tamas[i].y = -20;
 						}	
 						else
 						{
 							enemys_stage1[a][b].position_E(a, b);
 							enemys_stage1[a][b].view_E();
 						}
+					}
+
+					//機体と敵との当たり判定
+					if (enemys_stage1[a][b].x_E < PLAYER.x + PLAYER.width &&
+						PLAYER.x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&
+						PLAYER.y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&
+						enemys_stage1[a][b].y_E < PLAYER.y + PLAYER.height)
+					{
+						enemy_flag_stage1[a][b] = false;
+						enemys_stage1[a][b].IsView_E = FALSE;
+						enemy_count_stage1--;
 					}
 				}
 			}
@@ -132,15 +232,38 @@ VOID MY_GAME_PLAY(VOID)
 							Tamas[i].x + Tamas[i].width > enemys_stage2[a][b].x_E &&	//弾の右 > 敵の左
 							Tamas[i].y + Tamas[i].height > enemys_stage2[a][b].y_E)	//弾の下 > 敵の上
 						{
-							enemy_flag_stage2[a][b] = false;
-							enemys_stage2[a][b].IsView_E = FALSE;
+							for (int j = -1; j < 2; j++)
+							{
+								for (int k = -1; k < 2; k++)
+								{
+									//敵がいる、かつ配列内を参照していれば
+									if (a + j < 13 && a + j > -1 && b + k < 13 && b + k > -1 && enemy_flag_stage2[a + j][b + k] == true)
+									{
+										enemy_flag_stage2[a + j][b + k] = false;
+										enemys_stage2[a + j][b + k].IsView_E = FALSE;
+										enemy_count_stage2--;
+									}
+								}
+							}
 							Tamas[i].IsView = FALSE;
+							Tamas[i].y = -20;
 						}
 						else
 						{
 							enemys_stage2[a][b].position_E(a, b);
 							enemys_stage2[a][b].view_E();
 						}
+					}
+
+					//機体と敵との当たり判定
+					if (enemys_stage2[a][b].x_E < PLAYER.x + PLAYER.width &&
+						PLAYER.x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&
+						PLAYER.y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&
+						enemys_stage2[a][b].y_E < PLAYER.y + PLAYER.height)
+					{
+						enemy_flag_stage2[a][b] = false;
+						enemys_stage2[a][b].IsView_E = FALSE;
+						enemy_count_stage2--;
 					}
 				}
 			}
@@ -163,15 +286,38 @@ VOID MY_GAME_PLAY(VOID)
 							Tamas[i].x + Tamas[i].width > enemys_stage3[a][b].x_E &&	//弾の右 > 敵の左
 							Tamas[i].y + Tamas[i].height > enemys_stage3[a][b].y_E)	//弾の下 > 敵の上
 						{
-							enemy_flag_stage3[a][b] = false;
-							enemys_stage3[a][b].IsView_E = FALSE;
+							for (int j = -1; j < 2; j++)
+							{
+								for (int k = -1; k < 2; k++)
+								{
+									//敵がいる、かつ配列内を参照していれば
+									if (a + j < 7 && a + j > -1 && b + k < 23 && b + k > -1 && enemy_flag_stage3[a + j][b + k] == true)
+									{
+										enemy_flag_stage3[a + j][b + k] = false;
+										enemys_stage3[a + j][b + k].IsView_E = FALSE;
+										enemy_count_stage3--;
+									}
+								}
+							}
 							Tamas[i].IsView = FALSE;
+							Tamas[i].y = -20;
 						}
 						else
 						{
 							enemys_stage3[a][b].position_E(a, b);
 							enemys_stage3[a][b].view_E();
 						}
+					}
+
+					//機体と敵との当たり判定
+					if (enemys_stage3[a][b].x_E < PLAYER.x + PLAYER.width &&
+						PLAYER.x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&
+						PLAYER.y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&
+						enemys_stage3[a][b].y_E < PLAYER.y + PLAYER.height)
+					{
+						enemy_flag_stage3[a][b] = false;
+						enemys_stage3[a][b].IsView_E = FALSE;
+						enemy_count_stage3--;
 					}
 				}
 			}
@@ -218,56 +364,14 @@ VOID MY_GAME_PLAY(VOID)
 		Tamas[i].flag_false();
 	}
 
-	if (s_position_stage == 0)
+	if (AllKeyState[KEY_INPUT_A] != 0)	//Aキーが押されていた時
 	{
-		if (s_position_difficult == 0)
-		{
-			DrawStringToHandle(10, 10, "STAGE 1-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY: 50", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:10.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
-		else if (s_position_difficult == 100)
-		{
-			DrawStringToHandle(10, 10, "STAGE 1-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY: 50", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:20.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
+		GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
 	}
-	else if (s_position_stage == 100)
+
+	if (AllKeyState[KEY_INPUT_S] != 0)	//Sキーが押されていた時
 	{
-		if (s_position_difficult == 0)
-		{
-			DrawStringToHandle(10, 10, "STAGE 2-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY: 80", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
-		else if (s_position_difficult == 100)
-		{
-			DrawStringToHandle(10, 10, "STAGE 2-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY: 80", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:40.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
-	}
-	else if (s_position_stage == 200)
-	{
-		if (s_position_difficult == 0)
-		{
-			DrawStringToHandle(10, 10, "STAGE 3-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY:100", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:50.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
-		else if (s_position_difficult == 100)
-		{
-			DrawStringToHandle(10, 10, "STAGE 3-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY:100", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 1:00.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
+		GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
 	}
 
 	//DrawString(0, 0, "プレイ画面(下キー(ゲームオーバー)または上キー(ゲームクリア)を押してください)", GetColor(255, 255, 255));

@@ -23,6 +23,7 @@ IMAGE ROGO;		//ÉçÉS
 IMAGE SANKAKU;		//éOäpå`
 IMAGE TAMA;		//íe
 IMAGE PLAYER;		//ÉvÉåÉCÉÑÅ[(ã@ëÃ)
+
 //ìG
 IMAGE E_YELLOW;
 IMAGE E_YELLOW_HARD;
@@ -65,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	image_load(&E_YELLOW, 425, 300, GAME_IMAGE_ENEMY_YELLOW);
 	image_load(&E_YELLOW_HARD, 0, 0, GAME_IMAGE_ENEMY_YELLOW_HARD);
 	image_load(&E_GREEN, 0, 0, GAME_IMAGE_ENEMY_GREEN);
-	image_load(&E_GREEN_HARD, 0, 0, GAME_IMAGE_ENEMY_GREEN_HARD);
+	image_load(&E_GREEN_HARD, 0, 0,  GAME_IMAGE_ENEMY_GREEN_HARD);
 	image_load(&E_RED, 0, 0, GAME_IMAGE_ENEMY_RED);
 	image_load(&E_RED_HARD, 0, 0, GAME_IMAGE_ENEMY_RED);
 	image_load(&E_BLUE, 0, 0, GAME_IMAGE_ENEMY_BLUE);

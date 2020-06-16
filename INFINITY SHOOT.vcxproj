@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="end_clear.cpp" />
     <ClCompile Include="end_over.cpp" />
+    <ClCompile Include="enemy_init.cpp" />
     <ClCompile Include="fps.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="key.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="end_clear.hpp" />
     <ClInclude Include="end_over.hpp" />
     <ClInclude Include="enemy.hpp" />
+    <ClInclude Include="enemy_init.hpp" />
     <ClInclude Include="fps.hpp" />
     <ClInclude Include="global.hpp" />
     <ClInclude Include="header.hpp" />

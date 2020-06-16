@@ -12,6 +12,5 @@ public:
 	Enemy();
 	void position_E(int, int);
 	void view_E();
-	void change_true();
 	~Enemy() {}
 };
