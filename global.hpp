@@ -13,6 +13,17 @@ enum GAME_SCENE {
 	GAME_SCENE_END_OVER		//エンド画面(ゲームオーバー)
 };
 
+enum ENEMY_KIND {
+	Yellow,
+	Green,
+	Blue,
+	Red,
+	Yellow_Hard,
+	Green_Hard,
+	Blue_Hard,
+	Red_Hard
+};
+
 struct IMAGE {
 	int handle;
 	char filepath[128];
@@ -54,8 +65,8 @@ extern int s_position_difficult;
 
 extern bool s_flug;
 
-extern bool enemy_flag_stage1[9][21];
-extern bool enemy_flag_stage2[13][13];
+extern int enemy_kind_stage1[9][21];
+extern int enemy_kind_stage2[13][13];
 extern bool enemy_flag_stage3[7][23];
 
 extern Enemy enemys_stage1[9][21];

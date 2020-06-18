@@ -7,10 +7,11 @@ public:
 	int y_E;
 	int width_E;
 	int height_E;
+	int kind_E;
 	bool IsView_E;
 
 	Enemy();
 	void position_E(int, int, int, int);
-	void view_E();
+	void view_E(int, int);
 	~Enemy() {}
 };

@@ -2,32 +2,32 @@
 #include "global.hpp"
 #include "enemy_init.hpp"
 
-bool enemy_flag_stage1_syoki[9][21] = {
-	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
-	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
-	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
-	{true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true},
-	{true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true},
-	{true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true},
-	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
-	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false},
-	{false,false,false,true,true,true,false,false,false,true,true,true,false,false,false,true,true,true,false,false,false}
+int enemy_kind_stage1_syoki[9][21] = {
+	{-1,-1,-1,Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green,-1,-1,-1},
+	{-1,-1,-1,Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green,-1,-1,-1},
+	{-1,-1,-1,Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green,-1,-1,-1},
+	{Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green},
+	{Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green},
+	{Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green},
+	{-1,-1,-1,Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green,-1,-1,-1},
+	{-1,-1,-1,Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green,-1,-1,-1},
+	{-1,-1,-1,Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green,-1,-1,-1}
 };
 
-bool enemy_flag_stage2_syoki[13][13] = {
-	{false,false,false,false,false,false,true,false,false,false,false,false,false},
-	{false,false,false,false,false,true,true,true,false,false,false,false,false},
-	{false,false,false,false,true,true,true,true,true,false,false,false,false},
-	{true,true,true,true,true,true,true,true,true,true,true,true,true},
-	{false,true,true,true,true,true,true,true,true,true,true,true,false},
-	{false,false,true,true,true,true,true,true,true,true,true,false,false},
-	{false,false,false,true,true,true,true,true,true,true,false,false,false},
-	{false,false,true,true,true,true,true,true,true,true,true,false,false},
-	{false,true,true,true,true,true,true,true,true,true,true,true,false},
-	{true,true,true,true,true,true,true,true,true,true,true,true,true},
-	{false,false,false,false,true,true,true,true,true,false,false,false,false},
-	{false,false,false,false,false,true,true,true,false,false,false,false,false},
-	{false,false,false,false,false,false,true,false,false,false,false,false,false}
+int enemy_kind_stage2_syoki[13][13] = {
+	{-1,-1,-1,-1,-1,-1,Blue,-1,-1,-1,-1,-1,-1},
+	{-1,-1,-1,-1,-1,Blue,Green,Blue,-1,-1,-1,-1,-1},
+	{-1,-1,-1,-1,Blue,Green,Yellow,Green,Blue,-1,-1,-1,-1},
+	{Blue,Blue,Blue,Blue,Green,Yellow,Red,Yellow,Green,Blue,Blue,Blue,Blue},
+	{-1,Blue,Green,Green,Yellow,Red,Red,Red,Yellow,Green,Green,Blue,-1},
+	{-1,-1,Blue,Green,Yellow,Red,Red,Red,Yellow,Green,Blue,-1,-1},
+	{-1,-1,-1,Blue,Green,Yellow,Red,Yellow,Green,Blue,-1,-1,-1},
+	{-1,-1,Blue,Green,Yellow,Red,Red,Red,Yellow,Green,Blue,-1,-1},
+	{-1,Blue,Green,Green,Yellow,Red,Red,Red,Yellow,Green,Green,Blue,-1},
+	{Blue,Blue,Blue,Blue,Green,Yellow,Red,Yellow,Green,Blue,Blue,Blue,Blue},
+	{-1,-1,-1,-1,Blue,Green,Yellow,Green,Blue,-1,-1,-1,-1},
+	{-1,-1,-1,-1,-1,Blue,Green,Blue,-1,-1,-1,-1,-1},
+	{-1,-1,-1,-1,-1,-1,Blue,-1,-1,-1,-1,-1,-1}
 };
 
 bool enemy_flag_stage3_syoki[7][23] = {
@@ -51,9 +51,26 @@ void ENEMY_INIT()
 				enemys_stage1[a][b].IsView_E = TRUE;
 				PLAYER.x = 425;
 				PLAYER.y = 500;
-				if (enemy_flag_stage1_syoki[a][b] == true)
+				switch (enemy_kind_stage1_syoki[a][b])
 				{
-					enemy_flag_stage1[a][b] = true;
+				case Yellow:
+					enemy_kind_stage1[a][b] = Yellow;
+					break;
+
+				case Green:
+					enemy_kind_stage1[a][b] = Green;
+					break;
+
+				case Blue:
+					enemy_kind_stage1[a][b] = Blue;
+					break;
+
+				case Red:
+					enemy_kind_stage1[a][b] = Red;
+					break;
+
+				default:
+					break;
 				}
 			}
 		}
@@ -67,9 +84,26 @@ void ENEMY_INIT()
 				enemys_stage2[a][b].IsView_E = TRUE;
 				PLAYER.x = 425;
 				PLAYER.y = 500;
-				if (enemy_flag_stage2_syoki[a][b] == true)
+				switch (enemy_kind_stage2_syoki[a][b])
 				{
-					enemy_flag_stage2[a][b] = true;
+				case Yellow:
+					enemy_kind_stage2[a][b] = Yellow;
+					break;
+
+				case Green:
+					enemy_kind_stage2[a][b] = Green;
+					break;
+
+				case Blue:
+					enemy_kind_stage2[a][b] = Blue;
+					break;
+
+				case Red:
+					enemy_kind_stage2[a][b] = Red;
+					break;
+
+				default:
+					break;
 				}
 			}
 		}
