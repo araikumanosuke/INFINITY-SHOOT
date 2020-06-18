@@ -11,10 +11,10 @@ Enemy::Enemy()
 	IsView_E = TRUE;
 }
 
-void Enemy::position_E(int a, int b)
+void Enemy::position_E(int tate, int yoko, int kijun_x, int kijun_y)
 {
-	y_E = 100 + a * 30;
-	x_E = 100 + b * 30;
+	y_E = kijun_y + tate * 30;
+	x_E = kijun_x + yoko * 30;
 }
 
 void Enemy::view_E()

@@ -57,6 +57,12 @@ int enemy_count_stage2 = 91;
 
 int enemy_count_stage3 = 81;
 
+bool enemy_move_flag = true;
+
+int enemy_move_num = 0;
+
+int enemy_move_tmp = 0;
+
 double Timer = 0.0;
 
 bool Time_Flag = false;
@@ -76,63 +82,12 @@ VOID MY_GAME_PLAY(VOID)
 	//背景表示
 	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
 
-	if (s_position_stage == 0)
-	{
-		if (s_position_difficult == 0)
-		{
-			DrawStringToHandle(10, 10, "STAGE 1-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage1);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:10.00", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
-		}
-		else if (s_position_difficult == 100)
-		{
-			DrawStringToHandle(10, 10, "STAGE 1-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, play_FHandle, GetColor(255, 255, 255), "ENEMY:%2d", enemy_count_stage1);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:20.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
-	}
-	else if (s_position_stage == 100)
-	{
-		if (s_position_difficult == 0)
-		{
-			DrawStringToHandle(10, 10, "STAGE 2-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY: 80", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
-		else if (s_position_difficult == 100)
-		{
-			DrawStringToHandle(10, 10, "STAGE 2-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY: 80", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:40.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
-	}
-	else if (s_position_stage == 200)
-	{
-		if (s_position_difficult == 0)
-		{
-			DrawStringToHandle(10, 10, "STAGE 3-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY:100", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:50.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
-		else if (s_position_difficult == 100)
-		{
-			DrawStringToHandle(10, 10, "STAGE 3-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(780, 10, "ENEMY:100", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(10, 570, "TIME LIMIT 1:00.00", GetColor(255, 255, 255), play_FHandle);
-			DrawStringToHandle(740, 570, "TIME 0:00.00", GetColor(255, 255, 255), play_FHandle);
-		}
-	}
-
 	Timer = GetNowCount();
 
 	if (Time_Flag == false)
 	{
 		Timer_Tmp = Timer;
+		enemy_move_tmp = (int)Timer;
 		Time_Flag = true;
 	}
 
@@ -146,184 +101,33 @@ VOID MY_GAME_PLAY(VOID)
 	//機体移動
 	if (AllKeyState[KEY_INPUT_UP] != 0)
 	{
-		PLAYER.y -= 4;
+		if (PLAYER.y > 0)
+		{
+			PLAYER.y -= 4;
+		}
 	}
 	if (AllKeyState[KEY_INPUT_DOWN] != 0)
 	{
-		PLAYER.y += 4;
+		if (PLAYER.y < 560)
+		{
+			PLAYER.y += 4;
+		}		
 	}
 	if (AllKeyState[KEY_INPUT_LEFT] != 0)
 	{
-		PLAYER.x -= 4;
+		if (PLAYER.x > 0)
+		{
+			PLAYER.x -= 4;
+		}
 	}
 	if (AllKeyState[KEY_INPUT_RIGHT] != 0)
 	{
-		PLAYER.x += 4;
-	}
-
-	//敵表示(ステージ１)
-	if (s_position_stage == 0)
-	{
-		for (int a = 0; a < 9; a++)
+		if (PLAYER.x < 870)
 		{
-			for (int b = 0; b < 21; b++)
-			{
-				if (enemy_flag_stage1[a][b] == true)
-				{
-					//弾と敵との当たり判定
-					for (int i = 0; i < 5; i++)
-					{						
-						if (Tamas[i].x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&		//弾の左 < 敵の右
-							Tamas[i].y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&		//弾の上 < 敵の下
-							Tamas[i].x + Tamas[i].width > enemys_stage1[a][b].x_E &&	//弾の右 > 敵の左
-							Tamas[i].y + Tamas[i].height > enemys_stage1[a][b].y_E)	//弾の下 > 敵の上
-						{
-							for (int j = -1; j < 2; j++)
-							{
-								for (int k = -1; k < 2; k++)
-								{
-									//敵がいる、かつ配列内を参照していれば
-									if (a + j < 9 && a + j > -1 && b + k < 21 && b + k > -1 && enemy_flag_stage1[a + j][b + k] == true)
-									{
-										enemy_flag_stage1[a + j][b + k] = false;
-										enemys_stage1[a + j][b + k].IsView_E = FALSE;
-										enemy_count_stage1--;
-									}
-								}
-							}
-							Tamas[i].IsView = FALSE;
-							Tamas[i].y = -20;
-						}	
-						else
-						{
-							enemys_stage1[a][b].position_E(a, b);
-							enemys_stage1[a][b].view_E();
-						}
-					}
-
-					//機体と敵との当たり判定
-					if (enemys_stage1[a][b].x_E < PLAYER.x + PLAYER.width &&
-						PLAYER.x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&
-						PLAYER.y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&
-						enemys_stage1[a][b].y_E < PLAYER.y + PLAYER.height)
-					{
-						enemy_flag_stage1[a][b] = false;
-						enemys_stage1[a][b].IsView_E = FALSE;
-						enemy_count_stage1--;
-					}
-				}
-			}
+			PLAYER.x += 4;
 		}
 	}
 
-	//敵表示(ステージ２)
-	if (s_position_stage == 100)
-	{
-		for (int a = 0; a < 13; a++)
-		{
-			for (int b = 0; b < 13; b++)
-			{
-				if (enemy_flag_stage2[a][b] == true)
-				{
-					for (int i = 0; i < 5; i++)
-					{
-						if (Tamas[i].x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&		//弾の左 < 敵の右
-							Tamas[i].y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&		//弾の上 < 敵の下
-							Tamas[i].x + Tamas[i].width > enemys_stage2[a][b].x_E &&	//弾の右 > 敵の左
-							Tamas[i].y + Tamas[i].height > enemys_stage2[a][b].y_E)	//弾の下 > 敵の上
-						{
-							for (int j = -1; j < 2; j++)
-							{
-								for (int k = -1; k < 2; k++)
-								{
-									//敵がいる、かつ配列内を参照していれば
-									if (a + j < 13 && a + j > -1 && b + k < 13 && b + k > -1 && enemy_flag_stage2[a + j][b + k] == true)
-									{
-										enemy_flag_stage2[a + j][b + k] = false;
-										enemys_stage2[a + j][b + k].IsView_E = FALSE;
-										enemy_count_stage2--;
-									}
-								}
-							}
-							Tamas[i].IsView = FALSE;
-							Tamas[i].y = -20;
-						}
-						else
-						{
-							enemys_stage2[a][b].position_E(a, b);
-							enemys_stage2[a][b].view_E();
-						}
-					}
-
-					//機体と敵との当たり判定
-					if (enemys_stage2[a][b].x_E < PLAYER.x + PLAYER.width &&
-						PLAYER.x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&
-						PLAYER.y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&
-						enemys_stage2[a][b].y_E < PLAYER.y + PLAYER.height)
-					{
-						enemy_flag_stage2[a][b] = false;
-						enemys_stage2[a][b].IsView_E = FALSE;
-						enemy_count_stage2--;
-					}
-				}
-			}
-		}
-	}
-
-	//敵表示(ステージ３)
-	if (s_position_stage == 200)
-	{
-		for (int a = 0; a < 7; a++)
-		{
-			for (int b = 0; b < 23; b++)
-			{
-				if (enemy_flag_stage3[a][b] == true)
-				{
-					for (int i = 0; i < 5; i++)
-					{
-						if (Tamas[i].x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&		//弾の左 < 敵の右
-							Tamas[i].y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&		//弾の上 < 敵の下
-							Tamas[i].x + Tamas[i].width > enemys_stage3[a][b].x_E &&	//弾の右 > 敵の左
-							Tamas[i].y + Tamas[i].height > enemys_stage3[a][b].y_E)	//弾の下 > 敵の上
-						{
-							for (int j = -1; j < 2; j++)
-							{
-								for (int k = -1; k < 2; k++)
-								{
-									//敵がいる、かつ配列内を参照していれば
-									if (a + j < 7 && a + j > -1 && b + k < 23 && b + k > -1 && enemy_flag_stage3[a + j][b + k] == true)
-									{
-										enemy_flag_stage3[a + j][b + k] = false;
-										enemys_stage3[a + j][b + k].IsView_E = FALSE;
-										enemy_count_stage3--;
-									}
-								}
-							}
-							Tamas[i].IsView = FALSE;
-							Tamas[i].y = -20;
-						}
-						else
-						{
-							enemys_stage3[a][b].position_E(a, b);
-							enemys_stage3[a][b].view_E();
-						}
-					}
-
-					//機体と敵との当たり判定
-					if (enemys_stage3[a][b].x_E < PLAYER.x + PLAYER.width &&
-						PLAYER.x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&
-						PLAYER.y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&
-						enemys_stage3[a][b].y_E < PLAYER.y + PLAYER.height)
-					{
-						enemy_flag_stage3[a][b] = false;
-						enemys_stage3[a][b].IsView_E = FALSE;
-						enemy_count_stage3--;
-					}
-				}
-			}
-		}
-	}
-	
 	//機体表示
 	DrawGraph(PLAYER.x, PLAYER.y, PLAYER.handle, TRUE);
 
@@ -345,7 +149,7 @@ VOID MY_GAME_PLAY(VOID)
 			Tamas[2].IsView = TRUE;
 			Tamas[2].position();
 		}
-		else if (Tamas[2].IsView == TRUE && Tamas[3].IsView== FALSE)
+		else if (Tamas[2].IsView == TRUE && Tamas[3].IsView == FALSE)
 		{
 			Tamas[3].IsView = TRUE;
 			Tamas[3].position();
@@ -374,7 +178,434 @@ VOID MY_GAME_PLAY(VOID)
 		GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
 	}
 
-	//DrawString(0, 0, "プレイ画面(下キー(ゲームオーバー)または上キー(ゲームクリア)を押してください)", GetColor(255, 255, 255));
+	if (s_position_stage == 0)
+	{
+		if (s_position_difficult == 0)
+		{
+			DrawStringToHandle(10, 10, "STAGE 1-NORMAL", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage1);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:10.00", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+
+			if (Current_Timer_Sec >= 10.0)
+			{
+				Tamas[0].y = -20;
+				Tamas[1].y = -20;
+				Tamas[2].y = -20;
+				Tamas[3].y = -20;
+				Tamas[4].y = -20;
+				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+			}
+		}
+		else if (s_position_difficult == 100)
+		{
+			DrawStringToHandle(10, 10, "STAGE 1-HARD", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage1);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+
+			if (Current_Timer_Sec >= 30.0)
+			{
+				Tamas[0].y = -20;
+				Tamas[1].y = -20;
+				Tamas[2].y = -20;
+				Tamas[3].y = -20;
+				Tamas[4].y = -20;
+				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+			}
+		}
+
+		for (int a = 0; a < 9; a++)
+		{
+			for (int b = 0; b < 21; b++)
+			{
+				if (enemy_flag_stage1[a][b] == true)
+				{
+					//敵のどれかが画面端まで移動したら
+					if (enemys_stage1[a][b].x_E > 870)
+					{
+						enemy_move_flag = false;
+					}
+					else if (enemys_stage1[a][b].x_E < 0)
+					{
+						enemy_move_flag = true;
+					}
+					
+					//弾と敵との当たり判定
+					for (int i = 0; i < 5; i++)
+					{
+						if (Tamas[i].x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&		//弾の左 < 敵の右
+							Tamas[i].y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&		//弾の上 < 敵の下
+							Tamas[i].x + Tamas[i].width > enemys_stage1[a][b].x_E &&	//弾の右 > 敵の左
+							Tamas[i].y + Tamas[i].height > enemys_stage1[a][b].y_E)	//弾の下 > 敵の上
+						{
+							for (int j = -1; j < 2; j++)
+							{
+								for (int k = -1; k < 2; k++)
+								{
+									//敵がいる、かつ配列内を参照していれば
+									if (a + j < 9 && a + j > -1 && b + k < 21 && b + k > -1 && enemy_flag_stage1[a + j][b + k] == true)
+									{
+										enemy_flag_stage1[a + j][b + k] = false;
+										enemys_stage1[a + j][b + k].IsView_E = FALSE;
+										enemy_count_stage1--;
+									}
+								}
+							}
+							Tamas[i].IsView = FALSE;
+							Tamas[i].y = -20;
+						}
+						else
+						{
+							if (enemy_move_flag == true)
+							{
+								//1/100秒ごとに敵が移動
+								if ((int)Timer - enemy_move_tmp > 10)
+								{
+									enemy_move_num++;
+									enemy_move_tmp = (int)Timer;
+								}
+							}
+							else if (enemy_move_flag == false)
+							{
+								//1/100秒ごとに敵が移動
+								if ((int)Timer - enemy_move_tmp > 10)
+								{
+									enemy_move_num--;
+									enemy_move_tmp = (int)Timer;
+								}
+							}
+							enemys_stage1[a][b].position_E(a, b, 135 + enemy_move_num, 100);
+							enemys_stage1[a][b].view_E();
+						}
+					}
+
+					//機体と敵との当たり判定
+					if (enemys_stage1[a][b].x_E < PLAYER.x + PLAYER.width &&
+						PLAYER.x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&
+						PLAYER.y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&
+						enemys_stage1[a][b].y_E < PLAYER.y + PLAYER.height)
+					{
+						enemy_flag_stage1[a][b] = false;
+						enemys_stage1[a][b].IsView_E = FALSE;
+						enemy_count_stage1--;
+					}
+				}
+			}
+		}
+	}
+	else if (s_position_stage == 100)
+	{
+		if (s_position_difficult == 0)
+		{
+			DrawStringToHandle(10, 10, "STAGE 2-NORMAL", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage2);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:10.00", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+
+			if (Current_Timer_Sec >= 10.0)
+			{
+				Tamas[0].y = -20;
+				Tamas[1].y = -20;
+				Tamas[2].y = -20;
+				Tamas[3].y = -20;
+				Tamas[4].y = -20;
+				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+			}
+		}
+		else if (s_position_difficult == 100)
+		{
+			DrawStringToHandle(10, 10, "STAGE 2-HARD", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage2);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+
+			if (Current_Timer_Sec >= 30.0)
+			{
+				Tamas[0].y = -20;
+				Tamas[1].y = -20;
+				Tamas[2].y = -20;
+				Tamas[3].y = -20;
+				Tamas[4].y = -20;
+				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+			}
+		}
+
+		for (int a = 0; a < 13; a++)
+		{
+			for (int b = 0; b < 13; b++)
+			{
+				if (enemy_flag_stage2[a][b] == true)
+				{
+					//敵のどれかが画面端まで移動したら
+					if (enemys_stage2[a][b].x_E > 870)
+					{
+						enemy_move_flag = false;
+					}
+					else if (enemys_stage2[a][b].x_E < 0)
+					{
+						enemy_move_flag = true;
+					}
+
+					for (int i = 0; i < 5; i++)
+					{
+						if (Tamas[i].x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&		//弾の左 < 敵の右
+							Tamas[i].y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&		//弾の上 < 敵の下
+							Tamas[i].x + Tamas[i].width > enemys_stage2[a][b].x_E &&	//弾の右 > 敵の左
+							Tamas[i].y + Tamas[i].height > enemys_stage2[a][b].y_E)	//弾の下 > 敵の上
+						{
+							for (int j = -1; j < 2; j++)
+							{
+								for (int k = -1; k < 2; k++)
+								{
+									//敵がいる、かつ配列内を参照していれば
+									if (a + j < 13 && a + j > -1 && b + k < 13 && b + k > -1 && enemy_flag_stage2[a + j][b + k] == true)
+									{
+										enemy_flag_stage2[a + j][b + k] = false;
+										enemys_stage2[a + j][b + k].IsView_E = FALSE;
+										enemy_count_stage2--;
+									}
+								}
+							}
+							Tamas[i].IsView = FALSE;
+							Tamas[i].y = -20;
+						}
+						else
+						{						
+							if (enemy_move_flag == true)
+							{
+								//1/100秒ごとに敵が移動
+								if ((int)Timer - enemy_move_tmp > 10)
+								{
+									enemy_move_num++;
+									enemy_move_tmp = (int)Timer;
+								}
+							}
+							else if (enemy_move_flag == false)
+							{
+								//1/100秒ごとに敵が移動
+								if ((int)Timer - enemy_move_tmp > 10)
+								{
+									enemy_move_num--;
+									enemy_move_tmp = (int)Timer;
+								}
+							}
+							enemys_stage2[a][b].position_E(a, b, 255 + enemy_move_num, 50);
+							enemys_stage2[a][b].view_E();
+						}
+					}
+
+					//機体と敵との当たり判定
+					if (enemys_stage2[a][b].x_E < PLAYER.x + PLAYER.width &&
+						PLAYER.x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&
+						PLAYER.y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&
+						enemys_stage2[a][b].y_E < PLAYER.y + PLAYER.height)
+					{
+						enemy_flag_stage2[a][b] = false;
+						enemys_stage2[a][b].IsView_E = FALSE;
+						enemy_count_stage2--;
+					}
+				}
+			}
+		}
+	}
+	else if (s_position_stage == 200)
+	{
+		if (s_position_difficult == 0)
+		{
+			DrawStringToHandle(10, 10, "STAGE 3-NORMAL", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage3);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:10.00", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+
+			if (Current_Timer_Sec >= 10.0)
+			{
+				Tamas[0].y = -20;
+				Tamas[1].y = -20;
+				Tamas[2].y = -20;
+				Tamas[3].y = -20;
+				Tamas[4].y = -20;
+				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+			}
+		}
+		else if (s_position_difficult == 100)
+		{
+			DrawStringToHandle(10, 10, "STAGE 3-HARD", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage3);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+
+			if (Current_Timer_Sec >= 30.0)
+			{
+				Tamas[0].y = -20;
+				Tamas[1].y = -20;
+				Tamas[2].y = -20;
+				Tamas[3].y = -20;
+				Tamas[4].y = -20;
+				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+			}
+		}
+
+		for (int a = 0; a < 7; a++)
+		{
+			for (int b = 0; b < 23; b++)
+			{
+				if (enemy_flag_stage3[a][b] == true)
+				{
+					//敵のどれかが画面端まで移動したら
+					if (enemys_stage3[a][b].x_E > 870)
+					{
+						enemy_move_flag = false;
+					}
+					else if (enemys_stage3[a][b].x_E < 0)
+					{
+						enemy_move_flag = true;
+					}
+
+					for (int i = 0; i < 5; i++)
+					{
+						if (Tamas[i].x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&		//弾の左 < 敵の右
+							Tamas[i].y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&		//弾の上 < 敵の下
+							Tamas[i].x + Tamas[i].width > enemys_stage3[a][b].x_E &&	//弾の右 > 敵の左
+							Tamas[i].y + Tamas[i].height > enemys_stage3[a][b].y_E)	//弾の下 > 敵の上
+						{
+							for (int j = -1; j < 2; j++)
+							{
+								for (int k = -1; k < 2; k++)
+								{
+									//敵がいる、かつ配列内を参照していれば
+									if (a + j < 7 && a + j > -1 && b + k < 23 && b + k > -1 && enemy_flag_stage3[a + j][b + k] == true)
+									{
+										enemy_flag_stage3[a + j][b + k] = false;
+										enemys_stage3[a + j][b + k].IsView_E = FALSE;
+										enemy_count_stage3--;
+									}
+								}
+							}
+							Tamas[i].IsView = FALSE;
+							Tamas[i].y = -20;
+						}
+						else
+						{
+							if (enemy_move_flag == true)
+							{
+								//1/100秒ごとに敵が移動
+								if ((int)Timer - enemy_move_tmp > 10)
+								{
+									enemy_move_num++;
+									enemy_move_tmp = (int)Timer;
+								}
+							}
+							else if (enemy_move_flag == false)
+							{
+								//1/100秒ごとに敵が移動
+								if ((int)Timer - enemy_move_tmp > 10)
+								{
+									enemy_move_num--;
+									enemy_move_tmp = (int)Timer;
+								}
+							}
+							enemys_stage3[a][b].position_E(a, b, 105 + enemy_move_num, 100);
+							enemys_stage3[a][b].view_E();
+						}
+					}
+
+					//機体と敵との当たり判定
+					if (enemys_stage3[a][b].x_E < PLAYER.x + PLAYER.width &&
+						PLAYER.x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&
+						PLAYER.y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&
+						enemys_stage3[a][b].y_E < PLAYER.y + PLAYER.height)
+					{
+						enemy_flag_stage3[a][b] = false;
+						enemys_stage3[a][b].IsView_E = FALSE;
+						enemy_count_stage3--;
+					}
+				}
+			}
+		}
+	}
+
+	if (s_position_stage == 0)
+	{
+		int count = 189;
+		for (int a = 0; a < 9; a++)
+		{
+			for (int b = 0; b < 21; b++)
+			{
+				if (enemy_flag_stage1[a][b] == true)
+				{
+					continue;
+				}
+				else
+				{
+					count--;
+					if (count <= 0)
+					{
+						Tamas[0].y = -20;
+						Tamas[1].y = -20;
+						Tamas[2].y = -20;
+						Tamas[3].y = -20;
+						Tamas[4].y = -20;
+						GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+					}
+				}
+			}
+		}
+	}
+	else if (s_position_stage == 100)
+	{
+		int count = 169;
+		for (int a = 0; a < 13; a++)
+		{
+			for (int b = 0; b < 13; b++)
+			{
+				if (enemy_flag_stage2[a][b] == true)
+				{
+					continue;
+				}
+				else
+				{
+					count--;
+					if (count <= 0)
+					{
+						Tamas[0].y = -20;
+						Tamas[1].y = -20;
+						Tamas[2].y = -20;
+						Tamas[3].y = -20;
+						Tamas[4].y = -20;
+						GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+					}
+				}
+			}
+		}
+	}
+	else if (s_position_stage == 200)
+	{
+		int count = 161;
+		for (int a = 0; a < 7; a++)
+		{
+			for (int b = 0; b < 23; b++)
+			{
+				if (enemy_flag_stage3[a][b] == true)
+				{
+					continue;
+				}
+				else
+				{
+					count--;
+					if (count <= 0)
+					{
+						Tamas[0].y = -20;
+						Tamas[1].y = -20;
+						Tamas[2].y = -20;
+						Tamas[3].y = -20;
+						Tamas[4].y = -20;
+						GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+					}
+				}
+			}
+		}
+	}
 
 	return;
 }

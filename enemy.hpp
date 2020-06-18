@@ -10,7 +10,7 @@ public:
 	bool IsView_E;
 
 	Enemy();
-	void position_E(int, int);
+	void position_E(int, int, int, int);
 	void view_E();
 	~Enemy() {}
 };
