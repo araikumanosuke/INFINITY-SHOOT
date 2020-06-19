@@ -16,7 +16,7 @@ VOID MY_GAME_END_OVER(VOID)
 		enemy_count_stage1 = 90;
 		enemy_count_stage2 = 91;
 		enemy_count_stage3 = 81;
-		Time_Flag = false;
+		Syoki_Flag = true;
 		Current_Timer_Sec = 0.0;
 		Current_Timer_Min = 0;
 		enemy_move_flag = true;

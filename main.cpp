@@ -68,7 +68,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	image_load(&E_GREEN, 0, 0, GAME_IMAGE_ENEMY_GREEN);
 	image_load(&E_GREEN_HARD, 0, 0,  GAME_IMAGE_ENEMY_GREEN_HARD);
 	image_load(&E_RED, 0, 0, GAME_IMAGE_ENEMY_RED);
-	image_load(&E_RED_HARD, 0, 0, GAME_IMAGE_ENEMY_RED);
+	image_load(&E_RED_HARD, 0, 0, GAME_IMAGE_ENEMY_RED_HARD);
 	image_load(&E_BLUE, 0, 0, GAME_IMAGE_ENEMY_BLUE);
 	image_load(&E_BLUE_HARD, 0, 0, GAME_IMAGE_ENEMY_BLUE_HARD);
 

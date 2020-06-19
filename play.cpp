@@ -17,6 +17,18 @@ int enemy_kind_stage1[9][21] = {
 	{-1,-1,-1,Red,Red,Red,-1,-1,-1,Yellow,Yellow,Yellow,-1,-1,-1,Green,Green,Green,-1,-1,-1}
 };
 
+int enemy_kind_stage1_hard[9][21] = {
+	{-1,-1,-1,Red_Hard,Red_Hard,Red_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Green_Hard,Green_Hard,Green_Hard,-1,-1,-1},
+	{-1,-1,-1,Red_Hard,Red_Hard,Red_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Green_Hard,Green_Hard,Green_Hard,-1,-1,-1},
+	{-1,-1,-1,Red_Hard,Red_Hard,Red_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Green_Hard,Green_Hard,Green_Hard,-1,-1,-1},
+	{Red_Hard,Red_Hard,Red_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Green_Hard,Green_Hard,Green_Hard},
+	{Red_Hard,Red_Hard,Red_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Green_Hard,Green_Hard,Green_Hard},
+	{Red_Hard,Red_Hard,Red_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Green_Hard,Green_Hard,Green_Hard},
+	{-1,-1,-1,Red_Hard,Red_Hard,Red_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Green_Hard,Green_Hard,Green_Hard,-1,-1,-1},
+	{-1,-1,-1,Red_Hard,Red_Hard,Red_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Green_Hard,Green_Hard,Green_Hard,-1,-1,-1},
+	{-1,-1,-1,Red_Hard,Red_Hard,Red_Hard,-1,-1,-1,Yellow_Hard,Yellow_Hard,Yellow_Hard,-1,-1,-1,Green_Hard,Green_Hard,Green_Hard,-1,-1,-1}
+};
+
 int enemy_kind_stage2[13][13] = {
 	{-1,-1,-1,-1,-1,-1,Blue,-1,-1,-1,-1,-1,-1},
 	{-1,-1,-1,-1,-1,Blue,Green,Blue,-1,-1,-1,-1,-1},
@@ -33,6 +45,22 @@ int enemy_kind_stage2[13][13] = {
 	{-1,-1,-1,-1,-1,-1,Blue,-1,-1,-1,-1,-1,-1}
 };
 
+int enemy_kind_stage2_hard[13][13] = {
+	{-1,-1,-1,-1,-1,-1,Blue_Hard,-1,-1,-1,-1,-1,-1},
+	{-1,-1,-1,-1,-1,Blue_Hard,Green_Hard,Blue_Hard,-1,-1,-1,-1,-1},
+	{-1,-1,-1,-1,Blue_Hard,Green_Hard,Yellow_Hard,Green_Hard,Blue_Hard,-1,-1,-1,-1},
+	{Blue_Hard,Blue_Hard,Blue_Hard,Blue_Hard,Green_Hard,Yellow_Hard,Red_Hard,Yellow_Hard,Green_Hard,Blue_Hard,Blue_Hard,Blue_Hard,Blue_Hard},
+	{-1,Blue_Hard,Green_Hard,Green_Hard,Yellow_Hard,Red_Hard,Red_Hard,Red_Hard,Yellow_Hard,Green_Hard,Green_Hard,Blue_Hard,-1},
+	{-1,-1,Blue_Hard,Green_Hard,Yellow_Hard,Red_Hard,Red_Hard,Red_Hard,Yellow_Hard,Green_Hard,Blue_Hard,-1,-1},
+	{-1,-1,-1,Blue_Hard,Green_Hard,Yellow_Hard,Red_Hard,Yellow_Hard,Green_Hard,Blue_Hard,-1,-1,-1},
+	{-1,-1,Blue_Hard,Green_Hard,Yellow_Hard,Red_Hard,Red_Hard,Red_Hard,Yellow_Hard,Green_Hard,Blue_Hard,-1,-1},
+	{-1,Blue_Hard,Green_Hard,Green_Hard,Yellow_Hard,Red_Hard,Red_Hard,Red_Hard,Yellow_Hard,Green_Hard,Green_Hard,Blue_Hard,-1},
+	{Blue_Hard,Blue_Hard,Blue_Hard,Blue_Hard,Green_Hard,Yellow_Hard,Red_Hard,Yellow_Hard,Green_Hard,Blue_Hard,Blue_Hard,Blue_Hard,Blue_Hard},
+	{-1,-1,-1,-1,Blue_Hard,Green_Hard,Yellow_Hard,Green_Hard,Blue_Hard,-1,-1,-1,-1},
+	{-1,-1,-1,-1,-1,Blue_Hard,Green_Hard,Blue_Hard,-1,-1,-1,-1,-1},
+	{-1,-1,-1,-1,-1,-1,Blue_Hard,-1,-1,-1,-1,-1,-1}
+};
+
 int enemy_kind_stage3[7][23] = {
 	{Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green},
 	{-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1},
@@ -43,11 +71,27 @@ int enemy_kind_stage3[7][23] = {
 	{Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow}
 };
 
+int enemy_kind_stage3_hard[7][23] = {
+	{Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard,-1,Green_Hard},
+	{-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard,-1},
+	{Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard},
+	{-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1},
+	{Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard},
+	{-1,Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1},
+	{Red_Hard,-1,Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard,-1,Red_Hard,-1,Yellow_Hard,-1,Green_Hard,-1,Blue_Hard,-1,Green_Hard,-1,Yellow_Hard}
+};
+
 Enemy enemys_stage1[9][21];
+
+Enemy enemys_stage1_hard[9][21];
 
 Enemy enemys_stage2[13][13];
 
+Enemy enemys_stage2_hard[13][13];
+
 Enemy enemys_stage3[7][23];
+
+Enemy enemys_stage3_hard[7][23];
 
 Tama Tamas[5];
 
@@ -57,6 +101,12 @@ int enemy_count_stage2 = 91;
 
 int enemy_count_stage3 = 81;
 
+int enemy_count_stage1_hard = 90;
+
+int enemy_count_stage2_hard = 91;
+
+int enemy_count_stage3_hard = 81;
+
 bool enemy_move_flag = true;
 
 int enemy_move_num = 0;
@@ -65,7 +115,7 @@ int enemy_move_tmp = 0;
 
 double Timer = 0.0;
 
-bool Time_Flag = false;
+bool Syoki_Flag = true;
 
 double Current_Timer_Sec = 0.0;
 
@@ -84,11 +134,11 @@ VOID MY_GAME_PLAY(VOID)
 
 	Timer = GetNowCount();
 
-	if (Time_Flag == false)
+	if (Syoki_Flag == true)
 	{
 		Timer_Tmp = Timer;
 		enemy_move_tmp = (int)Timer;
-		Time_Flag = true;
+		Syoki_Flag = false;
 	}
 
 	Current_Timer_Sec = (Timer - Timer_Tmp) / 1000;
@@ -196,11 +246,113 @@ VOID MY_GAME_PLAY(VOID)
 				Tamas[4].y = -20;
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//ÉVÅ[ÉìÇÉGÉìÉhâÊñ (ÉQÅ[ÉÄÉIÅ[ÉoÅ[)Ç…Ç∑ÇÈ
 			}
+
+			for (int a = 0; a < 9; a++)
+			{
+				for (int b = 0; b < 21; b++)
+				{
+					if (enemy_kind_stage1[a][b] != -1)
+					{
+						//ìGÇÃÇ«ÇÍÇ©Ç™âÊñ í[Ç‹Ç≈à⁄ìÆÇµÇΩÇÁ
+						if (enemys_stage1[a][b].x_E > 870)
+						{
+							enemy_move_flag = false;
+						}
+						else if (enemys_stage1[a][b].x_E < 0)
+						{
+							enemy_move_flag = true;
+						}
+
+						//ìGÇÃêFÇê›íË
+						switch (enemy_kind_stage1[a][b])
+						{
+						case Yellow:
+							enemys_stage1[a][b].kind_E = Yellow;
+							break;
+
+						case Green:
+							enemys_stage1[a][b].kind_E = Green;
+							break;
+
+						case Blue:
+							enemys_stage1[a][b].kind_E = Blue;
+							break;
+
+						case Red:
+							enemys_stage1[a][b].kind_E = Red;
+							break;
+
+						default:
+							break;
+						}
+
+						//íeÇ∆ìGÇ∆ÇÃìñÇΩÇËîªíË
+						for (int i = 0; i < 5; i++)
+						{
+							if (Tamas[i].x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&		//íeÇÃç∂ < ìGÇÃâE
+								Tamas[i].y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&		//íeÇÃè„ < ìGÇÃâ∫
+								Tamas[i].x + Tamas[i].width > enemys_stage1[a][b].x_E &&	//íeÇÃâE > ìGÇÃç∂
+								Tamas[i].y + Tamas[i].height > enemys_stage1[a][b].y_E)	//íeÇÃâ∫ > ìGÇÃè„
+							{
+								for (int j = -1; j < 2; j++)
+								{
+									for (int k = -1; k < 2; k++)
+									{
+										//ìGÇ™Ç¢ÇÈÅAÇ©Ç¬îzóÒì‡ÇéQè∆ÇµÇƒÇ¢ÇÍÇŒ
+										if (a + j < 9 && a + j > -1 && b + k < 21 && b + k > -1 && enemy_kind_stage1[a + j][b + k] != -1)
+										{
+											enemy_kind_stage1[a + j][b + k] = -1;
+											enemys_stage1[a + j][b + k].IsView_E = FALSE;
+											enemy_count_stage1--;
+										}
+									}
+								}
+								Tamas[i].IsView = FALSE;
+								Tamas[i].y = -20;
+							}
+							else
+							{
+								if (enemy_move_flag == true)
+								{
+									//1/100ïbÇ≤Ç∆Ç…ìGÇ™à⁄ìÆ
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num++;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								else if (enemy_move_flag == false)
+								{
+									//1/100ïbÇ≤Ç∆Ç…ìGÇ™à⁄ìÆ
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num--;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								enemys_stage1[a][b].position_E(a, b, 135 + enemy_move_num, 100);
+								enemys_stage1[a][b].view_E(a, b);
+							}
+						}
+
+						//ã@ëÃÇ∆ìGÇ∆ÇÃìñÇΩÇËîªíË
+						if (enemys_stage1[a][b].x_E < PLAYER.x + PLAYER.width &&
+							PLAYER.x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&
+							PLAYER.y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&
+							enemys_stage1[a][b].y_E < PLAYER.y + PLAYER.height)
+						{
+							enemy_kind_stage1[a][b] = -1;
+							enemys_stage1[a][b].IsView_E = FALSE;
+							enemy_count_stage1--;
+						}
+					}
+				}
+			}
 		}
 		else if (s_position_difficult == 100)
 		{
 			DrawStringToHandle(10, 10, "STAGE 1-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage1);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage1_hard);
 			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
 			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
@@ -213,105 +365,105 @@ VOID MY_GAME_PLAY(VOID)
 				Tamas[4].y = -20;
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//ÉVÅ[ÉìÇÉGÉìÉhâÊñ (ÉQÅ[ÉÄÉIÅ[ÉoÅ[)Ç…Ç∑ÇÈ
 			}
-		}
 
-		for (int a = 0; a < 9; a++)
-		{
-			for (int b = 0; b < 21; b++)
+			for (int a = 0; a < 9; a++)
 			{
-				if (enemy_kind_stage1[a][b] != -1)
+				for (int b = 0; b < 21; b++)
 				{
-					//ìGÇÃÇ«ÇÍÇ©Ç™âÊñ í[Ç‹Ç≈à⁄ìÆÇµÇΩÇÁ
-					if (enemys_stage1[a][b].x_E > 870)
+					if (enemy_kind_stage1_hard[a][b] != -1)
 					{
-						enemy_move_flag = false;
-					}
-					else if (enemys_stage1[a][b].x_E < 0)
-					{
-						enemy_move_flag = true;
-					}
-					
-					//ìGÇÃêFÇê›íË
-					switch (enemy_kind_stage1[a][b])
-					{
-					case Yellow:
-						enemys_stage1[a][b].kind_E = Yellow;
-						break;
-
-					case Green:
-						enemys_stage1[a][b].kind_E = Green;
-						break;
-
-					case Blue:
-						enemys_stage1[a][b].kind_E = Blue;
-						break;
-
-					case Red:
-						enemys_stage1[a][b].kind_E = Red;
-						break;
-
-					default:
-						break;
-					}
-
-					//íeÇ∆ìGÇ∆ÇÃìñÇΩÇËîªíË
-					for (int i = 0; i < 5; i++)
-					{
-						if (Tamas[i].x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&		//íeÇÃç∂ < ìGÇÃâE
-							Tamas[i].y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&		//íeÇÃè„ < ìGÇÃâ∫
-							Tamas[i].x + Tamas[i].width > enemys_stage1[a][b].x_E &&	//íeÇÃâE > ìGÇÃç∂
-							Tamas[i].y + Tamas[i].height > enemys_stage1[a][b].y_E)	//íeÇÃâ∫ > ìGÇÃè„
+						//ìGÇÃÇ«ÇÍÇ©Ç™âÊñ í[Ç‹Ç≈à⁄ìÆÇµÇΩÇÁ
+						if (enemys_stage1_hard[a][b].x_E > 870)
 						{
-							for (int j = -1; j < 2; j++)
+							enemy_move_flag = false;
+						}
+						else if (enemys_stage1_hard[a][b].x_E < 0)
+						{
+							enemy_move_flag = true;
+						}
+
+						//ìGÇÃêFÇê›íË
+						switch (enemy_kind_stage1_hard[a][b])
+						{
+						case Yellow_Hard:
+							enemys_stage1_hard[a][b].kind_E = Yellow_Hard;
+							break;
+
+						case Green_Hard:
+							enemys_stage1_hard[a][b].kind_E = Green_Hard;
+							break;
+
+						case Blue_Hard:
+							enemys_stage1_hard[a][b].kind_E = Blue_Hard;
+							break;
+
+						case Red_Hard:
+							enemys_stage1_hard[a][b].kind_E = Red_Hard;
+							break;
+
+						default:
+							break;
+						}
+
+						//íeÇ∆ìGÇ∆ÇÃìñÇΩÇËîªíË
+						for (int i = 0; i < 5; i++)
+						{
+							if (Tamas[i].x < enemys_stage1_hard[a][b].x_E + enemys_stage1_hard[a][b].width_E &&		//íeÇÃç∂ < ìGÇÃâE
+								Tamas[i].y < enemys_stage1_hard[a][b].y_E + enemys_stage1_hard[a][b].height_E &&		//íeÇÃè„ < ìGÇÃâ∫
+								Tamas[i].x + Tamas[i].width > enemys_stage1_hard[a][b].x_E &&	//íeÇÃâE > ìGÇÃç∂
+								Tamas[i].y + Tamas[i].height > enemys_stage1_hard[a][b].y_E)	//íeÇÃâ∫ > ìGÇÃè„
 							{
-								for (int k = -1; k < 2; k++)
+								for (int j = -1; j < 2; j++)
 								{
-									//ìGÇ™Ç¢ÇÈÅAÇ©Ç¬îzóÒì‡ÇéQè∆ÇµÇƒÇ¢ÇÍÇŒ
-									if (a + j < 9 && a + j > -1 && b + k < 21 && b + k > -1 && enemy_kind_stage1[a + j][b + k] != -1)
+									for (int k = -1; k < 2; k++)
 									{
-										enemy_kind_stage1[a + j][b + k] = -1;
-										enemys_stage1[a + j][b + k].IsView_E = FALSE;
-										enemy_count_stage1--;
+										//ìGÇ™Ç¢ÇÈÅAÇ©Ç¬îzóÒì‡ÇéQè∆ÇµÇƒÇ¢ÇÍÇŒ
+										if (a + j < 9 && a + j > -1 && b + k < 21 && b + k > -1 && enemy_kind_stage1_hard[a + j][b + k] != -1)
+										{
+											enemy_kind_stage1_hard[a + j][b + k] = -1;
+											enemys_stage1_hard[a + j][b + k].IsView_E = FALSE;
+											enemy_count_stage1_hard--;
+										}
 									}
 								}
+								Tamas[i].IsView = FALSE;
+								Tamas[i].y = -20;
 							}
-							Tamas[i].IsView = FALSE;
-							Tamas[i].y = -20;
-						}
-						else
-						{
-							if (enemy_move_flag == true)
+							else
 							{
-								//1/100ïbÇ≤Ç∆Ç…ìGÇ™à⁄ìÆ
-								if ((int)Timer - enemy_move_tmp > 10)
+								if (enemy_move_flag == true)
 								{
-									enemy_move_num++;
-									enemy_move_tmp = (int)Timer;
+									//1/100ïbÇ≤Ç∆Ç…ìGÇ™à⁄ìÆ
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num++;
+										enemy_move_tmp = (int)Timer;
+									}
 								}
-							}
-							else if (enemy_move_flag == false)
-							{
-								//1/100ïbÇ≤Ç∆Ç…ìGÇ™à⁄ìÆ
-								if ((int)Timer - enemy_move_tmp > 10)
+								else if (enemy_move_flag == false)
 								{
-									enemy_move_num--;
-									enemy_move_tmp = (int)Timer;
+									//1/100ïbÇ≤Ç∆Ç…ìGÇ™à⁄ìÆ
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num--;
+										enemy_move_tmp = (int)Timer;
+									}
 								}
+								enemys_stage1_hard[a][b].position_E(a, b, 135 + enemy_move_num, 100);
+								enemys_stage1_hard[a][b].view_E(a, b);
 							}
-							enemys_stage1[a][b].position_E(a, b, 135 + enemy_move_num, 100);
-							enemys_stage1[a][b].view_E(a, b);
 						}
-					}
 
-					//ã@ëÃÇ∆ìGÇ∆ÇÃìñÇΩÇËîªíË
-					if (enemys_stage1[a][b].x_E < PLAYER.x + PLAYER.width &&
-						PLAYER.x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&
-						PLAYER.y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&
-						enemys_stage1[a][b].y_E < PLAYER.y + PLAYER.height)
-					{
-						enemy_kind_stage1[a][b] = -1;
-						enemys_stage1[a][b].IsView_E = FALSE;
-						enemy_count_stage1--;
+						//ã@ëÃÇ∆ìGÇ∆ÇÃìñÇΩÇËîªíË
+						if (enemys_stage1_hard[a][b].x_E < PLAYER.x + PLAYER.width &&
+							PLAYER.x < enemys_stage1_hard[a][b].x_E + enemys_stage1_hard[a][b].width_E &&
+							PLAYER.y < enemys_stage1_hard[a][b].y_E + enemys_stage1_hard[a][b].height_E &&
+							enemys_stage1_hard[a][b].y_E < PLAYER.y + PLAYER.height)
+						{
+							enemy_kind_stage1_hard[a][b] = -1;
+							enemys_stage1_hard[a][b].IsView_E = FALSE;
+							enemy_count_stage1_hard--;
+						}
 					}
 				}
 			}
@@ -601,21 +753,44 @@ VOID MY_GAME_PLAY(VOID)
 		{
 			for (int b = 0; b < 21; b++)
 			{
-				if (enemy_kind_stage1[a][b] != -1)
+				if (s_position_difficult == 0)
 				{
-					continue;
-				}
-				else
-				{
-					count--;
-					if (count <= 0)
+					if (enemy_kind_stage1[a][b] != -1)
 					{
-						Tamas[0].y = -20;
-						Tamas[1].y = -20;
-						Tamas[2].y = -20;
-						Tamas[3].y = -20;
-						Tamas[4].y = -20;
-						GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ÉVÅ[ÉìÇÉGÉìÉhâÊñ (ÉQÅ[ÉÄÉNÉäÉA)Ç…Ç∑ÇÈ
+						continue;
+					}
+					else
+					{
+						count--;
+						if (count <= 0)
+						{
+							Tamas[0].y = -20;
+							Tamas[1].y = -20;
+							Tamas[2].y = -20;
+							Tamas[3].y = -20;
+							Tamas[4].y = -20;
+							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ÉVÅ[ÉìÇÉGÉìÉhâÊñ (ÉQÅ[ÉÄÉNÉäÉA)Ç…Ç∑ÇÈ
+						}
+					}
+				}
+				else if (s_position_difficult == 100)
+				{
+					if (enemy_kind_stage1_hard[a][b] != -1)
+					{
+						continue;
+					}
+					else
+					{
+						count--;
+						if (count <= 0)
+						{
+							Tamas[0].y = -20;
+							Tamas[1].y = -20;
+							Tamas[2].y = -20;
+							Tamas[3].y = -20;
+							Tamas[4].y = -20;
+							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ÉVÅ[ÉìÇÉGÉìÉhâÊñ (ÉQÅ[ÉÄÉNÉäÉA)Ç…Ç∑ÇÈ
+						}
 					}
 				}
 			}

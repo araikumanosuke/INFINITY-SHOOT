@@ -73,11 +73,15 @@ extern Enemy enemys_stage1[9][21];
 extern Enemy enemys_stage2[13][13];
 extern Enemy enemys_stage3[7][23];
 
+extern Enemy enemys_stage1_hard[9][21];
+extern Enemy enemys_stage2_hard[13][13];
+extern Enemy enemys_stage3_hard[7][23];
+
 extern int enemy_count_stage1;
 extern int enemy_count_stage2;
 extern int enemy_count_stage3;
 
-extern bool Time_Flag;
+extern bool Syoki_Flag;
 extern double Current_Timer_Sec;
 extern int Current_Timer_Min;
 

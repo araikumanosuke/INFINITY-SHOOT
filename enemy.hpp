@@ -8,6 +8,7 @@ public:
 	int width_E;
 	int height_E;
 	int kind_E;
+	int hp_E;
 	bool IsView_E;
 
 	Enemy();
