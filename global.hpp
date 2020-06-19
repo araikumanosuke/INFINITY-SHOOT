@@ -67,7 +67,7 @@ extern bool s_flug;
 
 extern int enemy_kind_stage1[9][21];
 extern int enemy_kind_stage2[13][13];
-extern bool enemy_flag_stage3[7][23];
+extern int enemy_kind_stage3[7][23];
 
 extern Enemy enemys_stage1[9][21];
 extern Enemy enemys_stage2[13][13];

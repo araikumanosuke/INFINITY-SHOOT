@@ -33,14 +33,14 @@ int enemy_kind_stage2[13][13] = {
 	{-1,-1,-1,-1,-1,-1,Blue,-1,-1,-1,-1,-1,-1}
 };
 
-bool enemy_flag_stage3[7][23] = {
-	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true},
-	{false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false},
-	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true},
-	{false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false},
-	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true},
-	{false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false},
-	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true}
+int enemy_kind_stage3[7][23] = {
+	{Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green},
+	{-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1},
+	{Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow},
+	{-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1},
+	{Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red},
+	{-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1},
+	{Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow}
 };
 
 Enemy enemys_stage1[9][21];
@@ -496,7 +496,7 @@ VOID MY_GAME_PLAY(VOID)
 		{
 			for (int b = 0; b < 23; b++)
 			{
-				if (enemy_flag_stage3[a][b] == true)
+				if (enemy_kind_stage3[a][b] != -1)
 				{
 					//“G‚Ì‚Ç‚ê‚©‚ª‰æ–Ê’[‚Ü‚ÅˆÚ“®‚µ‚½‚ç
 					if (enemys_stage3[a][b].x_E > 870)
@@ -506,6 +506,29 @@ VOID MY_GAME_PLAY(VOID)
 					else if (enemys_stage3[a][b].x_E < 0)
 					{
 						enemy_move_flag = true;
+					}
+
+					//“G‚ÌF‚ðÝ’è
+					switch (enemy_kind_stage3[a][b])
+					{
+					case Yellow:
+						enemys_stage3[a][b].kind_E = Yellow;
+						break;
+
+					case Green:
+						enemys_stage3[a][b].kind_E = Green;
+						break;
+
+					case Blue:
+						enemys_stage3[a][b].kind_E = Blue;
+						break;
+
+					case Red:
+						enemys_stage3[a][b].kind_E = Red;
+						break;
+
+					default:
+						break;
 					}
 
 					for (int i = 0; i < 5; i++)
@@ -520,9 +543,9 @@ VOID MY_GAME_PLAY(VOID)
 								for (int k = -1; k < 2; k++)
 								{
 									//“G‚ª‚¢‚éA‚©‚Â”z—ñ“à‚ðŽQÆ‚µ‚Ä‚¢‚ê‚Î
-									if (a + j < 7 && a + j > -1 && b + k < 23 && b + k > -1 && enemy_flag_stage3[a + j][b + k] == true)
+									if (a + j < 7 && a + j > -1 && b + k < 23 && b + k > -1 && enemy_kind_stage3[a + j][b + k] != -1)
 									{
-										enemy_flag_stage3[a + j][b + k] = false;
+										enemy_kind_stage3[a + j][b + k] = -1;
 										enemys_stage3[a + j][b + k].IsView_E = FALSE;
 										enemy_count_stage3--;
 									}
@@ -562,7 +585,7 @@ VOID MY_GAME_PLAY(VOID)
 						PLAYER.y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&
 						enemys_stage3[a][b].y_E < PLAYER.y + PLAYER.height)
 					{
-						enemy_flag_stage3[a][b] = false;
+						enemy_kind_stage3[a][b] = -1;
 						enemys_stage3[a][b].IsView_E = FALSE;
 						enemy_count_stage3--;
 					}
@@ -632,7 +655,7 @@ VOID MY_GAME_PLAY(VOID)
 		{
 			for (int b = 0; b < 23; b++)
 			{
-				if (enemy_flag_stage3[a][b] == true)
+				if (enemy_kind_stage3[a][b] != -1)
 				{
 					continue;
 				}

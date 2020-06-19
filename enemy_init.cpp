@@ -30,14 +30,14 @@ int enemy_kind_stage2_syoki[13][13] = {
 	{-1,-1,-1,-1,-1,-1,Blue,-1,-1,-1,-1,-1,-1}
 };
 
-bool enemy_flag_stage3_syoki[7][23] = {
-	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true},
-	{false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false},
-	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true},
-	{false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false},
-	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true},
-	{false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false},
-	{true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true}
+int enemy_kind_stage3_syoki[7][23] = {
+	{Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green},
+	{-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1},
+	{Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow},
+	{-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1},
+	{Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red},
+	{-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1},
+	{Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow,-1,Red,-1,Yellow,-1,Green,-1,Blue,-1,Green,-1,Yellow}
 };
 
 void ENEMY_INIT()
@@ -117,9 +117,26 @@ void ENEMY_INIT()
 				enemys_stage3[a][b].IsView_E = TRUE;
 				PLAYER.x = 425;
 				PLAYER.y = 500;
-				if (enemy_flag_stage3_syoki[a][b] == true)
+				switch (enemy_kind_stage3_syoki[a][b])
 				{
-					enemy_flag_stage3[a][b] = true;
+				case Yellow:
+					enemy_kind_stage3[a][b] = Yellow;
+					break;
+
+				case Green:
+					enemy_kind_stage3[a][b] = Green;
+					break;
+
+				case Blue:
+					enemy_kind_stage3[a][b] = Blue;
+					break;
+
+				case Red:
+					enemy_kind_stage3[a][b] = Red;
+					break;
+
+				default:
+					break;
 				}
 			}
 		}
