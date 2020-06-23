@@ -69,6 +69,10 @@ extern int enemy_kind_stage1[9][21];
 extern int enemy_kind_stage2[13][13];
 extern int enemy_kind_stage3[7][23];
 
+extern int enemy_kind_stage1_hard[9][21];
+extern int enemy_kind_stage2_hard[13][13];
+extern int enemy_kind_stage3_hard[7][23];
+
 extern Enemy enemys_stage1[9][21];
 extern Enemy enemys_stage2[13][13];
 extern Enemy enemys_stage3[7][23];

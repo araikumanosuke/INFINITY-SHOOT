@@ -178,9 +178,6 @@ VOID MY_GAME_PLAY(VOID)
 		}
 	}
 
-	//‹@‘Ì•\¦
-	DrawGraph(PLAYER.x, PLAYER.y, PLAYER.handle, TRUE);
-
 	//’eƒZƒbƒg
 	if (AllKeyState[KEY_INPUT_SPACE] == 1)
 	{
@@ -216,16 +213,6 @@ VOID MY_GAME_PLAY(VOID)
 	{
 		Tamas[i].view();
 		Tamas[i].flag_false();
-	}
-
-	if (AllKeyState[KEY_INPUT_A] != 0)	//AƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚½
-	{
-		GameSceneNow = (int)GAME_SCENE_END_OVER;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒI[ƒo[)‚É‚·‚é
-	}
-
-	if (AllKeyState[KEY_INPUT_S] != 0)	//SƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚½
-	{
-		GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒNƒŠƒA)‚É‚·‚é
 	}
 
 	if (s_position_stage == 0)
@@ -372,7 +359,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					if (enemy_kind_stage1_hard[a][b] != -1)
 					{
-						//“G‚Ì‚Ç‚ê‚©‚ª‰æ–Ê’[‚Ü‚ÅˆÚ“®‚µ‚½‚ç
+						//“G‚Ì‚Ç‚ê‚©‚ª‰æ–Ê’[‚Ü‚ÅˆÚ“®‚µ‚½‚çÜ‚è•Ô‚·
 						if (enemys_stage1_hard[a][b].x_E > 870)
 						{
 							enemy_move_flag = false;
@@ -420,9 +407,17 @@ VOID MY_GAME_PLAY(VOID)
 										//“G‚ª‚¢‚éA‚©‚Â”z—ñ“à‚ğQÆ‚µ‚Ä‚¢‚ê‚Î
 										if (a + j < 9 && a + j > -1 && b + k < 21 && b + k > -1 && enemy_kind_stage1_hard[a + j][b + k] != -1)
 										{
-											enemy_kind_stage1_hard[a + j][b + k] = -1;
-											enemys_stage1_hard[a + j][b + k].IsView_E = FALSE;
-											enemy_count_stage1_hard--;
+											//HP‚ªs‚«‚ê‚ÎÁ–ÅAc‚Á‚Ä‚¢‚ê‚Î1Œ¸‚ç‚·
+											if (enemys_stage1_hard[a + j][b + k].hp_E <= 1)
+											{
+												enemy_kind_stage1_hard[a + j][b + k] = -1;
+												enemys_stage1_hard[a + j][b + k].IsView_E = FALSE;
+												enemy_count_stage1_hard--;
+											}
+											else
+											{
+												enemys_stage1_hard[a + j][b + k].hp_E--;
+											}
 										}
 									}
 								}
@@ -460,9 +455,24 @@ VOID MY_GAME_PLAY(VOID)
 							PLAYER.y < enemys_stage1_hard[a][b].y_E + enemys_stage1_hard[a][b].height_E &&
 							enemys_stage1_hard[a][b].y_E < PLAYER.y + PLAYER.height)
 						{
-							enemy_kind_stage1_hard[a][b] = -1;
-							enemys_stage1_hard[a][b].IsView_E = FALSE;
-							enemy_count_stage1_hard--;
+							if (enemys_stage1_hard[a][b].collision_flag == false)
+							{
+								if (enemys_stage1_hard[a][b].hp_E <= 1)
+								{
+									enemy_kind_stage1_hard[a][b] = -1;
+									enemys_stage1_hard[a][b].IsView_E = FALSE;
+									enemy_count_stage1_hard--;
+								}
+								else
+								{
+									enemys_stage1_hard[a][b].hp_E--;
+									enemys_stage1_hard[a][b].collision_flag = true;
+								}
+							}
+						}
+						else
+						{
+							enemys_stage1_hard[a][b].collision_flag = false;
 						}
 					}
 				}
@@ -487,11 +497,112 @@ VOID MY_GAME_PLAY(VOID)
 				Tamas[4].y = -20;
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒI[ƒo[)‚É‚·‚é
 			}
+
+			for (int a = 0; a < 13; a++)
+			{
+				for (int b = 0; b < 13; b++)
+				{
+					if (enemy_kind_stage2[a][b] != -1)
+					{
+						//“G‚Ì‚Ç‚ê‚©‚ª‰æ–Ê’[‚Ü‚ÅˆÚ“®‚µ‚½‚ç
+						if (enemys_stage2[a][b].x_E > 870)
+						{
+							enemy_move_flag = false;
+						}
+						else if (enemys_stage2[a][b].x_E < 0)
+						{
+							enemy_move_flag = true;
+						}
+
+						//“G‚ÌF‚ğİ’è
+						switch (enemy_kind_stage2[a][b])
+						{
+						case Yellow:
+							enemys_stage2[a][b].kind_E = Yellow;
+							break;
+
+						case Green:
+							enemys_stage2[a][b].kind_E = Green;
+							break;
+
+						case Blue:
+							enemys_stage2[a][b].kind_E = Blue;
+							break;
+
+						case Red:
+							enemys_stage2[a][b].kind_E = Red;
+							break;
+
+						default:
+							break;
+						}
+
+						for (int i = 0; i < 5; i++)
+						{
+							if (Tamas[i].x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&		//’e‚Ì¶ < “G‚Ì‰E
+								Tamas[i].y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&		//’e‚Ìã < “G‚Ì‰º
+								Tamas[i].x + Tamas[i].width > enemys_stage2[a][b].x_E &&	//’e‚Ì‰E > “G‚Ì¶
+								Tamas[i].y + Tamas[i].height > enemys_stage2[a][b].y_E)	//’e‚Ì‰º > “G‚Ìã
+							{
+								for (int j = -1; j < 2; j++)
+								{
+									for (int k = -1; k < 2; k++)
+									{
+										//“G‚ª‚¢‚éA‚©‚Â”z—ñ“à‚ğQÆ‚µ‚Ä‚¢‚ê‚Î
+										if (a + j < 13 && a + j > -1 && b + k < 13 && b + k > -1 && enemy_kind_stage2[a + j][b + k] != -1)
+										{
+											enemy_kind_stage2[a + j][b + k] = -1;
+											enemys_stage2[a + j][b + k].IsView_E = FALSE;
+											enemy_count_stage2--;
+										}
+									}
+								}
+								Tamas[i].IsView = FALSE;
+								Tamas[i].y = -20;
+							}
+							else
+							{
+								if (enemy_move_flag == true)
+								{
+									//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num++;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								else if (enemy_move_flag == false)
+								{
+									//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num--;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								enemys_stage2[a][b].position_E(a, b, 255 + enemy_move_num, 50);
+								enemys_stage2[a][b].view_E(a, b);
+							}
+						}
+
+						//‹@‘Ì‚Æ“G‚Æ‚Ì“–‚½‚è”»’è
+						if (enemys_stage2[a][b].x_E < PLAYER.x + PLAYER.width &&
+							PLAYER.x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&
+							PLAYER.y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&
+							enemys_stage2[a][b].y_E < PLAYER.y + PLAYER.height)
+						{
+							enemy_kind_stage2[a][b] = -1;
+							enemys_stage2[a][b].IsView_E = FALSE;
+							enemy_count_stage2--;
+						}
+					}
+				}
+			}
 		}
 		else if (s_position_difficult == 100)
 		{
 			DrawStringToHandle(10, 10, "STAGE 2-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage2);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage2_hard);
 			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
 			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
@@ -504,104 +615,127 @@ VOID MY_GAME_PLAY(VOID)
 				Tamas[4].y = -20;
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒI[ƒo[)‚É‚·‚é
 			}
-		}
 
-		for (int a = 0; a < 13; a++)
-		{
-			for (int b = 0; b < 13; b++)
+			for (int a = 0; a < 13; a++)
 			{
-				if (enemy_kind_stage2[a][b] != -1)
+				for (int b = 0; b < 13; b++)
 				{
-					//“G‚Ì‚Ç‚ê‚©‚ª‰æ–Ê’[‚Ü‚ÅˆÚ“®‚µ‚½‚ç
-					if (enemys_stage2[a][b].x_E > 870)
+					if (enemy_kind_stage2_hard[a][b] != -1)
 					{
-						enemy_move_flag = false;
-					}
-					else if (enemys_stage2[a][b].x_E < 0)
-					{
-						enemy_move_flag = true;
-					}
-
-					//“G‚ÌF‚ğİ’è
-					switch (enemy_kind_stage2[a][b])
-					{
-					case Yellow:
-						enemys_stage2[a][b].kind_E = Yellow;
-						break;
-
-					case Green:
-						enemys_stage2[a][b].kind_E = Green;
-						break;
-
-					case Blue:
-						enemys_stage2[a][b].kind_E = Blue;
-						break;
-
-					case Red:
-						enemys_stage2[a][b].kind_E = Red;
-						break;
-
-					default:
-						break;
-					}
-
-					for (int i = 0; i < 5; i++)
-					{
-						if (Tamas[i].x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&		//’e‚Ì¶ < “G‚Ì‰E
-							Tamas[i].y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&		//’e‚Ìã < “G‚Ì‰º
-							Tamas[i].x + Tamas[i].width > enemys_stage2[a][b].x_E &&	//’e‚Ì‰E > “G‚Ì¶
-							Tamas[i].y + Tamas[i].height > enemys_stage2[a][b].y_E)	//’e‚Ì‰º > “G‚Ìã
+						//“G‚Ì‚Ç‚ê‚©‚ª‰æ–Ê’[‚Ü‚ÅˆÚ“®‚µ‚½‚ç
+						if (enemys_stage2_hard[a][b].x_E > 870)
 						{
-							for (int j = -1; j < 2; j++)
+							enemy_move_flag = false;
+						}
+						else if (enemys_stage2_hard[a][b].x_E < 0)
+						{
+							enemy_move_flag = true;
+						}
+
+						//“G‚ÌF‚ğİ’è
+						switch (enemy_kind_stage2_hard[a][b])
+						{
+						case Yellow_Hard:
+							enemys_stage2_hard[a][b].kind_E = Yellow_Hard;
+							break;
+
+						case Green_Hard:
+							enemys_stage2_hard[a][b].kind_E = Green_Hard;
+							break;
+
+						case Blue_Hard:
+							enemys_stage2_hard[a][b].kind_E = Blue_Hard;
+							break;
+
+						case Red_Hard:
+							enemys_stage2_hard[a][b].kind_E = Red_Hard;
+							break;
+
+						default:
+							break;
+						}
+
+						for (int i = 0; i < 5; i++)
+						{
+							if (Tamas[i].x < enemys_stage2_hard[a][b].x_E + enemys_stage2_hard[a][b].width_E &&		//’e‚Ì¶ < “G‚Ì‰E
+								Tamas[i].y < enemys_stage2_hard[a][b].y_E + enemys_stage2_hard[a][b].height_E &&		//’e‚Ìã < “G‚Ì‰º
+								Tamas[i].x + Tamas[i].width > enemys_stage2_hard[a][b].x_E &&	//’e‚Ì‰E > “G‚Ì¶
+								Tamas[i].y + Tamas[i].height > enemys_stage2_hard[a][b].y_E)	//’e‚Ì‰º > “G‚Ìã
 							{
-								for (int k = -1; k < 2; k++)
+								for (int j = -1; j < 2; j++)
 								{
-									//“G‚ª‚¢‚éA‚©‚Â”z—ñ“à‚ğQÆ‚µ‚Ä‚¢‚ê‚Î
-									if (a + j < 13 && a + j > -1 && b + k < 13 && b + k > -1 && enemy_kind_stage2[a + j][b + k] != -1)
+									for (int k = -1; k < 2; k++)
 									{
-										enemy_kind_stage2[a + j][b + k] = -1;
-										enemys_stage2[a + j][b + k].IsView_E = FALSE;
-										enemy_count_stage2--;
+										//“G‚ª‚¢‚éA‚©‚Â”z—ñ“à‚ğQÆ‚µ‚Ä‚¢‚ê‚Î
+										if (a + j < 13 && a + j > -1 && b + k < 13 && b + k > -1 && enemy_kind_stage2_hard[a + j][b + k] != -1)
+										{
+											//HP‚ªs‚«‚ê‚ÎÁ–ÅAc‚Á‚Ä‚¢‚ê‚Î1Œ¸‚ç‚·
+											if (enemys_stage2_hard[a + j][b + k].hp_E <= 1)
+											{
+												enemy_kind_stage2_hard[a + j][b + k] = -1;
+												enemys_stage2_hard[a + j][b + k].IsView_E = FALSE;
+												enemy_count_stage2_hard--;
+											}
+											else
+											{
+												enemys_stage2_hard[a + j][b + k].hp_E--;
+											}
+										}
 									}
 								}
+								Tamas[i].IsView = FALSE;
+								Tamas[i].y = -20;
 							}
-							Tamas[i].IsView = FALSE;
-							Tamas[i].y = -20;
+							else
+							{
+								if (enemy_move_flag == true)
+								{
+									//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num++;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								else if (enemy_move_flag == false)
+								{
+									//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num--;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								enemys_stage2_hard[a][b].position_E(a, b, 255 + enemy_move_num, 50);
+								enemys_stage2_hard[a][b].view_E(a, b);
+							}
+						}
+
+						//‹@‘Ì‚Æ“G‚Æ‚Ì“–‚½‚è”»’è
+						if (enemys_stage2_hard[a][b].x_E < PLAYER.x + PLAYER.width &&
+							PLAYER.x < enemys_stage2_hard[a][b].x_E + enemys_stage2_hard[a][b].width_E &&
+							PLAYER.y < enemys_stage2_hard[a][b].y_E + enemys_stage2_hard[a][b].height_E &&
+							enemys_stage2_hard[a][b].y_E < PLAYER.y + PLAYER.height)
+						{
+							if (enemys_stage2_hard[a][b].collision_flag == false)
+							{
+								if (enemys_stage2_hard[a][b].hp_E <= 1)
+								{
+									enemy_kind_stage2_hard[a][b] = -1;
+									enemys_stage2_hard[a][b].IsView_E = FALSE;
+									enemy_count_stage2_hard--;
+								}
+								else
+								{
+									enemys_stage2_hard[a][b].hp_E--;
+									enemys_stage2_hard[a][b].collision_flag = true;
+								}
+							}
 						}
 						else
-						{						
-							if (enemy_move_flag == true)
-							{
-								//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
-								if ((int)Timer - enemy_move_tmp > 10)
-								{
-									enemy_move_num++;
-									enemy_move_tmp = (int)Timer;
-								}
-							}
-							else if (enemy_move_flag == false)
-							{
-								//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
-								if ((int)Timer - enemy_move_tmp > 10)
-								{
-									enemy_move_num--;
-									enemy_move_tmp = (int)Timer;
-								}
-							}
-							enemys_stage2[a][b].position_E(a, b, 255 + enemy_move_num, 50);
-							enemys_stage2[a][b].view_E(a, b);
+						{
+							enemys_stage2_hard[a][b].collision_flag = false;
 						}
-					}
-
-					//‹@‘Ì‚Æ“G‚Æ‚Ì“–‚½‚è”»’è
-					if (enemys_stage2[a][b].x_E < PLAYER.x + PLAYER.width &&
-						PLAYER.x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&
-						PLAYER.y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&
-						enemys_stage2[a][b].y_E < PLAYER.y + PLAYER.height)
-					{
-						enemy_kind_stage2[a][b] = -1;
-						enemys_stage2[a][b].IsView_E = FALSE;
-						enemy_count_stage2--;
 					}
 				}
 			}
@@ -625,11 +759,112 @@ VOID MY_GAME_PLAY(VOID)
 				Tamas[4].y = -20;
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒI[ƒo[)‚É‚·‚é
 			}
+
+			for (int a = 0; a < 7; a++)
+			{
+				for (int b = 0; b < 23; b++)
+				{
+					if (enemy_kind_stage3[a][b] != -1)
+					{
+						//“G‚Ì‚Ç‚ê‚©‚ª‰æ–Ê’[‚Ü‚ÅˆÚ“®‚µ‚½‚ç
+						if (enemys_stage3[a][b].x_E > 870)
+						{
+							enemy_move_flag = false;
+						}
+						else if (enemys_stage3[a][b].x_E < 0)
+						{
+							enemy_move_flag = true;
+						}
+
+						//“G‚ÌF‚ğİ’è
+						switch (enemy_kind_stage3[a][b])
+						{
+						case Yellow:
+							enemys_stage3[a][b].kind_E = Yellow;
+							break;
+
+						case Green:
+							enemys_stage3[a][b].kind_E = Green;
+							break;
+
+						case Blue:
+							enemys_stage3[a][b].kind_E = Blue;
+							break;
+
+						case Red:
+							enemys_stage3[a][b].kind_E = Red;
+							break;
+
+						default:
+							break;
+						}
+
+						for (int i = 0; i < 5; i++)
+						{
+							if (Tamas[i].x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&		//’e‚Ì¶ < “G‚Ì‰E
+								Tamas[i].y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&		//’e‚Ìã < “G‚Ì‰º
+								Tamas[i].x + Tamas[i].width > enemys_stage3[a][b].x_E &&	//’e‚Ì‰E > “G‚Ì¶
+								Tamas[i].y + Tamas[i].height > enemys_stage3[a][b].y_E)	//’e‚Ì‰º > “G‚Ìã
+							{
+								for (int j = -1; j < 2; j++)
+								{
+									for (int k = -1; k < 2; k++)
+									{
+										//“G‚ª‚¢‚éA‚©‚Â”z—ñ“à‚ğQÆ‚µ‚Ä‚¢‚ê‚Î
+										if (a + j < 7 && a + j > -1 && b + k < 23 && b + k > -1 && enemy_kind_stage3[a + j][b + k] != -1)
+										{
+											enemy_kind_stage3[a + j][b + k] = -1;
+											enemys_stage3[a + j][b + k].IsView_E = FALSE;
+											enemy_count_stage3--;
+										}
+									}
+								}
+								Tamas[i].IsView = FALSE;
+								Tamas[i].y = -20;
+							}
+							else
+							{
+								if (enemy_move_flag == true)
+								{
+									//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num++;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								else if (enemy_move_flag == false)
+								{
+									//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num--;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								enemys_stage3[a][b].position_E(a, b, 105 + enemy_move_num, 100);
+								enemys_stage3[a][b].view_E(a, b);
+							}
+						}
+
+						//‹@‘Ì‚Æ“G‚Æ‚Ì“–‚½‚è”»’è
+						if (enemys_stage3[a][b].x_E < PLAYER.x + PLAYER.width &&
+							PLAYER.x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&
+							PLAYER.y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&
+							enemys_stage3[a][b].y_E < PLAYER.y + PLAYER.height)
+						{
+							enemy_kind_stage3[a][b] = -1;
+							enemys_stage3[a][b].IsView_E = FALSE;
+							enemy_count_stage3--;
+						}
+					}
+				}
+			}
 		}
 		else if (s_position_difficult == 100)
 		{
 			DrawStringToHandle(10, 10, "STAGE 3-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage3);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage3_hard);
 			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
 			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
@@ -642,110 +877,137 @@ VOID MY_GAME_PLAY(VOID)
 				Tamas[4].y = -20;
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒI[ƒo[)‚É‚·‚é
 			}
-		}
 
-		for (int a = 0; a < 7; a++)
-		{
-			for (int b = 0; b < 23; b++)
+			for (int a = 0; a < 7; a++)
 			{
-				if (enemy_kind_stage3[a][b] != -1)
+				for (int b = 0; b < 23; b++)
 				{
-					//“G‚Ì‚Ç‚ê‚©‚ª‰æ–Ê’[‚Ü‚ÅˆÚ“®‚µ‚½‚ç
-					if (enemys_stage3[a][b].x_E > 870)
+					if (enemy_kind_stage3_hard[a][b] != -1)
 					{
-						enemy_move_flag = false;
-					}
-					else if (enemys_stage3[a][b].x_E < 0)
-					{
-						enemy_move_flag = true;
-					}
-
-					//“G‚ÌF‚ğİ’è
-					switch (enemy_kind_stage3[a][b])
-					{
-					case Yellow:
-						enemys_stage3[a][b].kind_E = Yellow;
-						break;
-
-					case Green:
-						enemys_stage3[a][b].kind_E = Green;
-						break;
-
-					case Blue:
-						enemys_stage3[a][b].kind_E = Blue;
-						break;
-
-					case Red:
-						enemys_stage3[a][b].kind_E = Red;
-						break;
-
-					default:
-						break;
-					}
-
-					for (int i = 0; i < 5; i++)
-					{
-						if (Tamas[i].x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&		//’e‚Ì¶ < “G‚Ì‰E
-							Tamas[i].y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&		//’e‚Ìã < “G‚Ì‰º
-							Tamas[i].x + Tamas[i].width > enemys_stage3[a][b].x_E &&	//’e‚Ì‰E > “G‚Ì¶
-							Tamas[i].y + Tamas[i].height > enemys_stage3[a][b].y_E)	//’e‚Ì‰º > “G‚Ìã
+						//“G‚Ì‚Ç‚ê‚©‚ª‰æ–Ê’[‚Ü‚ÅˆÚ“®‚µ‚½‚ç
+						if (enemys_stage3_hard[a][b].x_E > 870)
 						{
-							for (int j = -1; j < 2; j++)
+							enemy_move_flag = false;
+						}
+						else if (enemys_stage3_hard[a][b].x_E < 0)
+						{
+							enemy_move_flag = true;
+						}
+
+						//“G‚ÌF‚ğİ’è
+						switch (enemy_kind_stage3_hard[a][b])
+						{
+						case Yellow_Hard:
+							enemys_stage3_hard[a][b].kind_E = Yellow_Hard;
+							break;
+
+						case Green_Hard:
+							enemys_stage3_hard[a][b].kind_E = Green_Hard;
+							break;
+
+						case Blue_Hard:
+							enemys_stage3_hard[a][b].kind_E = Blue_Hard;
+							break;
+
+						case Red_Hard:
+							enemys_stage3_hard[a][b].kind_E = Red_Hard;
+							break;
+
+						default:
+							break;
+						}
+
+						for (int i = 0; i < 5; i++)
+						{
+							if (Tamas[i].x < enemys_stage3_hard[a][b].x_E + enemys_stage3_hard[a][b].width_E &&		//’e‚Ì¶ < “G‚Ì‰E
+								Tamas[i].y < enemys_stage3_hard[a][b].y_E + enemys_stage3_hard[a][b].height_E &&		//’e‚Ìã < “G‚Ì‰º
+								Tamas[i].x + Tamas[i].width > enemys_stage3_hard[a][b].x_E &&	//’e‚Ì‰E > “G‚Ì¶
+								Tamas[i].y + Tamas[i].height > enemys_stage3_hard[a][b].y_E)	//’e‚Ì‰º > “G‚Ìã
 							{
-								for (int k = -1; k < 2; k++)
+								for (int j = -1; j < 2; j++)
 								{
-									//“G‚ª‚¢‚éA‚©‚Â”z—ñ“à‚ğQÆ‚µ‚Ä‚¢‚ê‚Î
-									if (a + j < 7 && a + j > -1 && b + k < 23 && b + k > -1 && enemy_kind_stage3[a + j][b + k] != -1)
+									for (int k = -1; k < 2; k++)
 									{
-										enemy_kind_stage3[a + j][b + k] = -1;
-										enemys_stage3[a + j][b + k].IsView_E = FALSE;
-										enemy_count_stage3--;
+										//“G‚ª‚¢‚éA‚©‚Â”z—ñ“à‚ğQÆ‚µ‚Ä‚¢‚ê‚Î
+										if (a + j < 7 && a + j > -1 && b + k < 23 && b + k > -1 && enemy_kind_stage3_hard[a + j][b + k] != -1)
+										{
+											//HP‚ªs‚«‚ê‚ÎÁ–ÅAc‚Á‚Ä‚¢‚ê‚Î1Œ¸‚ç‚·
+											if (enemys_stage3_hard[a + j][b + k].hp_E <= 1)
+											{
+												enemy_kind_stage3_hard[a + j][b + k] = -1;
+												enemys_stage3_hard[a + j][b + k].IsView_E = FALSE;
+												enemy_count_stage3_hard--;
+											}
+											else
+											{
+												enemys_stage3_hard[a + j][b + k].hp_E--;
+											}
+										}
 									}
 								}
+								Tamas[i].IsView = FALSE;
+								Tamas[i].y = -20;
 							}
-							Tamas[i].IsView = FALSE;
-							Tamas[i].y = -20;
+							else
+							{
+								if (enemy_move_flag == true)
+								{
+									//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num++;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								else if (enemy_move_flag == false)
+								{
+									//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
+									if ((int)Timer - enemy_move_tmp > 10)
+									{
+										enemy_move_num--;
+										enemy_move_tmp = (int)Timer;
+									}
+								}
+								enemys_stage3_hard[a][b].position_E(a, b, 105 + enemy_move_num, 100);
+								enemys_stage3_hard[a][b].view_E(a, b);
+							}
+						}
+
+						//‹@‘Ì‚Æ“G‚Æ‚Ì“–‚½‚è”»’è
+						if (enemys_stage3_hard[a][b].x_E < PLAYER.x + PLAYER.width &&
+							PLAYER.x < enemys_stage3_hard[a][b].x_E + enemys_stage3_hard[a][b].width_E &&
+							PLAYER.y < enemys_stage3_hard[a][b].y_E + enemys_stage3_hard[a][b].height_E &&
+							enemys_stage3_hard[a][b].y_E < PLAYER.y + PLAYER.height)
+						{
+							if (enemys_stage3_hard[a][b].collision_flag == false)
+							{
+								if (enemys_stage3_hard[a][b].hp_E <= 1)
+								{
+									enemy_kind_stage3_hard[a][b] = -1;
+									enemys_stage3_hard[a][b].IsView_E = FALSE;
+									enemy_count_stage3_hard--;
+								}
+								else
+								{
+									enemys_stage3_hard[a][b].hp_E--;
+									enemys_stage3_hard[a][b].collision_flag = true;
+								}
+							}
 						}
 						else
 						{
-							if (enemy_move_flag == true)
-							{
-								//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
-								if ((int)Timer - enemy_move_tmp > 10)
-								{
-									enemy_move_num++;
-									enemy_move_tmp = (int)Timer;
-								}
-							}
-							else if (enemy_move_flag == false)
-							{
-								//1/100•b‚²‚Æ‚É“G‚ªˆÚ“®
-								if ((int)Timer - enemy_move_tmp > 10)
-								{
-									enemy_move_num--;
-									enemy_move_tmp = (int)Timer;
-								}
-							}
-							enemys_stage3[a][b].position_E(a, b, 105 + enemy_move_num, 100);
-							enemys_stage3[a][b].view_E(a, b);
+							enemys_stage3_hard[a][b].collision_flag = false;
 						}
-					}
-
-					//‹@‘Ì‚Æ“G‚Æ‚Ì“–‚½‚è”»’è
-					if (enemys_stage3[a][b].x_E < PLAYER.x + PLAYER.width &&
-						PLAYER.x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&
-						PLAYER.y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&
-						enemys_stage3[a][b].y_E < PLAYER.y + PLAYER.height)
-					{
-						enemy_kind_stage3[a][b] = -1;
-						enemys_stage3[a][b].IsView_E = FALSE;
-						enemy_count_stage3--;
 					}
 				}
 			}
 		}
 	}
 
+	//‹@‘Ì•\¦
+	DrawGraph(PLAYER.x, PLAYER.y, PLAYER.handle, TRUE);
+
+	//ƒNƒŠƒA”»’è
 	if (s_position_stage == 0)
 	{
 		int count = 189;
@@ -803,21 +1065,44 @@ VOID MY_GAME_PLAY(VOID)
 		{
 			for (int b = 0; b < 13; b++)
 			{
-				if (enemy_kind_stage2[a][b] != -1)
+				if (s_position_difficult == 0)
 				{
-					continue;
-				}
-				else
-				{
-					count--;
-					if (count <= 0)
+					if (enemy_kind_stage2[a][b] != -1)
 					{
-						Tamas[0].y = -20;
-						Tamas[1].y = -20;
-						Tamas[2].y = -20;
-						Tamas[3].y = -20;
-						Tamas[4].y = -20;
-						GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒNƒŠƒA)‚É‚·‚é
+						continue;
+					}
+					else
+					{
+						count--;
+						if (count <= 0)
+						{
+							Tamas[0].y = -20;
+							Tamas[1].y = -20;
+							Tamas[2].y = -20;
+							Tamas[3].y = -20;
+							Tamas[4].y = -20;
+							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒNƒŠƒA)‚É‚·‚é
+						}
+					}
+				}
+				else if (s_position_difficult == 100)
+				{
+					if (enemy_kind_stage2_hard[a][b] != -1)
+					{
+						continue;
+					}
+					else
+					{
+						count--;
+						if (count <= 0)
+						{
+							Tamas[0].y = -20;
+							Tamas[1].y = -20;
+							Tamas[2].y = -20;
+							Tamas[3].y = -20;
+							Tamas[4].y = -20;
+							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒNƒŠƒA)‚É‚·‚é
+						}
 					}
 				}
 			}
@@ -830,21 +1115,44 @@ VOID MY_GAME_PLAY(VOID)
 		{
 			for (int b = 0; b < 23; b++)
 			{
-				if (enemy_kind_stage3[a][b] != -1)
+				if (s_position_difficult == 0)
 				{
-					continue;
-				}
-				else
-				{
-					count--;
-					if (count <= 0)
+					if (enemy_kind_stage3[a][b] != -1)
 					{
-						Tamas[0].y = -20;
-						Tamas[1].y = -20;
-						Tamas[2].y = -20;
-						Tamas[3].y = -20;
-						Tamas[4].y = -20;
-						GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒNƒŠƒA)‚É‚·‚é
+						continue;
+					}
+					else
+					{
+						count--;
+						if (count <= 0)
+						{
+							Tamas[0].y = -20;
+							Tamas[1].y = -20;
+							Tamas[2].y = -20;
+							Tamas[3].y = -20;
+							Tamas[4].y = -20;
+							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒNƒŠƒA)‚É‚·‚é
+						}
+					}
+				}
+				else if (s_position_difficult == 100)
+				{
+					if (enemy_kind_stage3_hard[a][b] != -1)
+					{
+						continue;
+					}
+					else
+					{
+						count--;
+						if (count <= 0)
+						{
+							Tamas[0].y = -20;
+							Tamas[1].y = -20;
+							Tamas[2].y = -20;
+							Tamas[3].y = -20;
+							Tamas[4].y = -20;
+							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//ƒV[ƒ“‚ğƒGƒ“ƒh‰æ–Ê(ƒQ[ƒ€ƒNƒŠƒA)‚É‚·‚é
+						}
 					}
 				}
 			}

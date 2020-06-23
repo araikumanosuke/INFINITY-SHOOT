@@ -8,7 +8,8 @@ public:
 	int width_E;
 	int height_E;
 	int kind_E;
-	int hp_E;
+	int hp_E;	//Hardモードのみ使用する体力
+	bool collision_flag;
 	bool IsView_E;
 
 	Enemy();
