@@ -18,11 +18,12 @@ int GameSceneNow = (int)GAME_SCENE_TITLE;
 
 char AllKeyState[256];	//Ç∑Ç◊ÇƒÇÃÉLÅ[ÇÃèÛë‘Ç™ì¸ÇÈ
 
-IMAGE BG;		//îwåi
-IMAGE ROGO;		//ÉçÉS
+IMAGE BG;			//îwåi
+IMAGE ROGO;			//ÉçÉS
 IMAGE SANKAKU;		//éOäpå`
-IMAGE TAMA;		//íe
+IMAGE TAMA;			//íe
 IMAGE PLAYER;		//ÉvÉåÉCÉÑÅ[(ã@ëÃ)
+IMAGE EFFECT[28];	//îöî≠ÉGÉtÉFÉNÉg
 
 //ìG
 IMAGE E_YELLOW;
@@ -71,6 +72,35 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	image_load(&E_RED_HARD, 0, 0, GAME_IMAGE_ENEMY_RED_HARD);
 	image_load(&E_BLUE, 0, 0, GAME_IMAGE_ENEMY_BLUE);
 	image_load(&E_BLUE_HARD, 0, 0, GAME_IMAGE_ENEMY_BLUE_HARD);
+	
+	image_load(&EFFECT[0], 0, 0, GAME_IMAGE_EFFECT1);
+	image_load(&EFFECT[1], 0, 0, GAME_IMAGE_EFFECT2);
+	image_load(&EFFECT[2], 0, 0, GAME_IMAGE_EFFECT3);
+	image_load(&EFFECT[3], 0, 0, GAME_IMAGE_EFFECT4);
+	image_load(&EFFECT[4], 0, 0, GAME_IMAGE_EFFECT5);
+	image_load(&EFFECT[5], 0, 0, GAME_IMAGE_EFFECT6);
+	image_load(&EFFECT[6], 0, 0, GAME_IMAGE_EFFECT7);
+	image_load(&EFFECT[7], 0, 0, GAME_IMAGE_EFFECT8);
+	image_load(&EFFECT[8], 0, 0, GAME_IMAGE_EFFECT9);
+	image_load(&EFFECT[9], 0, 0, GAME_IMAGE_EFFECT10);
+	image_load(&EFFECT[10], 0, 0, GAME_IMAGE_EFFECT11);
+	image_load(&EFFECT[11], 0, 0, GAME_IMAGE_EFFECT12);
+	image_load(&EFFECT[12], 0, 0, GAME_IMAGE_EFFECT13);
+	image_load(&EFFECT[13], 0, 0, GAME_IMAGE_EFFECT14);
+	image_load(&EFFECT[14], 0, 0, GAME_IMAGE_EFFECT14);
+	image_load(&EFFECT[15], 0, 0, GAME_IMAGE_EFFECT13);
+	image_load(&EFFECT[16], 0, 0, GAME_IMAGE_EFFECT12);
+	image_load(&EFFECT[17], 0, 0, GAME_IMAGE_EFFECT11);
+	image_load(&EFFECT[18], 0, 0, GAME_IMAGE_EFFECT10);
+	image_load(&EFFECT[19], 0, 0, GAME_IMAGE_EFFECT9);
+	image_load(&EFFECT[20], 0, 0, GAME_IMAGE_EFFECT8);
+	image_load(&EFFECT[21], 0, 0, GAME_IMAGE_EFFECT7);
+	image_load(&EFFECT[22], 0, 0, GAME_IMAGE_EFFECT6);
+	image_load(&EFFECT[23], 0, 0, GAME_IMAGE_EFFECT5);
+	image_load(&EFFECT[24], 0, 0, GAME_IMAGE_EFFECT4);
+	image_load(&EFFECT[25], 0, 0, GAME_IMAGE_EFFECT3);
+	image_load(&EFFECT[26], 0, 0, GAME_IMAGE_EFFECT2);
+	image_load(&EFFECT[27], 0, 0, GAME_IMAGE_EFFECT1);
 
 	choice_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 48, 5, DX_FONTTYPE_ANTIALIASING);
 	play_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 24, 9, DX_FONTTYPE_ANTIALIASING);
