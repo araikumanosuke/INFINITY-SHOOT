@@ -221,12 +221,12 @@ VOID MY_GAME_PLAY(VOID)
 	{
 		if (s_position_difficult == 0)
 		{
-			DrawStringToHandle(10, 10, "STAGE 1-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage1);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:10.00", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+			DrawStringToHandle(10, 10, "STAGE 1-NORMAL", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), Small_FHandle, "ENEMY:%2d", enemy_count_stage1);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), Small_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
-			if (Current_Timer_Sec >= 10.0)
+			if (Current_Timer_Sec >= 30.0)
 			{
 				Tamas[0].y = -20;
 				Tamas[1].y = -20;
@@ -344,10 +344,10 @@ VOID MY_GAME_PLAY(VOID)
 		}
 		else if (s_position_difficult == 100)
 		{
-			DrawStringToHandle(10, 10, "STAGE 1-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage1_hard);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+			DrawStringToHandle(10, 10, "STAGE 1-HARD", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), Small_FHandle, "ENEMY:%2d", enemy_count_stage1_hard);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), Small_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
 			if (Current_Timer_Sec >= 30.0)
 			{
@@ -493,12 +493,12 @@ VOID MY_GAME_PLAY(VOID)
 	{
 		if (s_position_difficult == 0)
 		{
-			DrawStringToHandle(10, 10, "STAGE 2-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage2);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:10.00", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+			DrawStringToHandle(10, 10, "STAGE 2-NORMAL", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), Small_FHandle, "ENEMY:%2d", enemy_count_stage2);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:20.00", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), Small_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
-			if (Current_Timer_Sec >= 10.0)
+			if (Current_Timer_Sec >= 20.0)
 			{
 				Tamas[0].y = -20;
 				Tamas[1].y = -20;
@@ -615,12 +615,12 @@ VOID MY_GAME_PLAY(VOID)
 		}
 		else if (s_position_difficult == 100)
 		{
-			DrawStringToHandle(10, 10, "STAGE 2-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage2_hard);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+			DrawStringToHandle(10, 10, "STAGE 2-HARD", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), Small_FHandle, "ENEMY:%2d", enemy_count_stage2_hard);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:20.00", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), Small_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
-			if (Current_Timer_Sec >= 30.0)
+			if (Current_Timer_Sec >= 20.0)
 			{
 				Tamas[0].y = -20;
 				Tamas[1].y = -20;
@@ -763,12 +763,12 @@ VOID MY_GAME_PLAY(VOID)
 	{
 		if (s_position_difficult == 0)
 		{
-			DrawStringToHandle(10, 10, "STAGE 3-NORMAL", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage3);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:10.00", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+			DrawStringToHandle(10, 10, "STAGE 3-NORMAL", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), Small_FHandle, "ENEMY:%2d", enemy_count_stage3);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), Small_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
-			if (Current_Timer_Sec >= 10.0)
+			if (Current_Timer_Sec >= 30.0)
 			{
 				Tamas[0].y = -20;
 				Tamas[1].y = -20;
@@ -885,10 +885,10 @@ VOID MY_GAME_PLAY(VOID)
 		}
 		else if (s_position_difficult == 100)
 		{
-			DrawStringToHandle(10, 10, "STAGE 3-HARD", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), play_FHandle, "ENEMY:%2d", enemy_count_stage3_hard);
-			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), play_FHandle);
-			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), play_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+			DrawStringToHandle(10, 10, "STAGE 3-HARD", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(780, 10, GetColor(255, 255, 255), Small_FHandle, "ENEMY:%2d", enemy_count_stage3_hard);
+			DrawStringToHandle(10, 570, "TIME LIMIT 0:30.00", GetColor(255, 255, 255), Small_FHandle);
+			DrawFormatStringToHandle(720, 570, GetColor(255, 255, 255), Small_FHandle, "TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
 			if (Current_Timer_Sec >= 30.0)
 			{

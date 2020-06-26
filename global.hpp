@@ -57,14 +57,17 @@ extern IMAGE E_RED_HARD;
 extern IMAGE E_BLUE;
 extern IMAGE E_BLUE_HARD;
 
-extern int choice_FHandle;
-extern int play_FHandle;
+extern int Small_FHandle;
+extern int smallMiddle_FHandle;
+extern int Middle_FHandle;
+extern int Big_FHandle;
 
 extern int s_position_title;
 extern int s_position_stage;
 extern int s_position_difficult;
+extern int s_position_end_clear;
 
-extern bool s_flug;
+extern bool s_flag;
 
 extern int enemy_kind_stage1[9][21];
 extern int enemy_kind_stage2[13][13];
@@ -93,3 +96,9 @@ extern int Current_Timer_Min;
 extern bool enemy_move_flag;
 extern int enemy_move_num;
 extern int enemy_move_tmp;
+
+extern bool S1_Hard_PlayFlag;
+extern bool S2_Normal_PlayFlag;
+extern bool S2_Hard_PlayFlag;
+extern bool S3_Normal_PlayFlag;
+extern bool S3_Hard_PlayFlag;

@@ -35,8 +35,11 @@ IMAGE E_RED_HARD;
 IMAGE E_BLUE;
 IMAGE E_BLUE_HARD;
 
-int choice_FHandle;
-int play_FHandle;
+int Small_FHandle;
+int smallMiddle_FHandle;
+int Middle_FHandle;
+int bigMiddle_FHandle;
+int Big_FHandle;
 
 //ウィンドウ関係
 static WNDPROC WndProc;						//ウィンドウプロシージャのアドレス
@@ -102,8 +105,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	image_load(&EFFECT[26], 0, 0, GAME_IMAGE_EFFECT2);
 	image_load(&EFFECT[27], 0, 0, GAME_IMAGE_EFFECT1);
 
-	choice_FHandle = CreateFontToHandle("HG教科書体", 48, 5, DX_FONTTYPE_ANTIALIASING);
-	play_FHandle = CreateFontToHandle("HG教科書体", 24, 9, DX_FONTTYPE_ANTIALIASING);
+	Small_FHandle = CreateFontToHandle("HG教科書体", 24, 9, DX_FONTTYPE_ANTIALIASING);
+	smallMiddle_FHandle = CreateFontToHandle("HG教科書体", 36, 5, DX_FONTTYPE_ANTIALIASING);
+	Middle_FHandle = CreateFontToHandle("HG教科書体", 48, 5, DX_FONTTYPE_ANTIALIASING);
+	bigMiddle_FHandle = CreateFontToHandle("HG教科書体", 60, 5, DX_FONTTYPE_ANTIALIASING);
+	Big_FHandle = CreateFontToHandle("HG教科書体", 100, 5, DX_FONTTYPE_ANTIALIASING);
 
 	//無限ループ
 	while (TRUE)
@@ -181,9 +187,25 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DeleteGraph(E_RED_HARD.handle);
 	DeleteGraph(E_BLUE.handle);
 	DeleteGraph(E_BLUE_HARD.handle);
+	DeleteGraph(EFFECT[0].handle);
+	DeleteGraph(EFFECT[1].handle);
+	DeleteGraph(EFFECT[2].handle);
+	DeleteGraph(EFFECT[3].handle);
+	DeleteGraph(EFFECT[4].handle);
+	DeleteGraph(EFFECT[5].handle);
+	DeleteGraph(EFFECT[6].handle);
+	DeleteGraph(EFFECT[7].handle);
+	DeleteGraph(EFFECT[8].handle);
+	DeleteGraph(EFFECT[9].handle);
+	DeleteGraph(EFFECT[10].handle);
+	DeleteGraph(EFFECT[11].handle);
+	DeleteGraph(EFFECT[12].handle);
+	DeleteGraph(EFFECT[13].handle);
 
-	DeleteFontToHandle(choice_FHandle);
-	DeleteFontToHandle(play_FHandle);
+	DeleteFontToHandle(Middle_FHandle);
+	DeleteFontToHandle(Small_FHandle);
+	DeleteFontToHandle(Big_FHandle);
+	DeleteFontToHandle(smallMiddle_FHandle);
 
 	DxLib_End();		//ＤＸライブラリ使用の終了処理
 

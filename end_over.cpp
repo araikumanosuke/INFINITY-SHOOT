@@ -6,19 +6,24 @@
 //########## エンド画面の関数 ##########
 VOID MY_GAME_END_OVER(VOID)
 {
-	if (AllKeyState[KEY_INPUT_BACK] == 1)	//バックスペースーキーが押されていた時
+	//背景表示
+	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
+
+	DrawStringToHandle(185, 120, "GAME OVER...", GetColor(255, 255, 255), Big_FHandle);
+
+	DrawGraph(300, 387, SANKAKU.handle, TRUE);
+
+	DrawStringToHandle(330, 380, "BACK TO TITLE", GetColor(255, 255, 255), Middle_FHandle);
+
+	if (AllKeyState[KEY_INPUT_RETURN] == 1)	//エンターキーが押されていた時
 	{
 		ENEMY_INIT();
 		s_position_title = 0;
-		s_position_stage = 0;
-		s_position_difficult = 0;
-		s_flug = TRUE;
+		s_flag = TRUE;
 		enemy_count_stage1 = 90;
 		enemy_count_stage2 = 91;
 		enemy_count_stage3 = 81;
 		Syoki_Flag = true;
-		Current_Timer_Sec = 0.0;
-		Current_Timer_Min = 0;
 		enemy_move_flag = true;
 		enemy_move_num = 0;
 		enemy_move_tmp = 0;
