@@ -8,6 +8,7 @@ int s_position_title = 0;
 VOID MY_GAME_TITLE(VOID)
 {
 	//エンド画面で初期化するとまずい変数
+	s_position_ranking = 0;
 	s_position_stage = 0;
 	s_position_difficult = 0;
 	s_position_end_clear = 0;
@@ -43,8 +44,8 @@ VOID MY_GAME_TITLE(VOID)
 
 	DrawGraph(370, 357 + s_position_title, SANKAKU.handle, TRUE);
 
-	DrawStringToHandle(400, 350, "START", GetColor(255, 255, 255), Middle_FHandle);
-	DrawStringToHandle(400, 450, "RANKING", GetColor(255, 255, 255), Middle_FHandle);
+	DrawStringToHandle(400, 350, "START", GetColor(255, 255, 255), bigMiddle_FHandle);
+	DrawStringToHandle(400, 450, "RANKING", GetColor(255, 255, 255), bigMiddle_FHandle);
 	
 	//DrawString(0, 0, "タイトル画面(エンターキーを押してください)", GetColor(255, 255, 255));
 

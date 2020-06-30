@@ -16,7 +16,7 @@ VOID MY_GAME_END_CLEAR(VOID)
 	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
 
 	DrawStringToHandle(155, 120, "GAME CLEAR!!", GetColor(255, 255, 255), Big_FHandle);
-	DrawFormatStringToHandle(230, 220, GetColor(255, 255, 255), Middle_FHandle, "CLEAR TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
+	DrawFormatStringToHandle(230, 220, GetColor(255, 255, 255), bigMiddle_FHandle, "CLEAR TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
 	if (s_position_stage == 0)
 	{
@@ -84,8 +84,8 @@ VOID MY_GAME_END_CLEAR(VOID)
 
 	DrawGraph(300, 387 + s_position_end_clear, SANKAKU.handle, TRUE);
 
-	DrawStringToHandle(330, 380, "BACK TO TITLE", GetColor(255, 255, 255), Middle_FHandle);
-	DrawStringToHandle(330, 480, "RANKING", GetColor(255, 255, 255), Middle_FHandle);
+	DrawStringToHandle(330, 380, "BACK TO TITLE", GetColor(255, 255, 255), bigMiddle_FHandle);
+	DrawStringToHandle(330, 480, "RANKING", GetColor(255, 255, 255), bigMiddle_FHandle);
 
 
 	if (AllKeyState[KEY_INPUT_RETURN] == 1)	//エンターキーが押されていた時
@@ -111,15 +111,10 @@ VOID MY_GAME_END_CLEAR(VOID)
 				}
 				if (Current_Timer_Sec < S1_KiteiTime)
 				{
-					DrawStringToHandle(170, 280, "(Release the HARD mode!)", GetColor(255, 255, 255), Middle_FHandle);
 					if (S1_Hard_PlayFlag == false)
 					{
 						S1_Hard_PlayFlag = true;
 					}
-				}
-				else
-				{
-					DrawStringToHandle(10, 280, "(If you clear it within 15 seconds...?)", GetColor(255, 255, 255), Middle_FHandle);
 				}
 			}
 		}

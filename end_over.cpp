@@ -13,7 +13,7 @@ VOID MY_GAME_END_OVER(VOID)
 
 	DrawGraph(300, 387, SANKAKU.handle, TRUE);
 
-	DrawStringToHandle(330, 380, "BACK TO TITLE", GetColor(255, 255, 255), Middle_FHandle);
+	DrawStringToHandle(330, 380, "BACK TO TITLE", GetColor(255, 255, 255), bigMiddle_FHandle);
 
 	if (AllKeyState[KEY_INPUT_RETURN] == 1)	//エンターキーが押されていた時
 	{

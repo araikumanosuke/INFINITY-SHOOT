@@ -60,9 +60,11 @@ extern IMAGE E_BLUE_HARD;
 extern int Small_FHandle;
 extern int smallMiddle_FHandle;
 extern int Middle_FHandle;
+extern int bigMiddle_FHandle;
 extern int Big_FHandle;
 
 extern int s_position_title;
+extern int s_position_ranking;
 extern int s_position_stage;
 extern int s_position_difficult;
 extern int s_position_end_clear;

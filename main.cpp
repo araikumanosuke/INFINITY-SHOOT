@@ -107,8 +107,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	Small_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 24, 9, DX_FONTTYPE_ANTIALIASING);
 	smallMiddle_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 36, 5, DX_FONTTYPE_ANTIALIASING);
-	Middle_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 48, 5, DX_FONTTYPE_ANTIALIASING);
-	bigMiddle_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 60, 5, DX_FONTTYPE_ANTIALIASING);
+	Middle_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 42, 5, DX_FONTTYPE_ANTIALIASING);
+	bigMiddle_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 48, 5, DX_FONTTYPE_ANTIALIASING);
 	Big_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 100, 5, DX_FONTTYPE_ANTIALIASING);
 
 	//ñ≥å¿ÉãÅ[Év
@@ -202,7 +202,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DeleteGraph(EFFECT[12].handle);
 	DeleteGraph(EFFECT[13].handle);
 
-	DeleteFontToHandle(Middle_FHandle);
+	DeleteFontToHandle(bigMiddle_FHandle);
 	DeleteFontToHandle(Small_FHandle);
 	DeleteFontToHandle(Big_FHandle);
 	DeleteFontToHandle(smallMiddle_FHandle);

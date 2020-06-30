@@ -606,7 +606,7 @@ VOID MY_GAME_PLAY(VOID)
 							enemy_kind_stage2[a][b] = -1;
 							enemys_stage2[a][b].IsView_E = FALSE;
 							enemy_count_stage2--;
-							Effect effect(enemys_stage1[a][b].x_E, enemys_stage1[a][b].y_E);
+							Effect effect(enemys_stage2[a][b].x_E, enemys_stage2[a][b].y_E);
 							effect.effect_view();
 						}
 					}

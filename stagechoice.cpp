@@ -257,36 +257,36 @@ VOID MY_GAME_STAGECHOICE(VOID)
 		}
 	}
 
-	DrawStringToHandle(200, 300, "STAGE 1", GetColor(255, 255, 255), Middle_FHandle);
+	DrawStringToHandle(200, 300, "STAGE 1", GetColor(255, 255, 255), bigMiddle_FHandle);
 	if (S2_Normal_PlayFlag == true)
 	{
-		DrawStringToHandle(200, 400, "STAGE 2", GetColor(255, 255, 255), Middle_FHandle);
+		DrawStringToHandle(200, 400, "STAGE 2", GetColor(255, 255, 255), bigMiddle_FHandle);
 	}
 	if (S3_Normal_PlayFlag == true)
 	{
-		DrawStringToHandle(200, 500, "STAGE 3", GetColor(255, 255, 255), Middle_FHandle);
+		DrawStringToHandle(200, 500, "STAGE 3", GetColor(255, 255, 255), bigMiddle_FHandle);
 	}
 	
-	DrawStringToHandle(600, 350, "NORMAL", GetColor(255, 255, 255), Middle_FHandle);
+	DrawStringToHandle(600, 350, "NORMAL", GetColor(255, 255, 255), bigMiddle_FHandle);
 	if (s_position_stage == 0)
 	{
 		if (S1_Hard_PlayFlag == true)
 		{
-			DrawStringToHandle(600, 450, "HARD", GetColor(255, 255, 255), Middle_FHandle);
+			DrawStringToHandle(600, 450, "HARD", GetColor(255, 255, 255), bigMiddle_FHandle);
 		}
 	}
 	else if (s_position_stage == 100)
 	{
 		if (S2_Hard_PlayFlag == true)
 		{
-			DrawStringToHandle(600, 450, "HARD", GetColor(255, 255, 255), Middle_FHandle);
+			DrawStringToHandle(600, 450, "HARD", GetColor(255, 255, 255), bigMiddle_FHandle);
 		}
 	}
 	else if (s_position_stage == 200)
 	{
 		if (S3_Hard_PlayFlag == true)
 		{
-			DrawStringToHandle(600, 450, "HARD", GetColor(255, 255, 255), Middle_FHandle);
+			DrawStringToHandle(600, 450, "HARD", GetColor(255, 255, 255), bigMiddle_FHandle);
 		}
 	}
 }
