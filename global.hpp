@@ -33,6 +33,15 @@ struct IMAGE {
 	int height;
 };
 
+class TIME_RANK {
+public:
+	double first_sec = 59.99;
+	double second_sec = 59.99;
+	double third_sec = 59.99;
+	double forth_sec = 59.99;
+	double fifth_sec = 59.99;
+};
+
 //########## グローバル変数 ##########
 
 //キーボード関連
@@ -62,6 +71,7 @@ extern int smallMiddle_FHandle;
 extern int Middle_FHandle;
 extern int bigMiddle_FHandle;
 extern int Big_FHandle;
+extern int superBig_FHandle;
 
 extern int s_position_title;
 extern int s_position_ranking;
@@ -104,3 +114,10 @@ extern bool S2_Normal_PlayFlag;
 extern bool S2_Hard_PlayFlag;
 extern bool S3_Normal_PlayFlag;
 extern bool S3_Hard_PlayFlag;
+
+extern TIME_RANK stage1_N;
+extern TIME_RANK stage1_H;
+extern TIME_RANK stage2_N;
+extern TIME_RANK stage2_H;
+extern TIME_RANK stage3_N;
+extern TIME_RANK stage3_H;

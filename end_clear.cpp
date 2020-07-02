@@ -15,9 +15,10 @@ VOID MY_GAME_END_CLEAR(VOID)
 	//背景表示
 	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
 
-	DrawStringToHandle(155, 120, "GAME CLEAR!!", GetColor(255, 255, 255), Big_FHandle);
+	DrawStringToHandle(155, 120, "GAME CLEAR!!", GetColor(255, 255, 255), superBig_FHandle);
 	DrawFormatStringToHandle(230, 220, GetColor(255, 255, 255), bigMiddle_FHandle, "CLEAR TIME %02d:%05.2lf", Current_Timer_Min, Current_Timer_Sec);
 
+	//HARDモードを開放できるか
 	if (s_position_stage == 0)
 	{
 		if (s_position_difficult == 0)
@@ -70,6 +71,7 @@ VOID MY_GAME_END_CLEAR(VOID)
 		}
 	}
 
+	//三角の移動
 	if (AllKeyState[KEY_INPUT_DOWN] == 1 || AllKeyState[KEY_INPUT_UP] == 1)
 	{
 		if (s_position_end_clear == 0)
@@ -100,6 +102,215 @@ VOID MY_GAME_END_CLEAR(VOID)
 		enemy_move_flag = true;
 		enemy_move_num = 0;
 		enemy_move_tmp = 0;
+
+		//ランキング更新
+		if (s_position_stage == 0)
+		{
+			if (s_position_difficult == 0)
+			{
+				if (Current_Timer_Sec < stage1_N.first_sec)
+				{
+					stage1_N.fifth_sec = stage1_N.forth_sec;
+					stage1_N.forth_sec = stage1_N.third_sec;
+					stage1_N.third_sec = stage1_N.second_sec;
+					stage1_N.second_sec = stage1_N.first_sec;
+					stage1_N.first_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage1_N.second_sec)
+				{
+					stage1_N.fifth_sec = stage1_N.forth_sec;
+					stage1_N.forth_sec = stage1_N.third_sec;
+					stage1_N.third_sec = stage1_N.second_sec;
+					stage1_N.second_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage1_N.third_sec)
+				{
+					stage1_N.fifth_sec = stage1_N.forth_sec;
+					stage1_N.forth_sec = stage1_N.third_sec;
+					stage1_N.third_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage1_N.forth_sec)
+				{
+					stage1_N.fifth_sec = stage1_N.forth_sec;
+					stage1_N.forth_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage1_N.fifth_sec)
+				{
+					stage1_N.fifth_sec = Current_Timer_Sec;
+				}
+			}
+			else if (s_position_difficult == 100)
+			{
+				if (Current_Timer_Sec < stage1_H.first_sec)
+				{
+					stage1_H.fifth_sec = stage1_H.forth_sec;
+					stage1_H.forth_sec = stage1_H.third_sec;
+					stage1_H.third_sec = stage1_H.second_sec;
+					stage1_H.second_sec = stage1_H.first_sec;
+					stage1_H.first_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage1_H.second_sec)
+				{
+					stage1_H.fifth_sec = stage1_H.forth_sec;
+					stage1_H.forth_sec = stage1_H.third_sec;
+					stage1_H.third_sec = stage1_H.second_sec;
+					stage1_H.second_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage1_H.third_sec)
+				{
+					stage1_H.fifth_sec = stage1_H.forth_sec;
+					stage1_H.forth_sec = stage1_H.third_sec;
+					stage1_H.third_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage1_H.forth_sec)
+				{
+					stage1_H.fifth_sec = stage1_H.forth_sec;
+					stage1_H.forth_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage1_H.fifth_sec)
+				{
+					stage1_H.fifth_sec = Current_Timer_Sec;
+				}
+			}
+		}
+		else if (s_position_stage == 100)
+		{
+			if (s_position_difficult == 0)
+			{
+				if (Current_Timer_Sec < stage2_N.first_sec)
+				{
+					stage2_N.fifth_sec = stage2_N.forth_sec;
+					stage2_N.forth_sec = stage2_N.third_sec;
+					stage2_N.third_sec = stage2_N.second_sec;
+					stage2_N.second_sec = stage2_N.first_sec;
+					stage2_N.first_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage2_N.second_sec)
+				{
+					stage2_N.fifth_sec = stage2_N.forth_sec;
+					stage2_N.forth_sec = stage2_N.third_sec;
+					stage2_N.third_sec = stage2_N.second_sec;
+					stage2_N.second_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage2_N.third_sec)
+				{
+					stage2_N.fifth_sec = stage2_N.forth_sec;
+					stage2_N.forth_sec = stage2_N.third_sec;
+					stage2_N.third_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage2_N.forth_sec)
+				{
+					stage2_N.fifth_sec = stage2_N.forth_sec;
+					stage2_N.forth_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage2_N.fifth_sec)
+				{
+					stage2_N.fifth_sec = Current_Timer_Sec;
+				}
+			}
+			else if (s_position_difficult == 100)
+			{
+				if (Current_Timer_Sec < stage2_H.first_sec)
+				{
+					stage2_H.fifth_sec = stage2_H.forth_sec;
+					stage2_H.forth_sec = stage2_H.third_sec;
+					stage2_H.third_sec = stage2_H.second_sec;
+					stage2_H.second_sec = stage2_H.first_sec;
+					stage2_H.first_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage2_H.second_sec)
+				{
+					stage2_H.fifth_sec = stage2_H.forth_sec;
+					stage2_H.forth_sec = stage2_H.third_sec;
+					stage2_H.third_sec = stage2_H.second_sec;
+					stage2_H.second_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage2_H.third_sec)
+				{
+					stage2_H.fifth_sec = stage2_H.forth_sec;
+					stage2_H.forth_sec = stage2_H.third_sec;
+					stage2_H.third_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage2_H.forth_sec)
+				{
+					stage2_H.fifth_sec = stage2_H.forth_sec;
+					stage2_H.forth_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage2_H.fifth_sec)
+				{
+					stage2_H.fifth_sec = Current_Timer_Sec;
+				}
+			}
+		}
+		else if (s_position_stage == 200)
+		{
+			if (s_position_difficult == 0)
+			{
+				if (Current_Timer_Sec < stage3_N.first_sec)
+				{
+					stage3_N.fifth_sec = stage3_N.forth_sec;
+					stage3_N.forth_sec = stage3_N.third_sec;
+					stage3_N.third_sec = stage3_N.second_sec;
+					stage3_N.second_sec = stage3_N.first_sec;
+					stage3_N.first_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage3_N.second_sec)
+				{
+					stage3_N.fifth_sec = stage3_N.forth_sec;
+					stage3_N.forth_sec = stage3_N.third_sec;
+					stage3_N.third_sec = stage3_N.second_sec;
+					stage3_N.second_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage3_N.third_sec)
+				{
+					stage3_N.fifth_sec = stage3_N.forth_sec;
+					stage3_N.forth_sec = stage3_N.third_sec;
+					stage3_N.third_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage3_N.forth_sec)
+				{
+					stage3_N.fifth_sec = stage3_N.forth_sec;
+					stage3_N.forth_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage3_N.fifth_sec)
+				{
+					stage3_N.fifth_sec = Current_Timer_Sec;
+				}
+			}
+			else if (s_position_difficult == 100)
+			{
+				if (Current_Timer_Sec < stage3_H.first_sec)
+				{
+					stage3_H.fifth_sec = stage3_H.forth_sec;
+					stage3_H.forth_sec = stage3_H.third_sec;
+					stage3_H.third_sec = stage3_H.second_sec;
+					stage3_H.second_sec = stage3_H.first_sec;
+					stage3_H.first_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage3_H.second_sec)
+				{
+					stage3_H.fifth_sec = stage3_H.forth_sec;
+					stage3_H.forth_sec = stage3_H.third_sec;
+					stage3_H.third_sec = stage3_H.second_sec;
+					stage3_H.second_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage3_H.third_sec)
+				{
+					stage3_H.fifth_sec = stage3_H.forth_sec;
+					stage3_H.forth_sec = stage3_H.third_sec;
+					stage3_H.third_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage3_H.forth_sec)
+				{
+					stage3_H.fifth_sec = stage3_H.forth_sec;
+					stage3_H.forth_sec = Current_Timer_Sec;
+				}
+				else if (Current_Timer_Sec < stage3_H.fifth_sec)
+				{
+					stage3_H.fifth_sec = Current_Timer_Sec;
+				}
+			}
+		}
 
 		if (s_position_stage == 0)
 		{

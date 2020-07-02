@@ -9,7 +9,7 @@ VOID MY_GAME_END_OVER(VOID)
 	//îwåiï\é¶
 	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
 
-	DrawStringToHandle(185, 120, "GAME OVER...", GetColor(255, 255, 255), Big_FHandle);
+	DrawStringToHandle(185, 120, "GAME OVER...", GetColor(255, 255, 255), superBig_FHandle);
 
 	DrawGraph(300, 387, SANKAKU.handle, TRUE);
 

@@ -40,6 +40,7 @@ int smallMiddle_FHandle;
 int Middle_FHandle;
 int bigMiddle_FHandle;
 int Big_FHandle;
+int superBig_FHandle;
 
 //ウィンドウ関係
 static WNDPROC WndProc;						//ウィンドウプロシージャのアドレス
@@ -109,7 +110,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	smallMiddle_FHandle = CreateFontToHandle("HG教科書体", 36, 5, DX_FONTTYPE_ANTIALIASING);
 	Middle_FHandle = CreateFontToHandle("HG教科書体", 42, 5, DX_FONTTYPE_ANTIALIASING);
 	bigMiddle_FHandle = CreateFontToHandle("HG教科書体", 48, 5, DX_FONTTYPE_ANTIALIASING);
-	Big_FHandle = CreateFontToHandle("HG教科書体", 100, 5, DX_FONTTYPE_ANTIALIASING);
+	Big_FHandle = CreateFontToHandle("HG教科書体", 60, 5, DX_FONTTYPE_ANTIALIASING);
+	superBig_FHandle = CreateFontToHandle("HG教科書体", 100, 5, DX_FONTTYPE_ANTIALIASING);
 
 	//無限ループ
 	while (TRUE)
@@ -204,7 +206,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	DeleteFontToHandle(bigMiddle_FHandle);
 	DeleteFontToHandle(Small_FHandle);
-	DeleteFontToHandle(Big_FHandle);
+	DeleteFontToHandle(superBig_FHandle);
 	DeleteFontToHandle(smallMiddle_FHandle);
 
 	DxLib_End();		//ＤＸライブラリ使用の終了処理
