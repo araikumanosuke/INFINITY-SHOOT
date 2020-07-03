@@ -94,7 +94,7 @@ Enemy enemys_stage3[7][23];
 
 Enemy enemys_stage3_hard[7][23];
 
-Tama Tamas[5];
+Tama Tamas[20];
 
 int enemy_count_stage1 = 90;
 
@@ -207,10 +207,85 @@ VOID MY_GAME_PLAY(VOID)
 			Tamas[4].IsView = TRUE;
 			Tamas[4].position();
 		}
+		else if (Tamas[4].IsView == TRUE && Tamas[5].IsView == FALSE)
+		{
+			Tamas[5].IsView = TRUE;
+			Tamas[5].position();
+		}
+		else if (Tamas[5].IsView == TRUE && Tamas[6].IsView == FALSE)
+		{
+			Tamas[6].IsView = TRUE;
+			Tamas[6].position();
+		}
+		else if (Tamas[6].IsView == TRUE && Tamas[7].IsView == FALSE)
+		{
+			Tamas[7].IsView = TRUE;
+			Tamas[7].position();
+		}
+		else if (Tamas[7].IsView == TRUE && Tamas[8].IsView == FALSE)
+		{
+			Tamas[8].IsView = TRUE;
+			Tamas[8].position();
+		}
+		else if (Tamas[8].IsView == TRUE && Tamas[9].IsView == FALSE)
+		{
+			Tamas[9].IsView = TRUE;
+			Tamas[9].position();
+		}
+		else if (Tamas[9].IsView == TRUE && Tamas[10].IsView == FALSE)
+		{
+			Tamas[10].IsView = TRUE;
+			Tamas[10].position();
+		}
+		else if (Tamas[10].IsView == TRUE && Tamas[11].IsView == FALSE)
+		{
+			Tamas[11].IsView = TRUE;
+			Tamas[11].position();
+		}
+		else if (Tamas[11].IsView == TRUE && Tamas[12].IsView == FALSE)
+		{
+			Tamas[12].IsView = TRUE;
+			Tamas[12].position();
+		}
+		else if (Tamas[12].IsView == TRUE && Tamas[13].IsView == FALSE)
+		{
+			Tamas[13].IsView = TRUE;
+			Tamas[13].position();
+		}
+		else if (Tamas[13].IsView == TRUE && Tamas[14].IsView == FALSE)
+		{
+			Tamas[14].IsView = TRUE;
+			Tamas[14].position();
+		}
+		else if (Tamas[14].IsView == TRUE && Tamas[15].IsView == FALSE)
+		{
+			Tamas[15].IsView = TRUE;
+			Tamas[15].position();
+		}
+		else if (Tamas[15].IsView == TRUE && Tamas[16].IsView == FALSE)
+		{
+			Tamas[16].IsView = TRUE;
+			Tamas[16].position();
+		}
+		else if (Tamas[16].IsView == TRUE && Tamas[17].IsView == FALSE)
+		{
+			Tamas[17].IsView = TRUE;
+			Tamas[17].position();
+		}
+		else if (Tamas[17].IsView == TRUE && Tamas[18].IsView == FALSE)
+		{
+			Tamas[18].IsView = TRUE;
+			Tamas[18].position();
+		}
+		else if (Tamas[18].IsView == TRUE && Tamas[19].IsView == FALSE)
+		{
+			Tamas[19].IsView = TRUE;
+			Tamas[19].position();
+		}
 	}
 
 	//弾表示
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		Tamas[i].view();
 		Tamas[i].flag_false();
@@ -228,11 +303,10 @@ VOID MY_GAME_PLAY(VOID)
 
 			if (Current_Timer_Sec >= 30.0)
 			{
-				Tamas[0].y = -20;
-				Tamas[1].y = -20;
-				Tamas[2].y = -20;
-				Tamas[3].y = -20;
-				Tamas[4].y = -20;
+				for (int i = 0; i < 20; i++)
+				{
+					Tamas[i].y = -20;
+				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
 			}
 
@@ -276,7 +350,7 @@ VOID MY_GAME_PLAY(VOID)
 						}
 
 						//弾と敵との当たり判定
-						for (int i = 0; i < 5; i++)
+						for (int i = 0; i < 20; i++)
 						{
 							if (Tamas[i].x < enemys_stage1[a][b].x_E + enemys_stage1[a][b].width_E &&		//弾の左 < 敵の右
 								Tamas[i].y < enemys_stage1[a][b].y_E + enemys_stage1[a][b].height_E &&		//弾の上 < 敵の下
@@ -351,11 +425,10 @@ VOID MY_GAME_PLAY(VOID)
 
 			if (Current_Timer_Sec >= 30.0)
 			{
-				Tamas[0].y = -20;
-				Tamas[1].y = -20;
-				Tamas[2].y = -20;
-				Tamas[3].y = -20;
-				Tamas[4].y = -20;
+				for (int i = 0; i < 20; i++)
+				{
+					Tamas[i].y = -20;
+				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
 			}
 
@@ -399,7 +472,7 @@ VOID MY_GAME_PLAY(VOID)
 						}
 
 						//弾と敵との当たり判定
-						for (int i = 0; i < 5; i++)
+						for (int i = 0; i < 20; i++)
 						{
 							if (Tamas[i].x < enemys_stage1_hard[a][b].x_E + enemys_stage1_hard[a][b].width_E &&		//弾の左 < 敵の右
 								Tamas[i].y < enemys_stage1_hard[a][b].y_E + enemys_stage1_hard[a][b].height_E &&		//弾の上 < 敵の下
@@ -500,11 +573,10 @@ VOID MY_GAME_PLAY(VOID)
 
 			if (Current_Timer_Sec >= 20.0)
 			{
-				Tamas[0].y = -20;
-				Tamas[1].y = -20;
-				Tamas[2].y = -20;
-				Tamas[3].y = -20;
-				Tamas[4].y = -20;
+				for (int i = 0; i < 20; i++)
+				{
+					Tamas[i].y = -20;
+				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
 			}
 
@@ -547,7 +619,7 @@ VOID MY_GAME_PLAY(VOID)
 							break;
 						}
 
-						for (int i = 0; i < 5; i++)
+						for (int i = 0; i < 20; i++)
 						{
 							if (Tamas[i].x < enemys_stage2[a][b].x_E + enemys_stage2[a][b].width_E &&		//弾の左 < 敵の右
 								Tamas[i].y < enemys_stage2[a][b].y_E + enemys_stage2[a][b].height_E &&		//弾の上 < 敵の下
@@ -622,11 +694,10 @@ VOID MY_GAME_PLAY(VOID)
 
 			if (Current_Timer_Sec >= 20.0)
 			{
-				Tamas[0].y = -20;
-				Tamas[1].y = -20;
-				Tamas[2].y = -20;
-				Tamas[3].y = -20;
-				Tamas[4].y = -20;
+				for (int i = 0; i < 20; i++)
+				{
+					Tamas[i].y = -20;
+				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
 			}
 
@@ -669,7 +740,7 @@ VOID MY_GAME_PLAY(VOID)
 							break;
 						}
 
-						for (int i = 0; i < 5; i++)
+						for (int i = 0; i < 20; i++)
 						{
 							if (Tamas[i].x < enemys_stage2_hard[a][b].x_E + enemys_stage2_hard[a][b].width_E &&		//弾の左 < 敵の右
 								Tamas[i].y < enemys_stage2_hard[a][b].y_E + enemys_stage2_hard[a][b].height_E &&		//弾の上 < 敵の下
@@ -770,11 +841,10 @@ VOID MY_GAME_PLAY(VOID)
 
 			if (Current_Timer_Sec >= 30.0)
 			{
-				Tamas[0].y = -20;
-				Tamas[1].y = -20;
-				Tamas[2].y = -20;
-				Tamas[3].y = -20;
-				Tamas[4].y = -20;
+				for (int i = 0; i < 20; i++)
+				{
+					Tamas[i].y = -20;
+				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
 			}
 
@@ -817,7 +887,7 @@ VOID MY_GAME_PLAY(VOID)
 							break;
 						}
 
-						for (int i = 0; i < 5; i++)
+						for (int i = 0; i < 20; i++)
 						{
 							if (Tamas[i].x < enemys_stage3[a][b].x_E + enemys_stage3[a][b].width_E &&		//弾の左 < 敵の右
 								Tamas[i].y < enemys_stage3[a][b].y_E + enemys_stage3[a][b].height_E &&		//弾の上 < 敵の下
@@ -892,11 +962,10 @@ VOID MY_GAME_PLAY(VOID)
 
 			if (Current_Timer_Sec >= 30.0)
 			{
-				Tamas[0].y = -20;
-				Tamas[1].y = -20;
-				Tamas[2].y = -20;
-				Tamas[3].y = -20;
-				Tamas[4].y = -20;
+				for (int i = 0; i < 20; i++)
+				{
+					Tamas[i].y = -20;
+				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
 			}
 
@@ -939,7 +1008,7 @@ VOID MY_GAME_PLAY(VOID)
 							break;
 						}
 
-						for (int i = 0; i < 5; i++)
+						for (int i = 0; i < 20; i++)
 						{
 							if (Tamas[i].x < enemys_stage3_hard[a][b].x_E + enemys_stage3_hard[a][b].width_E &&		//弾の左 < 敵の右
 								Tamas[i].y < enemys_stage3_hard[a][b].y_E + enemys_stage3_hard[a][b].height_E &&		//弾の上 < 敵の下
@@ -1052,11 +1121,10 @@ VOID MY_GAME_PLAY(VOID)
 						count--;
 						if (count <= 0)
 						{
-							Tamas[0].y = -20;
-							Tamas[1].y = -20;
-							Tamas[2].y = -20;
-							Tamas[3].y = -20;
-							Tamas[4].y = -20;
+							for (int i = 0; i < 20; i++)
+							{
+								Tamas[i].y = -20;
+							}
 							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
 						}
 					}
@@ -1072,11 +1140,10 @@ VOID MY_GAME_PLAY(VOID)
 						count--;
 						if (count <= 0)
 						{
-							Tamas[0].y = -20;
-							Tamas[1].y = -20;
-							Tamas[2].y = -20;
-							Tamas[3].y = -20;
-							Tamas[4].y = -20;
+							for (int i = 0; i < 20; i++)
+							{
+								Tamas[i].y = -20;
+							}
 							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
 						}
 					}
@@ -1102,11 +1169,10 @@ VOID MY_GAME_PLAY(VOID)
 						count--;
 						if (count <= 0)
 						{
-							Tamas[0].y = -20;
-							Tamas[1].y = -20;
-							Tamas[2].y = -20;
-							Tamas[3].y = -20;
-							Tamas[4].y = -20;
+							for (int i = 0; i < 20; i++)
+							{
+								Tamas[i].y = -20;
+							}
 							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
 						}
 					}
@@ -1122,11 +1188,10 @@ VOID MY_GAME_PLAY(VOID)
 						count--;
 						if (count <= 0)
 						{
-							Tamas[0].y = -20;
-							Tamas[1].y = -20;
-							Tamas[2].y = -20;
-							Tamas[3].y = -20;
-							Tamas[4].y = -20;
+							for (int i = 0; i < 20; i++)
+							{
+								Tamas[i].y = -20;
+							}
 							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
 						}
 					}
@@ -1152,11 +1217,10 @@ VOID MY_GAME_PLAY(VOID)
 						count--;
 						if (count <= 0)
 						{
-							Tamas[0].y = -20;
-							Tamas[1].y = -20;
-							Tamas[2].y = -20;
-							Tamas[3].y = -20;
-							Tamas[4].y = -20;
+							for (int i = 0; i < 20; i++)
+							{
+								Tamas[i].y = -20;
+							}
 							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
 						}
 					}
@@ -1172,11 +1236,10 @@ VOID MY_GAME_PLAY(VOID)
 						count--;
 						if (count <= 0)
 						{
-							Tamas[0].y = -20;
-							Tamas[1].y = -20;
-							Tamas[2].y = -20;
-							Tamas[3].y = -20;
-							Tamas[4].y = -20;
+							for (int i = 0; i < 20; i++)
+							{
+								Tamas[i].y = -20;
+							}
 							GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
 						}
 					}

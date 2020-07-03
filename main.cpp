@@ -1,5 +1,6 @@
 //########## ヘッダーファイル読み込み ##########
 #include <DxLib.h>
+#include <stdio.h>
 #include "header.hpp"
 #include "global.hpp"
 #include "main.hpp"
@@ -34,6 +35,15 @@ IMAGE E_RED;
 IMAGE E_RED_HARD;
 IMAGE E_BLUE;
 IMAGE E_BLUE_HARD;
+
+char txt[6][100] = {
+	{GAME_RANK_TXT1_N},
+	{GAME_RANK_TXT1_H},
+	{GAME_RANK_TXT2_N},
+	{GAME_RANK_TXT2_H},
+	{GAME_RANK_TXT3_N},
+	{GAME_RANK_TXT3_H},
+};
 
 int Small_FHandle;
 int smallMiddle_FHandle;
@@ -113,6 +123,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	Big_FHandle = CreateFontToHandle("HG教科書体", 60, 5, DX_FONTTYPE_ANTIALIASING);
 	superBig_FHandle = CreateFontToHandle("HG教科書体", 100, 5, DX_FONTTYPE_ANTIALIASING);
 
+	stage1_N.time_set(txt[0]);
+	stage1_H.time_set(txt[1]);
+	stage2_N.time_set(txt[2]);
+	stage2_H.time_set(txt[3]);
+	stage3_N.time_set(txt[4]);
+	stage3_H.time_set(txt[5]);
+
 	//無限ループ
 	while (TRUE)
 	{
@@ -175,6 +192,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		MY_FPS_WAIT();		//FPSの処理[待つ]
 	}
+
+	stage1_N.time_put(txt[0]);
+	stage1_H.time_put(txt[1]);
+	stage2_N.time_put(txt[2]);
+	stage2_H.time_put(txt[3]);
+	stage3_N.time_put(txt[4]);
+	stage3_H.time_put(txt[5]);
 
 	DeleteGraph(BG.handle);
 	DeleteGraph(ROGO.handle);

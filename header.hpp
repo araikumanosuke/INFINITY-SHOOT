@@ -44,3 +44,10 @@
 #define GAME_IMAGE_EFFECT12				"IMAGE\\effect\\effect12.png"
 #define GAME_IMAGE_EFFECT13				"IMAGE\\effect\\effect13.png"
 #define GAME_IMAGE_EFFECT14				"IMAGE\\effect\\effect14.png"
+
+#define GAME_RANK_TXT1_N					"rank_1_N.txt"
+#define GAME_RANK_TXT1_H					"rank_1_H.txt"
+#define GAME_RANK_TXT2_N					"rank_2_N.txt"
+#define GAME_RANK_TXT2_H					"rank_2_H.txt"
+#define GAME_RANK_TXT3_N					"rank_3_N.txt"
+#define GAME_RANK_TXT3_H					"rank_3_H.txt"

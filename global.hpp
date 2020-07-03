@@ -1,5 +1,6 @@
 #pragma once
 #include <DxLib.h>
+#include <stdio.h>
 #include "header.hpp"
 #include "enemy.hpp"
 
@@ -35,11 +36,25 @@ struct IMAGE {
 
 class TIME_RANK {
 public:
-	double first_sec = 59.99;
-	double second_sec = 59.99;
-	double third_sec = 59.99;
-	double forth_sec = 59.99;
-	double fifth_sec = 59.99;
+	double first_sec = 0.0;
+	double second_sec = 0.0;
+	double third_sec = 0.0;
+	double forth_sec = 0.0;
+	double fifth_sec = 0.0;
+
+	void time_set(char t[]) {
+		FILE *file;
+		file = fopen(t, "r");
+		fscanf(file, "%lf,%lf,%lf,%lf,%lf", &first_sec, &second_sec, &third_sec, &forth_sec, &fifth_sec);
+		fclose(file);
+	}
+
+	void time_put(char t[]) {
+		FILE* file;
+		file = fopen(t, "w");
+		fprintf(file, "%.2lf,%.2lf,%.2lf,%.2lf,%.2lf", first_sec, second_sec, third_sec, forth_sec, fifth_sec);
+		fclose(file);
+	}
 };
 
 //########## ÉOÉçÅ[ÉoÉãïœêî ##########
