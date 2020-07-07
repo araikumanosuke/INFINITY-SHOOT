@@ -161,6 +161,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="play.cpp" />
     <ClCompile Include="ranking.cpp" />
+    <ClCompile Include="sound.cpp" />
     <ClCompile Include="stagechoice.cpp" />
     <ClCompile Include="tama.cpp" />
     <ClCompile Include="enemy.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="play.hpp" />
     <ClInclude Include="main.hpp" />
     <ClInclude Include="ranking.hpp" />
+    <ClInclude Include="sound.hpp" />
     <ClInclude Include="stagechoice.hpp" />
     <ClInclude Include="tama.hpp" />
     <ClInclude Include="title.hpp" />

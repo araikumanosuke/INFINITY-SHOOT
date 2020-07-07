@@ -98,6 +98,9 @@ VOID MY_GAME_END_CLEAR(VOID)
 		enemy_count_stage1 = 90;
 		enemy_count_stage2 = 91;
 		enemy_count_stage3 = 81;
+		enemy_count_stage1_hard = 90;
+		enemy_count_stage2_hard = 91;
+		enemy_count_stage3_hard = 81;
 		Syoki_Flag = true;
 		enemy_move_flag = true;
 		enemy_move_num = 0;

@@ -34,6 +34,12 @@ struct IMAGE {
 	int height;
 };
 
+struct SOUND {
+	int handle;
+	char filepath[128];
+	int playtype;
+};
+
 class TIME_RANK {
 public:
 	double first_sec = 0.0;
@@ -44,15 +50,15 @@ public:
 
 	void time_set(char t[]) {
 		FILE *file;
-		file = fopen(t, "r");
-		fscanf(file, "%lf,%lf,%lf,%lf,%lf", &first_sec, &second_sec, &third_sec, &forth_sec, &fifth_sec);
+		fopen_s(&file, t, "r");
+		fscanf_s(file, "%lf,%lf,%lf,%lf,%lf", &first_sec, &second_sec, &third_sec, &forth_sec, &fifth_sec);
 		fclose(file);
 	}
 
 	void time_put(char t[]) {
 		FILE* file;
-		file = fopen(t, "w");
-		fprintf(file, "%.2lf,%.2lf,%.2lf,%.2lf,%.2lf", first_sec, second_sec, third_sec, forth_sec, fifth_sec);
+		fopen_s(&file, t, "w");
+		fprintf_s(file, "%.2lf,%.2lf,%.2lf,%.2lf,%.2lf", first_sec, second_sec, third_sec, forth_sec, fifth_sec);
 		fclose(file);
 	}
 };
@@ -80,6 +86,9 @@ extern IMAGE E_RED;
 extern IMAGE E_RED_HARD;
 extern IMAGE E_BLUE;
 extern IMAGE E_BLUE_HARD;
+
+//‰¹
+extern SOUND SE_BAKUHATSU;
 
 extern int Small_FHandle;
 extern int smallMiddle_FHandle;
@@ -115,6 +124,9 @@ extern Enemy enemys_stage3_hard[7][23];
 extern int enemy_count_stage1;
 extern int enemy_count_stage2;
 extern int enemy_count_stage3;
+extern int enemy_count_stage1_hard;
+extern int enemy_count_stage2_hard;
+extern int enemy_count_stage3_hard;
 
 extern bool Syoki_Flag;
 extern double Current_Timer_Sec;

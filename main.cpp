@@ -13,6 +13,7 @@
 #include "stagechoice.hpp"
 #include "end_clear.hpp"
 #include "image.hpp"
+#include "sound.hpp"
 
 //ÉOÉçÅ[ÉoÉãïœêîÇÃé¿ëÃÇΩÇø
 int GameSceneNow = (int)GAME_SCENE_TITLE;
@@ -35,6 +36,9 @@ IMAGE E_RED;
 IMAGE E_RED_HARD;
 IMAGE E_BLUE;
 IMAGE E_BLUE_HARD;
+
+//âπ
+SOUND SE_BAKUHATSU;
 
 char txt[6][100] = {
 	{GAME_RANK_TXT1_N},
@@ -115,6 +119,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	image_load(&EFFECT[25], 0, 0, GAME_IMAGE_EFFECT3);
 	image_load(&EFFECT[26], 0, 0, GAME_IMAGE_EFFECT2);
 	image_load(&EFFECT[27], 0, 0, GAME_IMAGE_EFFECT1);
+
+	MY_SOUND_LOAD(&SE_BAKUHATSU, GAME_SOUND_BAKUHATSU);
 
 	Small_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 24, 9, DX_FONTTYPE_ANTIALIASING);
 	smallMiddle_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 36, 5, DX_FONTTYPE_ANTIALIASING);
@@ -227,6 +233,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DeleteGraph(EFFECT[11].handle);
 	DeleteGraph(EFFECT[12].handle);
 	DeleteGraph(EFFECT[13].handle);
+
+	DeleteSoundMem(SE_BAKUHATSU.handle);
 
 	DeleteFontToHandle(bigMiddle_FHandle);
 	DeleteFontToHandle(Small_FHandle);

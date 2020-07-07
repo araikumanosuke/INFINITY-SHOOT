@@ -367,6 +367,7 @@ VOID MY_GAME_PLAY(VOID)
 											enemy_kind_stage1[a + j][b + k] = -1;
 											enemys_stage1[a + j][b + k].IsView_E = FALSE;
 											enemy_count_stage1--;
+											PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 											Effect effect(enemys_stage1[a + j][b + k].x_E, enemys_stage1[a + j][b + k].y_E);
 											effect.effect_view();
 										}
@@ -409,6 +410,7 @@ VOID MY_GAME_PLAY(VOID)
 							enemy_kind_stage1[a][b] = -1;
 							enemys_stage1[a][b].IsView_E = FALSE;
 							enemy_count_stage1--;
+							PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 							Effect effect(enemys_stage1[a][b].x_E, enemys_stage1[a][b].y_E);
 							effect.effect_view();
 						}
@@ -492,6 +494,7 @@ VOID MY_GAME_PLAY(VOID)
 												enemy_kind_stage1_hard[a + j][b + k] = -1;
 												enemys_stage1_hard[a + j][b + k].IsView_E = FALSE;
 												enemy_count_stage1_hard--;
+												PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 												Effect effect(enemys_stage1_hard[a + j][b + k].x_E, enemys_stage1_hard[a + j][b + k].y_E);
 												effect.effect_view();
 											}
@@ -543,6 +546,7 @@ VOID MY_GAME_PLAY(VOID)
 									enemy_kind_stage1_hard[a][b] = -1;
 									enemys_stage1_hard[a][b].IsView_E = FALSE;
 									enemy_count_stage1_hard--;
+									PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 									Effect effect(enemys_stage1_hard[a][b].x_E, enemys_stage1_hard[a][b].y_E);
 									effect.effect_view();
 								}
@@ -636,6 +640,7 @@ VOID MY_GAME_PLAY(VOID)
 											enemy_kind_stage2[a + j][b + k] = -1;
 											enemys_stage2[a + j][b + k].IsView_E = FALSE;
 											enemy_count_stage2--;
+											PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 											Effect effect(enemys_stage2[a + j][b + k].x_E, enemys_stage2[a + j][b + k].y_E);
 											effect.effect_view();
 										}
@@ -678,6 +683,7 @@ VOID MY_GAME_PLAY(VOID)
 							enemy_kind_stage2[a][b] = -1;
 							enemys_stage2[a][b].IsView_E = FALSE;
 							enemy_count_stage2--;
+							PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 							Effect effect(enemys_stage2[a][b].x_E, enemys_stage2[a][b].y_E);
 							effect.effect_view();
 						}
@@ -760,6 +766,7 @@ VOID MY_GAME_PLAY(VOID)
 												enemy_kind_stage2_hard[a + j][b + k] = -1;
 												enemys_stage2_hard[a + j][b + k].IsView_E = FALSE;
 												enemy_count_stage2_hard--;
+												PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 												Effect effect(enemys_stage2_hard[a + j][b + k].x_E, enemys_stage2_hard[a + j][b + k].y_E);
 												effect.effect_view();
 											}
@@ -811,6 +818,7 @@ VOID MY_GAME_PLAY(VOID)
 									enemy_kind_stage2_hard[a][b] = -1;
 									enemys_stage2_hard[a][b].IsView_E = FALSE;
 									enemy_count_stage2_hard--;
+									PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 									Effect effect(enemys_stage2_hard[a][b].x_E, enemys_stage2_hard[a][b].y_E);
 									effect.effect_view();
 								}
@@ -904,6 +912,7 @@ VOID MY_GAME_PLAY(VOID)
 											enemy_kind_stage3[a + j][b + k] = -1;
 											enemys_stage3[a + j][b + k].IsView_E = FALSE;
 											enemy_count_stage3--;
+											PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 											Effect effect(enemys_stage3[a + j][b + k].x_E, enemys_stage3[a + j][b + k].y_E);
 											effect.effect_view();
 										}
@@ -946,6 +955,7 @@ VOID MY_GAME_PLAY(VOID)
 							enemy_kind_stage3[a][b] = -1;
 							enemys_stage3[a][b].IsView_E = FALSE;
 							enemy_count_stage3--;
+							PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 							Effect effect(enemys_stage3[a][b].x_E, enemys_stage3[a][b].y_E);
 							effect.effect_view();
 						}
@@ -1028,6 +1038,7 @@ VOID MY_GAME_PLAY(VOID)
 												enemy_kind_stage3_hard[a + j][b + k] = -1;
 												enemys_stage3_hard[a + j][b + k].IsView_E = FALSE;
 												enemy_count_stage3_hard--;
+												PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 												Effect effect(enemys_stage3_hard[a + j][b + k].x_E, enemys_stage3_hard[a + j][b + k].y_E);
 												effect.effect_view();
 											}
@@ -1079,6 +1090,7 @@ VOID MY_GAME_PLAY(VOID)
 									enemy_kind_stage3_hard[a][b] = -1;
 									enemys_stage3_hard[a][b].IsView_E = FALSE;
 									enemy_count_stage3_hard--;
+									PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 									Effect effect(enemys_stage3_hard[a][b].x_E, enemys_stage3_hard[a][b].y_E);
 									effect.effect_view();
 								}
