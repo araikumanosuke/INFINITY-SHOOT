@@ -39,6 +39,9 @@ IMAGE E_BLUE_HARD;
 
 //âπ
 SOUND SE_BAKUHATSU;
+SOUND SE_SHOT;
+SOUND SE_CANCEL;
+SOUND SE_SELECT;
 
 char txt[6][100] = {
 	{GAME_RANK_TXT1_N},
@@ -121,6 +124,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	image_load(&EFFECT[27], 0, 0, GAME_IMAGE_EFFECT1);
 
 	MY_SOUND_LOAD(&SE_BAKUHATSU, GAME_SOUND_BAKUHATSU);
+	MY_SOUND_LOAD(&SE_SHOT, GAME_SOUND_SHOT);
 
 	Small_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 24, 9, DX_FONTTYPE_ANTIALIASING);
 	smallMiddle_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 36, 5, DX_FONTTYPE_ANTIALIASING);
@@ -235,6 +239,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DeleteGraph(EFFECT[13].handle);
 
 	DeleteSoundMem(SE_BAKUHATSU.handle);
+	DeleteSoundMem(SE_SHOT.handle);
 
 	DeleteFontToHandle(bigMiddle_FHandle);
 	DeleteFontToHandle(Small_FHandle);

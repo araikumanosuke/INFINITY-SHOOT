@@ -89,6 +89,7 @@ extern IMAGE E_BLUE_HARD;
 
 //‰¹
 extern SOUND SE_BAKUHATSU;
+extern SOUND SE_SHOT;
 
 extern int Small_FHandle;
 extern int smallMiddle_FHandle;
