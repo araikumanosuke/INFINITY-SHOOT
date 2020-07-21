@@ -74,6 +74,7 @@ VOID MY_GAME_END_CLEAR(VOID)
 	//三角の移動
 	if (AllKeyState[KEY_INPUT_DOWN] == 1 || AllKeyState[KEY_INPUT_UP] == 1)
 	{
+		PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 		if (s_position_end_clear == 0)
 		{
 			s_position_end_clear += 100;
@@ -92,6 +93,8 @@ VOID MY_GAME_END_CLEAR(VOID)
 
 	if (AllKeyState[KEY_INPUT_RETURN] == 1)	//エンターキーが押されていた時
 	{
+		StopSoundMem(CLEAR.handle);
+		PlaySoundMem(SE_ENTER.handle, DX_PLAYTYPE_BACK);
 		ENEMY_INIT();
 		s_position_title = 0;
 		s_flag = TRUE;

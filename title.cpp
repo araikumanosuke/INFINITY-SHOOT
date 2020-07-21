@@ -15,8 +15,14 @@ VOID MY_GAME_TITLE(VOID)
 	Current_Timer_Sec = 0.0;
 	Current_Timer_Min = 0;
 
+	if (CheckSoundMem(BGM_TITLE.handle) == 0)
+	{
+		PlaySoundMem(BGM_TITLE.handle, DX_PLAYTYPE_LOOP);
+	}
+
 	if (AllKeyState[KEY_INPUT_RETURN] == 1)	//エンターキーが押されていた時
 	{
+		PlaySoundMem(SE_ENTER.handle, DX_PLAYTYPE_BACK);
 		if (s_position_title == 0)
 		{
 			GameSceneNow = (int)GAME_SCENE_STAGECHOICE;	//シーンをステージ選択画面にする
@@ -24,11 +30,13 @@ VOID MY_GAME_TITLE(VOID)
 		else if (s_position_title == 100)
 		{
 			GameSceneNow = (int)GAME_SCENE_RANKING;	//シーンをランキング画面にする
+			StopSoundMem(BGM_TITLE.handle);
 		}
 	}
 
 	if (AllKeyState[KEY_INPUT_DOWN] == 1 || AllKeyState[KEY_INPUT_UP] == 1)
 	{
+		PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 		if (s_position_title == 0)
 		{
 			s_position_title += 100;

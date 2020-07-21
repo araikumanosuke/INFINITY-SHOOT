@@ -90,6 +90,15 @@ extern IMAGE E_BLUE_HARD;
 //‰¹
 extern SOUND SE_BAKUHATSU;
 extern SOUND SE_SHOT;
+extern SOUND SE_REFLECT;
+extern SOUND SE_CANCEL;
+extern SOUND SE_SELECT;
+extern SOUND SE_ENTER;
+extern SOUND BGM_TITLE;
+extern SOUND BGM_RANK;
+extern SOUND BGM_PLAY;
+extern SOUND GAMEOVER;
+extern SOUND CLEAR;
 
 extern int Small_FHandle;
 extern int smallMiddle_FHandle;

@@ -150,6 +150,11 @@ VOID MY_GAME_PLAY(VOID)
 		Timer_Tmp = Timer;
 	}
 
+	if (CheckSoundMem(BGM_PLAY.handle) == 0)
+	{
+		PlaySoundMem(BGM_PLAY.handle, DX_PLAYTYPE_LOOP);
+	}
+
 	//機体移動
 	if (AllKeyState[KEY_INPUT_UP] != 0)
 	{
@@ -181,7 +186,7 @@ VOID MY_GAME_PLAY(VOID)
 	}
 
 	//弾セット
-	if (AllKeyState[KEY_INPUT_SPACE] != 0)
+	if (AllKeyState[KEY_INPUT_SPACE] == 1)
 	{
 		if (Tamas[0].IsView == FALSE)
 		{
@@ -329,6 +334,8 @@ VOID MY_GAME_PLAY(VOID)
 					Tamas[i].y = -20;
 				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+				StopSoundMem(BGM_PLAY.handle);
+				PlaySoundMem(GAMEOVER.handle, DX_PLAYTYPE_BACK);
 			}
 
 			for (int a = 0; a < 9; a++)
@@ -395,6 +402,8 @@ VOID MY_GAME_PLAY(VOID)
 													Tamas[i].y = -20;
 												}
 												GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+												StopSoundMem(BGM_PLAY.handle);
+												PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 											}
 											PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 											Effect effect(enemys_stage1[a + j][b + k].x_E, enemys_stage1[a + j][b + k].y_E);
@@ -446,6 +455,8 @@ VOID MY_GAME_PLAY(VOID)
 									Tamas[i].y = -20;
 								}
 								GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+								StopSoundMem(BGM_PLAY.handle);
+								PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 							}
 							PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 							Effect effect(enemys_stage1[a][b].x_E, enemys_stage1[a][b].y_E);
@@ -469,6 +480,8 @@ VOID MY_GAME_PLAY(VOID)
 					Tamas[i].y = -20;
 				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+				StopSoundMem(BGM_PLAY.handle);
+				PlaySoundMem(GAMEOVER.handle, DX_PLAYTYPE_BACK);
 			}
 
 			for (int a = 0; a < 9; a++)
@@ -538,6 +551,8 @@ VOID MY_GAME_PLAY(VOID)
 														Tamas[i].y = -20;
 													}
 													GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+													StopSoundMem(BGM_PLAY.handle);
+													PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 												}
 												PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 												Effect effect(enemys_stage1_hard[a + j][b + k].x_E, enemys_stage1_hard[a + j][b + k].y_E);
@@ -546,6 +561,7 @@ VOID MY_GAME_PLAY(VOID)
 											else
 											{
 												enemys_stage1_hard[a + j][b + k].hp_E--;
+												PlaySoundMem(SE_REFLECT.handle, DX_PLAYTYPE_BACK);
 											}
 										}
 									}
@@ -598,6 +614,8 @@ VOID MY_GAME_PLAY(VOID)
 											Tamas[i].y = -20;
 										}
 										GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+										StopSoundMem(BGM_PLAY.handle);
+										PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 									}
 									PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 									Effect effect(enemys_stage1_hard[a][b].x_E, enemys_stage1_hard[a][b].y_E);
@@ -607,6 +625,7 @@ VOID MY_GAME_PLAY(VOID)
 								{
 									enemys_stage1_hard[a][b].hp_E--;
 									enemys_stage1_hard[a][b].collision_flag = true;
+									PlaySoundMem(SE_REFLECT.handle, DX_PLAYTYPE_BACK);
 								}
 							}
 						}
@@ -635,6 +654,8 @@ VOID MY_GAME_PLAY(VOID)
 					Tamas[i].y = -20;
 				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+				StopSoundMem(BGM_PLAY.handle);
+				PlaySoundMem(GAMEOVER.handle, DX_PLAYTYPE_BACK);
 			}
 
 			for (int a = 0; a < 13; a++)
@@ -700,6 +721,8 @@ VOID MY_GAME_PLAY(VOID)
 													Tamas[i].y = -20;
 												}
 												GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+												StopSoundMem(BGM_PLAY.handle);
+												PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 											}
 											PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 											Effect effect(enemys_stage2[a + j][b + k].x_E, enemys_stage2[a + j][b + k].y_E);
@@ -751,6 +774,8 @@ VOID MY_GAME_PLAY(VOID)
 									Tamas[i].y = -20;
 								}
 								GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+								StopSoundMem(BGM_PLAY.handle);
+								PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 							}
 							PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 							Effect effect(enemys_stage2[a][b].x_E, enemys_stage2[a][b].y_E);
@@ -774,6 +799,8 @@ VOID MY_GAME_PLAY(VOID)
 					Tamas[i].y = -20;
 				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+				StopSoundMem(BGM_PLAY.handle);
+				PlaySoundMem(GAMEOVER.handle, DX_PLAYTYPE_BACK);
 			}
 
 			for (int a = 0; a < 13; a++)
@@ -842,6 +869,8 @@ VOID MY_GAME_PLAY(VOID)
 														Tamas[i].y = -20;
 													}
 													GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+													StopSoundMem(BGM_PLAY.handle);
+													PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 												}
 												PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 												Effect effect(enemys_stage2_hard[a + j][b + k].x_E, enemys_stage2_hard[a + j][b + k].y_E);
@@ -850,6 +879,7 @@ VOID MY_GAME_PLAY(VOID)
 											else
 											{
 												enemys_stage2_hard[a + j][b + k].hp_E--;
+												PlaySoundMem(SE_REFLECT.handle, DX_PLAYTYPE_BACK);
 											}
 										}
 									}
@@ -902,6 +932,8 @@ VOID MY_GAME_PLAY(VOID)
 											Tamas[i].y = -20;
 										}
 										GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+										StopSoundMem(BGM_PLAY.handle);
+										PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 									}
 									PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 									Effect effect(enemys_stage2_hard[a][b].x_E, enemys_stage2_hard[a][b].y_E);
@@ -911,6 +943,7 @@ VOID MY_GAME_PLAY(VOID)
 								{
 									enemys_stage2_hard[a][b].hp_E--;
 									enemys_stage2_hard[a][b].collision_flag = true;
+									PlaySoundMem(SE_REFLECT.handle, DX_PLAYTYPE_BACK);
 								}
 							}
 						}
@@ -939,6 +972,8 @@ VOID MY_GAME_PLAY(VOID)
 					Tamas[i].y = -20;
 				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+				StopSoundMem(BGM_PLAY.handle);
+				PlaySoundMem(GAMEOVER.handle, DX_PLAYTYPE_BACK);
 			}
 
 			for (int a = 0; a < 7; a++)
@@ -1004,6 +1039,8 @@ VOID MY_GAME_PLAY(VOID)
 													Tamas[i].y = -20;
 												}
 												GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+												StopSoundMem(BGM_PLAY.handle);
+												PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 											}
 											PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 											Effect effect(enemys_stage3[a + j][b + k].x_E, enemys_stage3[a + j][b + k].y_E);
@@ -1055,6 +1092,8 @@ VOID MY_GAME_PLAY(VOID)
 									Tamas[i].y = -20;
 								}
 								GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+								StopSoundMem(BGM_PLAY.handle);
+								PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 							}
 							PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 							Effect effect(enemys_stage3[a][b].x_E, enemys_stage3[a][b].y_E);
@@ -1078,6 +1117,8 @@ VOID MY_GAME_PLAY(VOID)
 					Tamas[i].y = -20;
 				}
 				GameSceneNow = (int)GAME_SCENE_END_OVER;	//シーンをエンド画面(ゲームオーバー)にする
+				StopSoundMem(BGM_PLAY.handle);
+				PlaySoundMem(GAMEOVER.handle, DX_PLAYTYPE_BACK);
 			}
 
 			for (int a = 0; a < 7; a++)
@@ -1146,6 +1187,8 @@ VOID MY_GAME_PLAY(VOID)
 														Tamas[i].y = -20;
 													}
 													GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+													StopSoundMem(BGM_PLAY.handle);
+													PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 												}
 												PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 												Effect effect(enemys_stage3_hard[a + j][b + k].x_E, enemys_stage3_hard[a + j][b + k].y_E);
@@ -1154,6 +1197,7 @@ VOID MY_GAME_PLAY(VOID)
 											else
 											{
 												enemys_stage3_hard[a + j][b + k].hp_E--;
+												PlaySoundMem(SE_REFLECT.handle, DX_PLAYTYPE_BACK);
 											}
 										}
 									}
@@ -1206,6 +1250,8 @@ VOID MY_GAME_PLAY(VOID)
 											Tamas[i].y = -20;
 										}
 										GameSceneNow = (int)GAME_SCENE_END_CLEAR;	//シーンをエンド画面(ゲームクリア)にする
+										StopSoundMem(BGM_PLAY.handle);
+										PlaySoundMem(CLEAR.handle, DX_PLAYTYPE_BACK);
 									}
 									PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
 									Effect effect(enemys_stage3_hard[a][b].x_E, enemys_stage3_hard[a][b].y_E);
@@ -1215,6 +1261,7 @@ VOID MY_GAME_PLAY(VOID)
 								{
 									enemys_stage3_hard[a][b].hp_E--;
 									enemys_stage3_hard[a][b].collision_flag = true;
+									PlaySoundMem(SE_REFLECT.handle, DX_PLAYTYPE_BACK);
 								}
 							}
 						}

@@ -15,14 +15,21 @@ bool S3_Hard_PlayFlag = false;
 
 VOID MY_GAME_STAGECHOICE(VOID)
 {
+	if (CheckSoundMem(BGM_TITLE.handle) == 0)
+	{
+		PlaySoundMem(BGM_TITLE.handle, DX_PLAYTYPE_LOOP);
+	}
+
 	if (AllKeyState[KEY_INPUT_RETURN] == 1)	//エンターキーが押されていた時
 	{
+		PlaySoundMem(SE_ENTER.handle, DX_PLAYTYPE_BACK);
 		if (s_flag == TRUE)
 		{
 			s_flag = FALSE;
 		}
 		else if (s_flag == FALSE)
 		{
+			StopSoundMem(BGM_TITLE.handle);
 			if (s_position_stage == 0)	//STAGE 1
 			{
 				if (s_position_difficult == 0)	//NORMAL
@@ -61,6 +68,7 @@ VOID MY_GAME_STAGECHOICE(VOID)
 
 	if (AllKeyState[KEY_INPUT_BACK] == 1)
 	{
+		PlaySoundMem(SE_CANCEL.handle, DX_PLAYTYPE_BACK);
 		if (s_flag == TRUE)
 		{
 			GameSceneNow = (int)GAME_SCENE_TITLE;	//シーンをタイトル画面にする
@@ -82,6 +90,7 @@ VOID MY_GAME_STAGECHOICE(VOID)
 		{
 			if (S2_Normal_PlayFlag == true)	//ステージ２がプレイできるか
 			{
+				PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 				if (S3_Normal_PlayFlag == true)	//ステージ３がプレイできるか
 				{
 					if (s_position_stage == 0)
@@ -112,6 +121,7 @@ VOID MY_GAME_STAGECHOICE(VOID)
 			{
 				if (S1_Hard_PlayFlag == true)	//ステージ１HARDモードがプレイできるか
 				{
+					PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 					if (s_position_difficult == 0)
 					{
 						s_position_difficult += 100;
@@ -126,6 +136,7 @@ VOID MY_GAME_STAGECHOICE(VOID)
 			{
 				if (S2_Hard_PlayFlag == true)	//ステージ２HARDモードがプレイできるか
 				{
+					PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 					if (s_position_difficult == 0)
 					{
 						s_position_difficult += 100;
@@ -140,6 +151,7 @@ VOID MY_GAME_STAGECHOICE(VOID)
 			{
 				if (S3_Hard_PlayFlag == true)	//ステージ３HARDモードがプレイできるか
 				{
+					PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 					if (s_position_difficult == 0)
 					{
 						s_position_difficult += 100;
@@ -158,6 +170,7 @@ VOID MY_GAME_STAGECHOICE(VOID)
 		{
 			if (S2_Normal_PlayFlag == true)	//ステージ２がプレイできるか
 			{
+				PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 				if (S3_Normal_PlayFlag == true)	//ステージ３がプレイできるか
 				{
 					if (s_position_stage == 200)
@@ -189,6 +202,7 @@ VOID MY_GAME_STAGECHOICE(VOID)
 			{
 				if (S1_Hard_PlayFlag == true)	//ステージ１HARDモードがプレイできるか
 				{
+					PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 					if (s_position_difficult == 0)
 					{
 						s_position_difficult += 100;
@@ -203,6 +217,7 @@ VOID MY_GAME_STAGECHOICE(VOID)
 			{
 				if (S2_Hard_PlayFlag == true)	//ステージ２HARDモードがプレイできるか
 				{
+					PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 					if (s_position_difficult == 0)
 					{
 						s_position_difficult += 100;
@@ -217,6 +232,7 @@ VOID MY_GAME_STAGECHOICE(VOID)
 			{
 				if (S3_Hard_PlayFlag == true)	//ステージ３HARDモードがプレイできるか
 				{
+					PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 					if (s_position_difficult == 0)
 					{
 						s_position_difficult += 100;

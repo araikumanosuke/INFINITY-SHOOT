@@ -19,6 +19,11 @@ VOID MY_GAME_RANKING(VOID)
 	DrawStringToHandle(700, 37, "BACK TO TITLE:", GetColor(255, 255, 255), Small_FHandle);
 	DrawStringToHandle(700, 77, "BACK SPACE Key", GetColor(255, 255, 255), Small_FHandle);
 
+	if (CheckSoundMem(BGM_RANK.handle) == 0)
+	{
+		PlaySoundMem(BGM_RANK.handle, DX_PLAYTYPE_LOOP);
+	}
+
 	switch (s_position_ranking)
 	{
 	case 0:
@@ -106,6 +111,7 @@ VOID MY_GAME_RANKING(VOID)
 	//三角の操作
 	if (AllKeyState[KEY_INPUT_UP] == 1)
 	{
+		PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 		switch (s_position_ranking)
 		{
 		case 0:	//1-NORMALの位置のとき
@@ -163,6 +169,7 @@ VOID MY_GAME_RANKING(VOID)
 	}
 	else if (AllKeyState[KEY_INPUT_DOWN] == 1)
 	{
+		PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
 		switch (s_position_ranking)
 		{
 		case 0:	//1-NORMALの位置のとき
@@ -251,8 +258,10 @@ VOID MY_GAME_RANKING(VOID)
 	
 	if (AllKeyState[KEY_INPUT_BACK] == 1)	//バックスペースキーが押されていた時
 	{
+		PlaySoundMem(SE_CANCEL.handle, DX_PLAYTYPE_BACK);
 		GameSceneNow = (int)GAME_SCENE_TITLE;	//シーンをタイトル画面にする
 		s_position_title = 0;
+		StopSoundMem(BGM_RANK.handle);
 	}
 
 	//DrawString(0, 0, "ランキング画面(バックスペースキーを押してください)", GetColor(255, 255, 255));

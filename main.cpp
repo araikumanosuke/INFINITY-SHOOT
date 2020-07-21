@@ -40,8 +40,16 @@ IMAGE E_BLUE_HARD;
 //音
 SOUND SE_BAKUHATSU;
 SOUND SE_SHOT;
+SOUND SE_REFLECT;
 SOUND SE_CANCEL;
 SOUND SE_SELECT;
+SOUND SE_ENTER;
+
+SOUND BGM_TITLE;
+SOUND BGM_RANK;
+SOUND BGM_PLAY;
+SOUND GAMEOVER;
+SOUND CLEAR;
 
 char txt[6][100] = {
 	{GAME_RANK_TXT1_N},
@@ -125,6 +133,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	MY_SOUND_LOAD(&SE_BAKUHATSU, GAME_SOUND_BAKUHATSU);
 	MY_SOUND_LOAD(&SE_SHOT, GAME_SOUND_SHOT);
+	MY_SOUND_LOAD(&SE_REFLECT, GAME_SOUND_REFLECT);
+	MY_SOUND_LOAD(&SE_CANCEL, GAME_SOUND_CANCEL);
+	MY_SOUND_LOAD(&SE_SELECT, GAME_SOUND_SELECT);
+	MY_SOUND_LOAD(&SE_ENTER, GAME_SOUND_ENTER);
+	MY_SOUND_LOAD(&BGM_TITLE, GAME_SOUND_BGM_TITLE);
+	MY_SOUND_LOAD(&BGM_RANK, GAME_SOUND_BGM_RANK);
+	MY_SOUND_LOAD(&BGM_PLAY, GAME_SOUND_BGM_PLAY);
+	MY_SOUND_LOAD(&GAMEOVER, GAME_SOUND_GAMEOVER);
+	MY_SOUND_LOAD(&CLEAR, GAME_SOUND_CLEAR);
+
+	ChangeVolumeSoundMem(255 * 70 / 100, SE_BAKUHATSU.handle);
+	ChangeVolumeSoundMem(255 * 70 / 100, SE_SHOT.handle);
+	ChangeVolumeSoundMem(255 * 70 / 100, SE_REFLECT.handle);
+
+	ChangeVolumeSoundMem(255 * 50 / 100, BGM_TITLE.handle);
+	ChangeVolumeSoundMem(255 * 50 / 100, BGM_RANK.handle);
+	ChangeVolumeSoundMem(255 * 50 / 100, BGM_PLAY.handle);
 
 	Small_FHandle = CreateFontToHandle("HG教科書体", 24, 9, DX_FONTTYPE_ANTIALIASING);
 	smallMiddle_FHandle = CreateFontToHandle("HG教科書体", 36, 5, DX_FONTTYPE_ANTIALIASING);
@@ -237,14 +262,39 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DeleteGraph(EFFECT[11].handle);
 	DeleteGraph(EFFECT[12].handle);
 	DeleteGraph(EFFECT[13].handle);
+	DeleteGraph(EFFECT[14].handle);
+	DeleteGraph(EFFECT[15].handle);
+	DeleteGraph(EFFECT[16].handle);
+	DeleteGraph(EFFECT[17].handle);
+	DeleteGraph(EFFECT[18].handle);
+	DeleteGraph(EFFECT[19].handle);
+	DeleteGraph(EFFECT[20].handle);
+	DeleteGraph(EFFECT[21].handle);
+	DeleteGraph(EFFECT[22].handle);
+	DeleteGraph(EFFECT[23].handle);
+	DeleteGraph(EFFECT[24].handle);
+	DeleteGraph(EFFECT[25].handle);
+	DeleteGraph(EFFECT[26].handle);
+	DeleteGraph(EFFECT[27].handle);
 
 	DeleteSoundMem(SE_BAKUHATSU.handle);
 	DeleteSoundMem(SE_SHOT.handle);
+	DeleteSoundMem(SE_REFLECT.handle);
+	DeleteSoundMem(SE_CANCEL.handle);
+	DeleteSoundMem(SE_SELECT.handle);
+	DeleteSoundMem(SE_ENTER.handle);
+	DeleteSoundMem(BGM_TITLE.handle);
+	DeleteSoundMem(BGM_RANK.handle);
+	DeleteSoundMem(BGM_PLAY.handle);
+	DeleteSoundMem(GAMEOVER.handle);
+	DeleteSoundMem(CLEAR.handle);
 
-	DeleteFontToHandle(bigMiddle_FHandle);
 	DeleteFontToHandle(Small_FHandle);
-	DeleteFontToHandle(superBig_FHandle);
 	DeleteFontToHandle(smallMiddle_FHandle);
+	DeleteFontToHandle(Middle_FHandle);
+	DeleteFontToHandle(bigMiddle_FHandle);
+	DeleteFontToHandle(Big_FHandle);
+	DeleteFontToHandle(superBig_FHandle);	
 
 	DxLib_End();		//ＤＸライブラリ使用の終了処理
 

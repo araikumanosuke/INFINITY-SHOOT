@@ -47,6 +47,15 @@
 
 #define GAME_SOUND_BAKUHATSU			"SOUND\\bakuhatsu.mp3"
 #define GAME_SOUND_SHOT					"SOUND\\shot1.mp3"
+#define GAME_SOUND_REFLECT				"SOUND\\reflection.mp3"
+#define GAME_SOUND_CANCEL				"SOUND\\cancel2.mp3"
+#define GAME_SOUND_SELECT				"SOUND\\cursor6.mp3"
+#define GAME_SOUND_ENTER				"SOUND\\enter.mp3"
+#define GAME_SOUND_BGM_TITLE			"SOUND\\cyber-dolls_free_bgm_v3.mp3"
+#define GAME_SOUND_BGM_RANK				"SOUND\\bgm_rank.mp3"
+#define GAME_SOUND_BGM_PLAY				"SOUND\\bgm_play.mp3"
+#define GAME_SOUND_GAMEOVER				"SOUND\\bgm_gameover.mp3"
+#define GAME_SOUND_CLEAR				"SOUND\\bgm_clear.mp3"
 
 #define GAME_RANK_TXT1_N				"rank_1_N.txt"
 #define GAME_RANK_TXT1_H				"rank_1_H.txt"

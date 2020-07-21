@@ -17,6 +17,8 @@ VOID MY_GAME_END_OVER(VOID)
 
 	if (AllKeyState[KEY_INPUT_RETURN] == 1)	//エンターキーが押されていた時
 	{
+		StopSoundMem(GAMEOVER.handle);
+		PlaySoundMem(SE_ENTER.handle, DX_PLAYTYPE_BACK);
 		ENEMY_INIT();
 		s_position_title = 0;
 		s_flag = TRUE;
