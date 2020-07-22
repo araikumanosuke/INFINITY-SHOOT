@@ -54,7 +54,7 @@ VOID MY_GAME_TITLE(VOID)
 
 	DrawStringToHandle(400, 350, "START", GetColor(255, 255, 255), bigMiddle_FHandle);
 	DrawStringToHandle(400, 450, "RANKING", GetColor(255, 255, 255), bigMiddle_FHandle);
-	
+
 	//DrawString(0, 0, "タイトル画面(エンターキーを押してください)", GetColor(255, 255, 255));
 
 	return;

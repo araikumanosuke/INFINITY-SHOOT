@@ -6,7 +6,7 @@
 #define GAME_HEIGHT	600		//画面の縦の大きさ
 #define GAME_COLOR	32		//画面のカラービット
 
-#define GAME_WINDOW_NAME	"GAME TITLE"		//ウィンドウのタイトル
+#define GAME_WINDOW_NAME	"INFINITY SHOOT"		//ウィンドウのタイトル
 #define GAME_WINDOW_MODECHANGE	TRUE			//TRUE：ウィンドウモード / FALSE：フルスクリーン
 
 #define SET_WINDOW_ST_MODE_DEFAULT			0	//デフォルト
@@ -17,7 +17,7 @@
 #define GAME_FPS_SPEED					   60
 
 #define GAME_IMAGE_BACK					"IMAGE\\back\\back_3.png"
-#define GAME_IMAGE_PLAYER				"IMAGE\\player\\kitai_black2.png"
+#define GAME_IMAGE_PLAYER				"IMAGE\\player\\kitai_yellow.png"
 #define GAME_IMAGE_ROGO					"IMAGE\\rogo\\rogo.png"
 #define GAME_IMAGE_SANKAKU				"IMAGE\\sankaku.png"
 #define GAME_IMAGE_TAMA					"IMAGE\\tama.png"

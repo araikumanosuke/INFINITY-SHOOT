@@ -115,6 +115,8 @@ int enemy_move_num = 0;
 
 int enemy_move_tmp = 0;
 
+int ready_tmp = 0;
+
 double Timer = 0.0;
 
 bool Syoki_Flag = true;
