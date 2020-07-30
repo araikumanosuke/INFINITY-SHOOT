@@ -23,7 +23,7 @@ VOID MY_GAME_END_CLEAR(VOID)
 	{
 		if (s_position_difficult == 0)
 		{
-			if (S1_Hard_PlayFlag == false)
+			if (S1_Hard_PlayFlag == FALSE)
 			{
 				if (Current_Timer_Sec < S1_KiteiTime)
 				{
@@ -40,7 +40,7 @@ VOID MY_GAME_END_CLEAR(VOID)
 	{
 		if (s_position_difficult == 0)
 		{
-			if (S2_Hard_PlayFlag == false)
+			if (S2_Hard_PlayFlag == FALSE)
 			{
 				if (Current_Timer_Sec < S2_KiteiTime)
 				{
@@ -57,7 +57,7 @@ VOID MY_GAME_END_CLEAR(VOID)
 	{
 		if (s_position_difficult == 0)
 		{
-			if (S3_Hard_PlayFlag == false)
+			if (S3_Hard_PlayFlag == FALSE)
 			{
 				if (Current_Timer_Sec < S3_KiteiTime)
 				{
@@ -104,8 +104,8 @@ VOID MY_GAME_END_CLEAR(VOID)
 		enemy_count_stage1_hard = 90;
 		enemy_count_stage2_hard = 91;
 		enemy_count_stage3_hard = 81;
-		Syoki_Flag = true;
-		enemy_move_flag = true;
+		Syoki_Flag = TRUE;
+		enemy_move_flag = TRUE;
 		enemy_move_num = 0;
 		enemy_move_tmp = 0;
 
@@ -322,15 +322,15 @@ VOID MY_GAME_END_CLEAR(VOID)
 		{
 			if (s_position_difficult == 0)
 			{
-				if (S2_Normal_PlayFlag == false)
+				if (S2_Normal_PlayFlag == FALSE)
 				{
-					S2_Normal_PlayFlag = true;
+					S2_Normal_PlayFlag = TRUE;
 				}
 				if (Current_Timer_Sec < S1_KiteiTime)
 				{
-					if (S1_Hard_PlayFlag == false)
+					if (S1_Hard_PlayFlag == FALSE)
 					{
-						S1_Hard_PlayFlag = true;
+						S1_Hard_PlayFlag = TRUE;
 					}
 				}
 			}
@@ -339,15 +339,15 @@ VOID MY_GAME_END_CLEAR(VOID)
 		{
 			if (s_position_difficult == 0)
 			{
-				if (S3_Normal_PlayFlag == false)
+				if (S3_Normal_PlayFlag == FALSE)
 				{
-					S3_Normal_PlayFlag = true;
+					S3_Normal_PlayFlag = TRUE;
 				}
 				if (Current_Timer_Sec < S2_KiteiTime)
 				{
-					if (S2_Hard_PlayFlag == false)
+					if (S2_Hard_PlayFlag == FALSE)
 					{
-						S2_Hard_PlayFlag = true;
+						S2_Hard_PlayFlag = TRUE;
 					}
 				}
 			}
@@ -356,9 +356,9 @@ VOID MY_GAME_END_CLEAR(VOID)
 		{
 			if (Current_Timer_Sec < S3_KiteiTime)
 			{
-				if (S3_Hard_PlayFlag == false)
+				if (S3_Hard_PlayFlag == FALSE)
 				{
-					S3_Hard_PlayFlag = true;
+					S3_Hard_PlayFlag = TRUE;
 				}
 			}
 		}

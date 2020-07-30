@@ -25,8 +25,8 @@ VOID MY_GAME_END_OVER(VOID)
 		enemy_count_stage1 = 90;
 		enemy_count_stage2 = 91;
 		enemy_count_stage3 = 81;
-		Syoki_Flag = true;
-		enemy_move_flag = true;
+		Syoki_Flag = TRUE;
+		enemy_move_flag = TRUE;
 		enemy_move_num = 0;
 		enemy_move_tmp = 0;
 		GameSceneNow = (int)GAME_SCENE_TITLE;	//シーンをタイトル画面にする

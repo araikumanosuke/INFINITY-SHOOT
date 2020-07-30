@@ -154,7 +154,6 @@
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="end_clear.cpp" />
     <ClCompile Include="end_over.cpp" />
-    <ClCompile Include="enemy_count.cpp" />
     <ClCompile Include="enemy_init.cpp" />
     <ClCompile Include="fps.cpp" />
     <ClCompile Include="image.cpp" />
@@ -173,7 +172,6 @@
     <ClInclude Include="end_clear.hpp" />
     <ClInclude Include="end_over.hpp" />
     <ClInclude Include="enemy.hpp" />
-    <ClInclude Include="enemy_count.hpp" />
     <ClInclude Include="enemy_init.hpp" />
     <ClInclude Include="fps.hpp" />
     <ClInclude Include="global.hpp" />

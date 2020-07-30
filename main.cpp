@@ -67,6 +67,12 @@ int bigMiddle_FHandle;
 int Big_FHandle;
 int superBig_FHandle;
 
+int S1_Hard_PlayFlag;
+int S2_Normal_PlayFlag;
+int S2_Hard_PlayFlag;
+int S3_Normal_PlayFlag;
+int S3_Hard_PlayFlag;
+
 //ウィンドウ関係
 static WNDPROC WndProc;						//ウィンドウプロシージャのアドレス
 
@@ -165,6 +171,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	stage3_N.time_set(txt[4]);
 	stage3_H.time_set(txt[5]);
 
+	FILE* f;
+	fopen_s(&f, "PlayFlag.txt", "r");
+	fscanf_s(f, "%d,%d,%d,%d,%d", &S1_Hard_PlayFlag, &S2_Normal_PlayFlag, &S2_Hard_PlayFlag, &S3_Normal_PlayFlag, &S3_Hard_PlayFlag);
+	fclose(f);
+
 	//無限ループ
 	while (TRUE)
 	{
@@ -234,6 +245,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	stage2_H.time_put(txt[3]);
 	stage3_N.time_put(txt[4]);
 	stage3_H.time_put(txt[5]);
+
+	fopen_s(&f, "PlayFlag.txt", "w");
+	fprintf_s(f, "%d,%d,%d,%d,%d", S1_Hard_PlayFlag, S2_Normal_PlayFlag, S2_Hard_PlayFlag, S3_Normal_PlayFlag, S3_Hard_PlayFlag);
+	fclose(f);
 
 	DeleteGraph(BG.handle);
 	DeleteGraph(ROGO.handle);

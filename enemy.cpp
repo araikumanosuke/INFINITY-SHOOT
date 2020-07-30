@@ -10,7 +10,7 @@ Enemy::Enemy()
 	height_E = 30;
 	kind_E = -1;
 	hp_E = 3;	//Hardモードのみ使用する体力
-	collision_flag = false;	//Hardモードのみ使用する、機体と敵が当たっているかの判定
+	collision_flag = FALSE;	//Hardモードのみ使用する、機体と敵が当たっているかの判定
 	IsView_E = TRUE;
 }
 
