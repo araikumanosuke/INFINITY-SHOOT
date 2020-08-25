@@ -164,12 +164,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	Big_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 60, 5, DX_FONTTYPE_ANTIALIASING);
 	superBig_FHandle = CreateFontToHandle("HGã≥â»èëëÃ", 100, 5, DX_FONTTYPE_ANTIALIASING);
 
-	stage1_N.time_set(txt[0]);
-	stage1_H.time_set(txt[1]);
-	stage2_N.time_set(txt[2]);
-	stage2_H.time_set(txt[3]);
-	stage3_N.time_set(txt[4]);
-	stage3_H.time_set(txt[5]);
+	stage1_N.time_read(txt[0]);
+	stage1_H.time_read(txt[1]);
+	stage2_N.time_read(txt[2]);
+	stage2_H.time_read(txt[3]);
+	stage3_N.time_read(txt[4]);
+	stage3_H.time_read(txt[5]);
 
 	FILE* f;
 	fopen_s(&f, "PlayFlag.txt", "r");
@@ -239,12 +239,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		MY_FPS_WAIT();		//FPSÇÃèàóù[ë“Ç¬]
 	}
 
-	stage1_N.time_put(txt[0]);
-	stage1_H.time_put(txt[1]);
-	stage2_N.time_put(txt[2]);
-	stage2_H.time_put(txt[3]);
-	stage3_N.time_put(txt[4]);
-	stage3_H.time_put(txt[5]);
+	stage1_N.time_write(txt[0]);
+	stage1_H.time_write(txt[1]);
+	stage2_N.time_write(txt[2]);
+	stage2_H.time_write(txt[3]);
+	stage3_N.time_write(txt[4]);
+	stage3_H.time_write(txt[5]);
 
 	fopen_s(&f, "PlayFlag.txt", "w");
 	fprintf_s(f, "%d,%d,%d,%d,%d", S1_Hard_PlayFlag, S2_Normal_PlayFlag, S2_Hard_PlayFlag, S3_Normal_PlayFlag, S3_Hard_PlayFlag);

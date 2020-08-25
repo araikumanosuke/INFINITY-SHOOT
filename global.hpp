@@ -48,14 +48,14 @@ public:
 	double forth_sec = 0.0;
 	double fifth_sec = 0.0;
 
-	void time_set(char t[]) {
+	void time_read(char t[]) {
 		FILE *file;
 		fopen_s(&file, t, "r");
 		fscanf_s(file, "%lf,%lf,%lf,%lf,%lf", &first_sec, &second_sec, &third_sec, &forth_sec, &fifth_sec);
 		fclose(file);
 	}
 
-	void time_put(char t[]) {
+	void time_write(char t[]) {
 		FILE* file;
 		fopen_s(&file, t, "w");
 		fprintf_s(file, "%.2lf,%.2lf,%.2lf,%.2lf,%.2lf", first_sec, second_sec, third_sec, forth_sec, fifth_sec);

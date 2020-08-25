@@ -894,18 +894,3 @@ void GAMEOVER_METHOD()
 	StopSoundMem(BGM_PLAY.handle);
 	PlaySoundMem(GAMEOVER.handle, DX_PLAYTYPE_BACK);
 }
-
-void WAIT()
-{
-	int wait_timer;
-	int tmp = GetNowCount();
-	for (;;)
-	{
-		wait_timer = GetNowCount();
-		if (wait_timer - tmp > 100)
-		{
-			break;
-		}
-	}
-	
-}

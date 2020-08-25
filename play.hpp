@@ -10,4 +10,3 @@ extern void COLLISION_ENEMY_PLAYER_N(int*, int*, Enemy*);
 extern void COLLISION_ENEMY_PLAYER_H(int*, int*, Enemy*);
 extern void COLLISION_ENEMY_TAMA_METHOD(int*, int*, Enemy*);
 extern void GAMEOVER_METHOD();
-extern void WAIT();
