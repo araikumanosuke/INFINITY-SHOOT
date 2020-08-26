@@ -111,7 +111,11 @@ VOID MY_GAME_RANKING(VOID)
 	//éOäpÇÃëÄçÏ
 	if (AllKeyState[KEY_INPUT_UP] == 1)
 	{
-		PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
+		if (S2_Normal_PlayFlag == TRUE)
+		{
+			PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
+		}
+
 		switch (s_position_ranking)
 		{
 		case 0:	//1-NORMALÇÃà íuÇÃÇ∆Ç´
@@ -169,7 +173,11 @@ VOID MY_GAME_RANKING(VOID)
 	}
 	else if (AllKeyState[KEY_INPUT_DOWN] == 1)
 	{
-		PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
+		if (S2_Normal_PlayFlag == TRUE)
+		{
+			PlaySoundMem(SE_SELECT.handle, DX_PLAYTYPE_BACK);
+		}
+
 		switch (s_position_ranking)
 		{
 		case 0:	//1-NORMALÇÃà íuÇÃÇ∆Ç´

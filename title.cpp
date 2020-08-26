@@ -14,6 +14,20 @@ VOID MY_GAME_TITLE(VOID)
 	s_position_end_clear = 0;
 	Current_Timer_Sec = 0.0;
 	Current_Timer_Min = 0;
+	ranking_flag_update = FALSE;
+
+	if (S1_Hard_PlayFlag == TRUE)
+	{
+		S1_Hard_release_once = TRUE;
+	}
+	if (S2_Hard_PlayFlag == TRUE)
+	{
+		S2_Hard_release_once = TRUE;
+	}
+	if (S3_Hard_PlayFlag == TRUE)
+	{
+		S3_Hard_release_once = TRUE;
+	}
 
 	if (CheckSoundMem(BGM_TITLE.handle) == 0)
 	{

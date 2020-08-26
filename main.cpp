@@ -61,7 +61,7 @@ char txt[6][100] = {
 };
 
 int Small_FHandle;
-int smallMiddle_FHandle;
+int small_YU_FHandle;
 int Middle_FHandle;
 int bigMiddle_FHandle;
 int Big_FHandle;
@@ -158,7 +158,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	ChangeVolumeSoundMem(255 * 50 / 100, BGM_PLAY.handle);
 
 	Small_FHandle = CreateFontToHandle("HG教科書体", 24, 9, DX_FONTTYPE_ANTIALIASING);
-	smallMiddle_FHandle = CreateFontToHandle("HG教科書体", 36, 5, DX_FONTTYPE_ANTIALIASING);
+	small_YU_FHandle = CreateFontToHandle("游ゴシック", 24, 5, DX_FONTTYPE_ANTIALIASING);
 	Middle_FHandle = CreateFontToHandle("HG教科書体", 42, 5, DX_FONTTYPE_ANTIALIASING);
 	bigMiddle_FHandle = CreateFontToHandle("HG教科書体", 48, 5, DX_FONTTYPE_ANTIALIASING);
 	Big_FHandle = CreateFontToHandle("HG教科書体", 60, 5, DX_FONTTYPE_ANTIALIASING);
@@ -232,7 +232,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		MY_FPS_UPDATE();						//FPSの処理[更新]
 
-		MY_FPS_DRAW();		//FPSの処理[描画]
+		//MY_FPS_DRAW();		//FPSの処理[描画]
 
 		ScreenFlip();		//モニタのリフレッシュレートの速さで裏画面を再描画
 
@@ -305,7 +305,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DeleteSoundMem(CLEAR.handle);
 
 	DeleteFontToHandle(Small_FHandle);
-	DeleteFontToHandle(smallMiddle_FHandle);
+	DeleteFontToHandle(small_YU_FHandle);
 	DeleteFontToHandle(Middle_FHandle);
 	DeleteFontToHandle(bigMiddle_FHandle);
 	DeleteFontToHandle(Big_FHandle);

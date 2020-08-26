@@ -101,7 +101,7 @@ extern SOUND GAMEOVER;
 extern SOUND CLEAR;
 
 extern int Small_FHandle;
-extern int smallMiddle_FHandle;
+extern int small_YU_FHandle;
 extern int Middle_FHandle;
 extern int bigMiddle_FHandle;
 extern int Big_FHandle;
@@ -151,6 +151,11 @@ extern int S2_Normal_PlayFlag;
 extern int S2_Hard_PlayFlag;
 extern int S3_Normal_PlayFlag;
 extern int S3_Hard_PlayFlag;
+
+extern bool ranking_flag_update;
+extern bool S1_Hard_release_once;
+extern bool S2_Hard_release_once;
+extern bool S3_Hard_release_once;
 
 extern TIME_RANK stage1_N;
 extern TIME_RANK stage1_H;
