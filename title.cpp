@@ -15,6 +15,7 @@ VOID MY_GAME_TITLE(VOID)
 	Current_Timer_Sec = 0.0;
 	Current_Timer_Min = 0;
 	ranking_flag_update = FALSE;
+	enemy_move_flag = TRUE;
 
 	if (S1_Hard_PlayFlag == TRUE)
 	{

@@ -21,6 +21,7 @@
 #define GAME_IMAGE_ROGO					"IMAGE\\rogo\\rogo.png"
 #define GAME_IMAGE_SANKAKU				"IMAGE\\sankaku.png"
 #define GAME_IMAGE_TAMA					"IMAGE\\tama.png"
+#define GAME_IMAGE_TAMA_ENEMY			"IMAGE\\tama_enemy.png"
 #define GAME_IMAGE_ENEMY_YELLOW			"IMAGE\\enemy\\enemy_yellow.png"
 #define GAME_IMAGE_ENEMY_YELLOW_HARD	"IMAGE\\enemy\\enemy_yellow_hard.png"
 #define GAME_IMAGE_ENEMY_RED			"IMAGE\\enemy\\enemy_red.png"

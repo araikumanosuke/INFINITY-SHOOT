@@ -75,6 +75,7 @@ extern IMAGE BG;	//背景
 extern IMAGE ROGO;		//タイトルロゴ
 extern IMAGE SANKAKU;		//三角
 extern IMAGE TAMA;		//弾
+extern IMAGE TAMA_ENEMY;	//弾
 extern IMAGE PLAYER;		//プレイヤー(機体)
 extern IMAGE EFFECT[28];	//爆発エフェクト
 //敵

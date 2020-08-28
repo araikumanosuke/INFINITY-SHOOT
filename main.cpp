@@ -24,6 +24,7 @@ IMAGE BG;			//背景
 IMAGE ROGO;			//ロゴ
 IMAGE SANKAKU;		//三角形
 IMAGE TAMA;			//弾
+IMAGE TAMA_ENEMY;	//弾
 IMAGE PLAYER;		//プレイヤー(機体)
 IMAGE EFFECT[28];	//爆発エフェクト
 
@@ -99,6 +100,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	image_load(&ROGO, 80, 40, GAME_IMAGE_ROGO);
 	image_load(&SANKAKU, 0, 0, GAME_IMAGE_SANKAKU);
 	image_load(&TAMA, 0, 0, GAME_IMAGE_TAMA);
+	image_load(&TAMA_ENEMY, 0, 0, GAME_IMAGE_TAMA_ENEMY);
 	image_load(&E_YELLOW, 425, 300, GAME_IMAGE_ENEMY_YELLOW);
 	image_load(&E_YELLOW_HARD, 0, 0, GAME_IMAGE_ENEMY_YELLOW_HARD);
 	image_load(&E_GREEN, 0, 0, GAME_IMAGE_ENEMY_GREEN);

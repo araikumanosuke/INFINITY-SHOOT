@@ -10,8 +10,9 @@ public:
 	bool IsView;
 
 	Tama();
-	void view();
-	void position();
+	void view(int, int);
+	void position(int, int);
 	void flag_false();
+	void flag_false_E();
 	~Tama() {}
 };

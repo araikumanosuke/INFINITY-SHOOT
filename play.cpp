@@ -196,7 +196,7 @@ VOID MY_GAME_PLAY(VOID)
 			if (Tamas[0].IsView == FALSE)
 			{
 				Tamas[0].IsView = TRUE;
-				Tamas[0].position();
+				Tamas[0].position(PLAYER.x, PLAYER.y);
 				PlaySoundMem(SE_SHOT.handle, DX_PLAYTYPE_BACK);
 			}
 			else
@@ -206,7 +206,7 @@ VOID MY_GAME_PLAY(VOID)
 					if (Tamas[i - 1].IsView == TRUE && Tamas[i].IsView == FALSE)
 					{
 						Tamas[i].IsView = TRUE;
-						Tamas[i].position();
+						Tamas[i].position(PLAYER.x, PLAYER.y);
 						PlaySoundMem(SE_SHOT.handle, DX_PLAYTYPE_BACK);
 						break;
 					}
@@ -223,9 +223,176 @@ VOID MY_GAME_PLAY(VOID)
 	//弾表示
 	for (int i = 0; i < 20; i++)
 	{
-		Tamas[i].view();
+		Tamas[i].view(4, TAMA.handle);
 		Tamas[i].flag_false();
 	}
+
+	//敵が弾を発射できるか判定
+	if (s_position_stage == 0)
+	{
+		if (s_position_difficult == 0)
+		{
+			for (int y = 0; y < 9; y++)
+			{
+				for (int x = 0; x < 21; x++)
+				{
+					if (enemys_stage1[y][x].IsView_E == TRUE)
+					{
+						enemys_stage1[y][x].tama_random(enemys_stage1[y][x].x_E, enemys_stage1[y][x].y_E);
+					}
+				}
+			}
+		}
+		else if (s_position_difficult == 100)
+		{
+			for (int y = 0; y < 9; y++)
+			{
+				for (int x = 0; x < 21; x++)
+				{
+					if (enemys_stage1_hard[y][x].IsView_E == TRUE)
+					{
+						enemys_stage1_hard[y][x].tama_random(enemys_stage1_hard[y][x].x_E, enemys_stage1_hard[y][x].y_E);
+					}
+				}
+			}
+		}
+	}
+	else if (s_position_stage == 100)
+	{
+		if (s_position_difficult == 0)
+		{
+			for (int y = 0; y < 13; y++)
+			{
+				for (int x = 0; x < 13; x++)
+				{
+					if (enemys_stage2[y][x].IsView_E == TRUE)
+					{
+						enemys_stage2[y][x].tama_random(enemys_stage2[y][x].x_E, enemys_stage2[y][x].y_E);
+					}
+				}
+			}
+		}
+		else if (s_position_difficult == 100)
+		{
+			for (int y = 0; y < 13; y++)
+			{
+				for (int x = 0; x < 13; x++)
+				{
+					if (enemys_stage2_hard[y][x].IsView_E == TRUE)
+					{
+						enemys_stage2_hard[y][x].tama_random(enemys_stage2_hard[y][x].x_E, enemys_stage2_hard[y][x].y_E);
+					}
+				}
+			}
+		}
+	}
+	else if (s_position_stage == 200)
+	{
+		if (s_position_difficult == 0)
+		{
+			for (int y = 0; y < 7; y++)
+			{
+				for (int x = 0; x < 23; x++)
+				{
+					if (enemys_stage3[y][x].IsView_E == TRUE)
+					{
+						enemys_stage3[y][x].tama_random(enemys_stage3[y][x].x_E, enemys_stage3[y][x].y_E);
+					}
+				}
+			}
+		}
+		else if (s_position_difficult == 100)
+		{
+			for (int y = 0; y < 7; y++)
+			{
+				for (int x = 0; x < 23; x++)
+				{
+					if (enemys_stage3_hard[y][x].IsView_E == TRUE)
+					{
+						enemys_stage3_hard[y][x].tama_random(enemys_stage3_hard[y][x].x_E, enemys_stage3_hard[y][x].y_E);
+					}
+				}
+			}
+		}
+	}
+
+	if (s_position_stage == 0)
+	{
+		if (s_position_difficult == 0)
+		{
+			for (int y = 0; y < 9; y++)
+			{
+				for (int x = 0; x < 21; x++)
+				{
+					enemys_stage1[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
+					enemys_stage1[y][x].tama_enemy.flag_false_E();
+				}
+			}
+		}
+		else if (s_position_difficult == 100)
+		{
+			for (int y = 0; y < 9; y++)
+			{
+				for (int x = 0; x < 21; x++)
+				{
+					enemys_stage1_hard[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
+					enemys_stage1_hard[y][x].tama_enemy.flag_false_E();
+				}
+			}
+		}
+	}
+	else if (s_position_stage == 100)
+	{
+		if (s_position_difficult == 0)
+		{
+			for (int y = 0; y < 13; y++)
+			{
+				for (int x = 0; x < 13; x++)
+				{
+					enemys_stage2[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
+					enemys_stage2[y][x].tama_enemy.flag_false_E();
+				}
+			}
+		}
+		else if (s_position_difficult == 100)
+		{
+			for (int y = 0; y < 13; y++)
+			{
+				for (int x = 0; x < 13; x++)
+				{
+					enemys_stage2_hard[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
+					enemys_stage2_hard[y][x].tama_enemy.flag_false_E();
+				}
+			}
+		}
+	}
+	else if (s_position_stage == 200)
+	{
+		if (s_position_difficult == 0)
+		{
+			for (int y = 0; y < 7; y++)
+			{
+				for (int x = 0; x < 23; x++)
+				{
+					enemys_stage3[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
+					enemys_stage3[y][x].tama_enemy.flag_false_E();
+				}
+			}
+		}
+		else if (s_position_difficult == 100)
+		{
+			for (int y = 0; y < 7; y++)
+			{
+				for (int x = 0; x < 23; x++)
+				{
+					enemys_stage3_hard[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
+					enemys_stage3_hard[y][x].tama_enemy.flag_false_E();
+				}
+			}
+		}
+	}
+	
+	
 
 	//テキスト表示、敵表示＆当たり判定などステージごとに違う処理諸々
 	if (s_position_stage == 0)

@@ -1,11 +1,12 @@
 #include <DxLib.h>
 #include "enemy.hpp"
 #include "global.hpp"
+#include "tama.hpp"
 
 Enemy::Enemy()
 {
-	x_E = 570;
-	y_E = 570;
+	x_E = 0;
+	y_E = 700;
 	width_E = 30;
 	height_E = 30;
 	kind_E = -1;
@@ -176,6 +177,19 @@ void Enemy::view_E(int a, int b)
 					break;
 				}
 			}
+		}
+	}
+}
+
+void Enemy::tama_random(int x_enemy, int y_enemy) 
+{
+	int judge = GetRand(1000);
+	if (judge == 0)
+	{
+		if (tama_enemy.IsView == FALSE)
+		{
+			tama_enemy.IsView = TRUE;
+			tama_enemy.position(x_enemy, y_enemy);
 		}
 	}
 }
