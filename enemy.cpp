@@ -183,6 +183,7 @@ void Enemy::view_E(int a, int b)
 
 void Enemy::tama_random(int x_enemy, int y_enemy) 
 {
+	//1/1000‚ÌŠm—¦‚Å“G‚©‚ç’e‚ğo‚·
 	int judge = GetRand(1000);
 	if (judge == 0)
 	{
@@ -190,6 +191,39 @@ void Enemy::tama_random(int x_enemy, int y_enemy)
 		{
 			tama_enemy.IsView = TRUE;
 			tama_enemy.position(x_enemy, y_enemy);
+		}
+	}
+}
+
+void Enemy::enemy_tama_false()
+{
+	//“G‚Ì’e‚ÆƒvƒŒƒCƒ„[‚ª“–‚½‚Á‚½‚ç“G‚Ì’e‚ğÁ‚·
+	if (tama_enemy.x < PLAYER.x + PLAYER.width &&		//’e‚Ì¶ < ƒvƒŒƒCƒ„[‚Ì‰E
+		PLAYER.x < tama_enemy.x + tama_enemy.width &&	//ƒvƒŒƒCƒ„[‚Ì¶ < ’e‚Ì‰E
+		PLAYER.y < tama_enemy.y + tama_enemy.height &&	//ƒvƒŒƒCƒ„[‚Ìã < ’e‚Ì‰º
+		tama_enemy.y < PLAYER.y + PLAYER.height)		//’e‚Ìã < ƒvƒŒƒCƒ„[‚Ì‰º
+	{
+		if (tama_enemy.IsView == TRUE)
+		{
+			PlaySoundMem(SE_REFLECT.handle, DX_PLAYTYPE_BACK);
+			tama_enemy.IsView = FALSE;
+		}
+	}
+
+	//“G‚Ì’e‚ÆƒvƒŒƒCƒ„[‚Ì’e‚ª“–‚½‚Á‚½‚ç—¼•ûÁ‚·
+	for (int i = 0; i < 20; i++)
+	{
+		if (tama_enemy.x < Tamas[i].x + Tamas[i].width &&		//“G‚Ì’e‚Ì¶ < ƒvƒŒƒCƒ„[‚Ì’e‚Ì‰E
+			Tamas[i].x < tama_enemy.x + tama_enemy.width &&	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì¶ < “G‚Ì’e‚Ì‰E
+			Tamas[i].y < tama_enemy.y + tama_enemy.height &&	//ƒvƒŒƒCƒ„[‚Ì’e‚Ìã < “G‚Ì’e‚Ì‰º
+			tama_enemy.y < Tamas[i].y + Tamas[i].height)		//“G‚Ì’e‚Ìã < ƒvƒŒƒCƒ„[‚Ì’e‚Ì‰º
+		{
+			if (tama_enemy.IsView == TRUE && Tamas[i].IsView == TRUE)
+			{
+				PlaySoundMem(SE_BAKUHATSU.handle, DX_PLAYTYPE_BACK);
+				Tamas[i].IsView = FALSE;
+				tama_enemy.IsView = FALSE;
+			}
 		}
 	}
 }

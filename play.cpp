@@ -326,6 +326,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					enemys_stage1[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
 					enemys_stage1[y][x].tama_enemy.flag_false_E();
+					enemys_stage1[y][x].enemy_tama_false();
 				}
 			}
 		}
@@ -337,6 +338,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					enemys_stage1_hard[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
 					enemys_stage1_hard[y][x].tama_enemy.flag_false_E();
+					enemys_stage1_hard[y][x].enemy_tama_false();
 				}
 			}
 		}
@@ -351,6 +353,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					enemys_stage2[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
 					enemys_stage2[y][x].tama_enemy.flag_false_E();
+					enemys_stage2[y][x].enemy_tama_false();
 				}
 			}
 		}
@@ -362,6 +365,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					enemys_stage2_hard[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
 					enemys_stage2_hard[y][x].tama_enemy.flag_false_E();
+					enemys_stage2_hard[y][x].enemy_tama_false();
 				}
 			}
 		}
@@ -376,6 +380,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					enemys_stage3[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
 					enemys_stage3[y][x].tama_enemy.flag_false_E();
+					enemys_stage3[y][x].enemy_tama_false();
 				}
 			}
 		}
@@ -387,6 +392,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					enemys_stage3_hard[y][x].tama_enemy.view(-4, TAMA_ENEMY.handle);
 					enemys_stage3_hard[y][x].tama_enemy.flag_false_E();
+					enemys_stage3_hard[y][x].enemy_tama_false();
 				}
 			}
 		}

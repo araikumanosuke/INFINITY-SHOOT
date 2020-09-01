@@ -101,6 +101,8 @@ extern SOUND BGM_PLAY;
 extern SOUND GAMEOVER;
 extern SOUND CLEAR;
 
+extern Tama Tamas[20];
+
 extern int Small_FHandle;
 extern int small_YU_FHandle;
 extern int Middle_FHandle;
