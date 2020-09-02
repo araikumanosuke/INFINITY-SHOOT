@@ -17,7 +17,7 @@ public:
 	Enemy();
 	void position_E(int, int, int, int);
 	void view_E(int, int);
-	void tama_random(int, int);
+	void tama_random();
 	void enemy_tama_false();
 	~Enemy() {}
 };

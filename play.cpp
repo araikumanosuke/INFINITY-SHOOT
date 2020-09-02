@@ -238,7 +238,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					if (enemys_stage1[y][x].IsView_E == TRUE)
 					{
-						enemys_stage1[y][x].tama_random(enemys_stage1[y][x].x_E, enemys_stage1[y][x].y_E);
+						enemys_stage1[y][x].tama_random();
 					}
 				}
 			}
@@ -251,7 +251,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					if (enemys_stage1_hard[y][x].IsView_E == TRUE)
 					{
-						enemys_stage1_hard[y][x].tama_random(enemys_stage1_hard[y][x].x_E, enemys_stage1_hard[y][x].y_E);
+						enemys_stage1_hard[y][x].tama_random();
 					}
 				}
 			}
@@ -267,7 +267,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					if (enemys_stage2[y][x].IsView_E == TRUE)
 					{
-						enemys_stage2[y][x].tama_random(enemys_stage2[y][x].x_E, enemys_stage2[y][x].y_E);
+						enemys_stage2[y][x].tama_random();
 					}
 				}
 			}
@@ -280,7 +280,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					if (enemys_stage2_hard[y][x].IsView_E == TRUE)
 					{
-						enemys_stage2_hard[y][x].tama_random(enemys_stage2_hard[y][x].x_E, enemys_stage2_hard[y][x].y_E);
+						enemys_stage2_hard[y][x].tama_random();
 					}
 				}
 			}
@@ -296,7 +296,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					if (enemys_stage3[y][x].IsView_E == TRUE)
 					{
-						enemys_stage3[y][x].tama_random(enemys_stage3[y][x].x_E, enemys_stage3[y][x].y_E);
+						enemys_stage3[y][x].tama_random();
 					}
 				}
 			}
@@ -309,7 +309,7 @@ VOID MY_GAME_PLAY(VOID)
 				{
 					if (enemys_stage3_hard[y][x].IsView_E == TRUE)
 					{
-						enemys_stage3_hard[y][x].tama_random(enemys_stage3_hard[y][x].x_E, enemys_stage3_hard[y][x].y_E);
+						enemys_stage3_hard[y][x].tama_random();
 					}
 				}
 			}

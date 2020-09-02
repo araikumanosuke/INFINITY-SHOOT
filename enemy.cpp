@@ -181,7 +181,7 @@ void Enemy::view_E(int a, int b)
 	}
 }
 
-void Enemy::tama_random(int x_enemy, int y_enemy) 
+void Enemy::tama_random() 
 {
 	//1/1000‚ÌŠm—¦‚Å“G‚©‚ç’e‚ğo‚·
 	int judge = GetRand(1000);
@@ -190,7 +190,7 @@ void Enemy::tama_random(int x_enemy, int y_enemy)
 		if (tama_enemy.IsView == FALSE)
 		{
 			tama_enemy.IsView = TRUE;
-			tama_enemy.position(x_enemy, y_enemy);
+			tama_enemy.position(x_E + width_E, y_E + height_E);
 		}
 	}
 }
