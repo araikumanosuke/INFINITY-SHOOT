@@ -15,9 +15,9 @@ VOID MY_GAME_RANKING(VOID)
 {
 	DrawGraph(BG.x, BG.y, BG.handle, TRUE);
 	DrawStringToHandle(290, 20, "RANKING", GetColor(255, 255, 255), superBig_FHandle);
-	DrawBox(695, 32, 885, 107, GetColor(255, 255, 255), FALSE);
+	/*DrawBox(695, 32, 885, 107, GetColor(255, 255, 255), FALSE);
 	DrawStringToHandle(700, 37, "BACK TO TITLE:", GetColor(255, 255, 255), Small_FHandle);
-	DrawStringToHandle(700, 77, "BACK SPACE Key", GetColor(255, 255, 255), Small_FHandle);
+	DrawStringToHandle(700, 77, "BACK SPACE Key", GetColor(255, 255, 255), Small_FHandle);*/
 
 	if (CheckSoundMem(BGM_RANK.handle) == 0)
 	{

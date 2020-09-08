@@ -32,7 +32,5 @@ VOID MY_GAME_END_OVER(VOID)
 		GameSceneNow = (int)GAME_SCENE_TITLE;	//シーンをタイトル画面にする
 	}
 
-	DrawString(0, 0, "エンド画面(ゲームオーバー)(バックスペースキーを押してください)", GetColor(255, 255, 255));
-
 	return;
 }

@@ -315,7 +315,7 @@ VOID MY_GAME_END_CLEAR(VOID)
 			}
 			else if (S2_Hard_PlayFlag == FALSE)
 			{
-				DrawStringToHandle(240, 280, "(15秒以内にクリアすると？)", GetColor(255, 255, 255), small_YU_FHandle);
+				DrawStringToHandle(240, 280, "(10秒以内にクリアすると？)", GetColor(255, 255, 255), small_YU_FHandle);
 			}
 		}
 	}

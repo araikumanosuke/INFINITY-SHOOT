@@ -398,8 +398,6 @@ VOID MY_GAME_PLAY(VOID)
 		}
 	}
 	
-	
-
 	//テキスト表示、敵表示＆当たり判定などステージごとに違う処理諸々
 	if (s_position_stage == 0)
 	{

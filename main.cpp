@@ -10,6 +10,7 @@
 #include "play.hpp"
 #include "end_over.hpp"
 #include "ranking.hpp"
+#include "howto.hpp"
 #include "stagechoice.hpp"
 #include "end_clear.hpp"
 #include "image.hpp"
@@ -201,6 +202,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			MY_GAME_RANKING();	//ランキング画面の処理
 
 			break;	//ランキング画面の処理ここまで
+
+		case (int)GAME_SCENE_HOWTO:	//操作説明画面の処理ここから
+
+			MY_GAME_HOWTO();	//操作説明画面の処理
+
+			break;	//操作説明画面の処理ここまで
 
 		case (int)GAME_SCENE_STAGECHOICE:	//ステージ選択画面の処理ここから
 

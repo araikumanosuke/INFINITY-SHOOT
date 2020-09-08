@@ -156,6 +156,7 @@
     <ClCompile Include="end_over.cpp" />
     <ClCompile Include="enemy_init.cpp" />
     <ClCompile Include="fps.cpp" />
+    <ClCompile Include="howto.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="key.cpp" />
     <ClCompile Include="main.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="fps.hpp" />
     <ClInclude Include="global.hpp" />
     <ClInclude Include="header.hpp" />
+    <ClInclude Include="howto.hpp" />
     <ClInclude Include="image.hpp" />
     <ClInclude Include="key.hpp" />
     <ClInclude Include="play.hpp" />

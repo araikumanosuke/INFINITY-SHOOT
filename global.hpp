@@ -8,6 +8,7 @@
 enum GAME_SCENE {
 	GAME_SCENE_TITLE,		//タイトル画面
 	GAME_SCENE_RANKING,		//ランキング画面
+	GAME_SCENE_HOWTO,		//操作説明画面
 	GAME_SCENE_STAGECHOICE,	//ステージ選択画面
 	GAME_SCENE_PLAY,		//プレイ画面
 	GAME_SCENE_END_CLEAR,	//エンド画面(クリア)
